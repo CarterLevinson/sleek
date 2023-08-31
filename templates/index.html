@@ -1,0 +1,23 @@
+{% import "macros.html" as macros %}
+
+{% extends "layout.html" %}
+
+{% block head %}
+{% if config.generate_feed %}
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+    href="{{ get_url(path=config.feed_filename, trailing_slash=false) }}"/>
+{% endif %}
+{% endblock head %}
+
+{% block content %}
+  <div id="spotlight" class="animated fadeIn">
+    <div id="home-center">
+      <h1 id="home-title">{{config.title}}</h1>
+      <p id="home-quote">{{config.extra.sleek_quote}}</p>
+      <div id="home-icons">
+        {{ macros::render_social_icons() }}
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

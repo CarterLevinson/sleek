@@ -1,0 +1,40 @@
+name           = "Sleek"
+description    = "A mininimalistic theme a for personal website/blog"
+license        = "MIT"
+homepage       = "https://github.com/carterlevo/sleek"
+
+# test other versions?
+min_version    = "0.17.0"
+
+# use a Github pages site to host theme?
+# demo         = "https://github.io/carterlevo/sleek"
+demo           = ""
+
+[author]
+name           = "Carter S. Levinson"
+homepage       = "carterlevinson.net"
+
+[original]
+author         = ""
+homepage       = ""
+repo           = ""
+
+[extra]
+sleek_author   = "John Q. Example"
+sleek_abbrev   = "JQE"
+sleek_mathjax  = true
+sleek_quote    = "You get what you pay for!"
+sleek_footer   = ""
+
+sleek_navbar   = [
+  { link = "/",       name = "Home" },
+  { link = "/blog",   name = "Blog" },
+  { link = "/tags",   name = "Tags" },
+  { link = "/about",  name = "About"}
+]
+
+sleek_pages    = [
+  { name = "twitter", link = "https://twitter.com" },
+  { name = "github",  link = "https://github.com" },
+  { name = "email",   link = "mailto:author@domain.com" }
+]
