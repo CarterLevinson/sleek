@@ -1,3 +1,4 @@
+{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="{{config.default_language}}">
   <head>
@@ -36,11 +37,16 @@
     {% block head %}
     {% endblock head %}
   </head>
-  <body>
-    <header>
-      <img class="logo" src="images/logo.svg" alt="logo"/>
+  <body id="page">
+    {% block header %}
+    <header id="site-header">
+      {% if config.extra.sleek_logo != "" %}
+      <img class="logo" src="{{ config.extra.sleek_logo }}" alt="website logo"/>
+      {% else %}
+      <p class="logo"><b><i>{{ config.extra.sleek_abbr }}</i></b></p>
+      {% endif %}
       <nav>
-        <ul class="nav__links">
+        <ul class="nav-links">
           {% for target in config.extra.sleek_navbar %}
           <li>
             <a href="{{ config.base_url ~ target.link }}">{{ target.name }}</a>
@@ -49,10 +55,13 @@
         </ul>
       </nav>
     </header>
+    {% endblock %}
+
     {% block content %}
     {% endblock content %}
-    <footer>
-      Copyright © 2023. {{ config.extra.sleek_author }}. All rights reserved.
-    </footer>
+
+    {% block footer %}
+    {{ macros::write_site_footer() }}
+    {% endblock footer %}
   </body>
 </html>

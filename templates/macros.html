@@ -1,3 +1,21 @@
+{% macro write_site_footer(home=False) %}
+{% if home %}
+  <footer id="home-footer" class = "site-footer">
+    <p>Copyrights &copy; {{ now() | date(format="%Y") }}
+      <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
+      {{ config.extra.sleek_copyright }}
+    </p>
+  </footer>
+{% else %}
+  <footer class = "site-footer">
+    <p>Copyrights &copy; {{ now() | date(format="%Y") }}
+      <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
+      {{ config.extra.sleek_copyright }}
+    </p>
+  </footer>
+{% endif %}
+{% endmacro write_site_footer %}
+
 {% macro render_social_icons() %}
 {% for icon in config.extra.sleek_pages %}
 <a href="{{ icon.link }}" target="_blank" rel="noopener me"

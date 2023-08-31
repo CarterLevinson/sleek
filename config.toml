@@ -9,7 +9,7 @@ compile_sass       = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-# generate_feed      = false
+# generate_feed    = false
 
 [markdown]
 # Whether to do syntax highlighting
@@ -19,23 +19,27 @@ highlight_theme    = "monokai"
 
 [extra]
 sleek_author       = "John Q. Example"
-sleek_abbrev       = "JQE"
+sleek_abbr         = "JQE"
 sleek_quote        = "You get what you pay for!"
-sleek_footer       = ""
+
+sleek_copyright    = "All rights reserved."
 sleek_mathjax      = true
 
+sleek_icon         = ""
+sleek_logo         = ""
+sleek_image        = ""
 
 sleek_navbar       = [
-  { link = "/",       name = "Home" },
-  { link = "/blog",   name = "Blog" },
-  { link = "/tags",   name = "Tags" },
-  { link = "/about",  name = "About"}
+  { link           = "/",       name = "Home" },
+  { link           = "/blog",   name = "Blog" },
+  { link           = "/tags",   name = "Tags" },
+  { link           = "/about",  name = "About"}
 ]
 
-sleek_links = []
+# sleek_menu        = []
 
 sleek_pages        = [
-  { name = "twitter", link = "https://twitter.com" },
-  { name = "github",  link = "https://github.com" },
-  { name = "email",   link = "mailto:author@domain.com" }
+  { name           = "twitter", link = "https://twitter.com" },
+  { name           = "github",  link = "https://github.com" },
+  { name           = "email",   link = "mailto:author@domain.com" }
 ]
