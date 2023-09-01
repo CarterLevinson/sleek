@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+<!-- vim: ft=htmldjango -->
+
+{% block content %}
+<div class="content">
+  <main class="main">
+    {% for page in paginator.pages %}
+    {{ macros::post(page=page) }}
+    {% endfor %}
+    {{ macros::post_nav(ref=paginator, extra=config.extra) }}
+  </main>
+  {% block sidebar %}
+    <aside class="sidebar">
+    {% for sidebar in config.extra.sidebar %}
+    <h3>{{ sidebar.name }}</h3>
+    <ul class="base-list">
+      {% for item in sidebar.urls %}
+        <li>
+          <a href="{{ item.url }}">{{ item.name}}</a>
+        <li>
+      {% endfor %}
+      </ul>
+    {% endfor %}
+  </aside>
+  {% endblock sidebar %}
+</div>
+{% endblock content %}
+

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<!-- vim: ft=htmldjango -->
+<html>
+  <head>
+    {% if config.extra.sleek_mathjax %}
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+    <script id="MathJax-script" crossorigin async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
+    </script>
+
+    <script id="MathJax-font" type="module">
+      import mathjaxFiraFont from "https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm"
+    </script>
+    {% endif %}
+  </head>
+</html>
+

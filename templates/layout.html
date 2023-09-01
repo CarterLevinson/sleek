@@ -6,8 +6,9 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
-    <!-- <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorirign=""/> -->
+    {% if config.extra.sleek_mathjax %}
+      <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+    {% endif %}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
 
@@ -20,16 +21,8 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code"/>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/> -->
-    <!---->
-    {% if config.extra.sleek_mathjax %}
-    <script type="text/javascript" id="MathJax-script" crossorigin async
-      src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
-    </script>
 
-    <script type="module" id="MathJax-font" crossorigin>
-      import mathjaxFiraFont from 'https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm'
-    </script>
+    {% if config.extra.sleek_mathjax %}
     {% endif %}
 
     <link rel="stylesheet" href="styles/site.css"/>
@@ -61,7 +54,9 @@
     {% endblock content %}
 
     {% block footer %}
-    {{ macros::write_site_footer() }}
+    {{ macros::write_footer() }}
     {% endblock footer %}
   </body>
 </html>
+
+<!-- vim: ft=htmldjango -->

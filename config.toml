@@ -43,3 +43,21 @@ sleek_pages        = [
   { name           = "github",  link = "https://github.com" },
   { name           = "email",   link = "mailto:author@domain.com" }
 ]
+
+label_tags = "Tags"
+label_tag = "Tag"
+label_categories = "Categories"
+label_category = "Category"
+label_relative_posts = "Relative Posts"
+label_next = "Next"
+label_previous = "Previous"
+label_page = "Page"
+label_of = "of"
+sidebar = [
+    {name = "Social", urls=[
+        {name="Twitter", url=""},
+        {name="Facebook", url=""},
+        {name="Outro", url=""},
+    ]}
+]
+author = "John Q. Example"

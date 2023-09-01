@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+<!-- vim: ft=htmldjango -->
 
 {% block head %}
 {% if config.generate_feed %}
@@ -25,5 +26,6 @@
 {% endblock content %}
 
 {% block footer %}
-{{ macros::write_site_footer(home=True) }}
+{{ macros::write_static_footer() }}
 {% endblock footer %}
+
