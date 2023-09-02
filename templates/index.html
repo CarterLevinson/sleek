@@ -9,12 +9,11 @@
 {% endblock head %}
 
 {% block content %}
-  <div id="home-content">
-    <div id="spotlight" class="animated fadeIn">
-      <div id="home-center">
-        <h1 id="home-title">{{config.title}}</h1>
-        <p id="home-quote">{{config.extra.sleek_quote}}</p>
-        <div id="home-icons">
+    <div class="spotlight" class="animated fadeIn">
+      <div class="home-center">
+        <h1 class="home-title">{{config.title}}</h1>
+        <p class="home-quote">{{config.extra.sleek_quote}}</p>
+        <div class="home-icons">
           {{ macros::render_social_icons() }}
         </div>
         {% if config.extra.sleek_image != "" %}
@@ -22,10 +21,9 @@
         {% endif %}
       </div>
     </div>
-  </div>
 {% endblock content %}
 
-{% block footer %}
+{#% block footer %}
 {{ macros::write_static_footer() }}
-{% endblock footer %}
+{% endblock footer %#}
 

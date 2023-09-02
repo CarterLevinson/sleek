@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+@use "master";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.6;
+  height: 100%;
+  letter-spacing: 0.06em;
+  background: master.$light-grey;
+}
+
+body {
+  height: 100%;
+}
+
+/* style regular text */
+body,
+button,
+input,
+select,
+textarea {
+  color: master.$text;
+  font-family: master.$font, sans-serif;
+}
+
+/* handle buttons */
+button {
+  font-weight: 500;
+  font-size: 16px;
+  color: master.$off-white;
+  text-decoration: none;
+
+  padding: 9x 25px;
+  background-color: rgba(0, 136, 169,1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3 ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0, 136, 169,0.8);
+}
+
+/* style monospace text */
+pre,
+code,
+pre tt {
+  font-family: master.$code-font, sans-serif;
+}
+
+pre {
+  max-height: 40em;
+  padding: 0.7em 1.1em;
+  overflow: auto;
+  font-size: 0.9em;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #eee;
+  border-radius: 4px;
+  // -webkit-overflow-scrolling: touch;
+
+  code {
+    padding: 0;
+    margin: 0;
+    background: master.$midnightblue;
+  }
+}
+
+code {
+  color: #eee;
+  background: master.$highlight-grey;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 0 4px;
+  word-break: break-all;
+  letter-spacing: normal;
+}
+
+blockquote {
+  border-left: 0.25em solid;
+  margin: 1em;
+  padding: 0 1em;
+  font-style: italic;
+
+  cite {
+    font-weight: bold;
+    font-style: normal;
+
+    &::before {
+      content: "—— ";
+    }
+  }
+}
+
+a {
+  color: master.$text;
+  text-decoration: none;
+  border: none;
+  transition-property: color;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+hr {
+  opacity: 0.2;
+  border-width: 0 0 5px 0;
+  border-style: dashed;
+  background: transparent;
+  width: 50%;
+  margin: 1.8em auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  width: 100%;
+  max-width: 100%;
+
+  th,
+  td {
+    padding: 1.5%;
+    border: 1px solid;
+  }
+
+  th {
+    font-weight: 700;
+    vertical-align: bottom;
+  }
+}
+
+header {
+  background-color: master.$dark-grey;
+}
+
+footer {
+  background-color: master.$dark-grey;
+}

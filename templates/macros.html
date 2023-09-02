@@ -1,7 +1,62 @@
 <!-- vim: ft=htmldjango -->
 
+{% macro mathjax() %}
+  <script id="MathJax-script" crossorigin async
+    src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
+  </script>
+
+  <script id="MathJax-font" type="module">
+    import mathjaxFiraFont from "https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm"
+  </script>
+{% endmacro mathjax %}
+
+{% macro post_header(page) %}
+<h2 class="post-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+<div class="post-header">
+    <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+    {% if page.taxonomies.tags %}
+    <div class="post-tags">
+        {% for tag in page.taxonomies.tags %}
+        <span class="post-tag">#<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }} ">{{ tag }}</a></span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endmacro post_header %}
+
+{% macro list_pages(pages) %}
+{% for page in pages %}
+<div class="post">
+    {{ self::post_header(page=page) }}
+    {% if config.extra.slim_summary %}
+    {% if page.summary %}
+    <div class="summary">
+        {{ page.summary | safe | striptags }}
+        <a class="read-more" href="{{ page.permalink }}">&hellip;</a>
+    </div>
+    {% endif %}
+    {% elif config.extra.slim_content %}
+    <div class="content">
+        {{ page.content | safe | striptags }}
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endmacro list_posts %}
+
+{% macro pagination(paginator) %}
+<div class="pagination">
+    {% if paginator.previous %}
+    <a rel="prev" href="{{paginator.previous}}" class="btn previous">Newer</a>
+    {% endif %}
+    {% if paginator.next %}
+    <a rel="next" href="{{paginator.next}}" class="btn next">Older</a>
+    {% endif %}
+</div>
+{% endmacro paginator %}
+
 {% macro write_footer() %}
-  <footer class="site-footer">
+  <footer class="page-footer">
     <p>Copyrights &copy; {{ now() | date(format="%Y") }}
       <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
       {{ config.extra.sleek_copyright }}
@@ -10,7 +65,7 @@
 {% endmacro write_footer %}
 
 {% macro write_static_footer() %}
-  <footer class="fixed-footer">
+  <footer class="page-footer">
     <p>Copyrights &copy; {{ now() | date(format="%Y") }}
       <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
       {{ config.extra.sleek_copyright }}

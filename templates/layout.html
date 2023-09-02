@@ -1,38 +1,65 @@
 {% import "macros.html" as macros %}
+<!-- vim: ft=htmldjango -->
 <!DOCTYPE html>
 <html lang="{{config.default_language}}">
   <head>
     <!-- preamble must come first for rendering -->
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- extra preamble -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+
     {% if config.extra.sleek_mathjax %}
-      <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
     {% endif %}
 
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    {% if page.title %}
+    <title>{{ page.title }}</title>
+    {% elif section.title %}
+    <title>{{ section.title }}</title>
+    {% elif config.title %}
+    <title>{{ config.title }}</title>
+    {% else %}
+    <title>Sleek: a minimalist theme for your Zola blog/website</title>
+    {% endif %}
 
-    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}"/>
+    {% elif section.description %}
+    <meta name="description" content="{{ section.description }}"/>
+    {% else %}
+    <meta name="description" content="{{ config.description }}"/>
+    {% endif %}
 
+    {% if config.extra.sleek_author %}
     <meta name="author" content="{{ config.extra.sleek_author }}"/>
-    <meta name="description" content="{% block desc %}{{ config.description }} {% endblock desc %}"/>
+    {% endif %}
 
+
+    {% block fonts %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code"/>
+    {% endblock fonts %}
 
     {% if config.extra.sleek_mathjax %}
+    {{ macros::mathjax() }}
     {% endif %}
 
     <link rel="stylesheet" href="styles/site.css"/>
 
     {% block head %}
     {% endblock head %}
+
+    {% block script %}
+    {% endblock script %}
   </head>
-  <body id="page">
+  <body>
+    <div class="page">
     {% block header %}
-    <header class="fixed-header">
+    <header class="page-header">
       {% if config.extra.sleek_logo != "" %}
       <img class="logo" src="{{ config.extra.sleek_logo }}" alt="website logo"/>
       {% else %}
@@ -50,14 +77,20 @@
     </header>
     {% endblock %}
 
-    <div class="body">
-    {% block content %}
-    {% endblock content %}
+    <div class="page-body">
+      {% block content %}
+      <div class="content">
+      </div>
+      {% endblock content %}
     </div>
 
     {% block footer %}
-    {{ macros::write_footer() }}
+    <footer class="page-footer">
+      <p>Copyright &copy; {{ now() | date(format="%Y") }}
+        <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
+        {{ config.extra.sleek_copyright }}
+      </p>
+    </footer>
     {% endblock footer %}
   </body>
 </html>
-<!-- vim: ft=htmldjango -->
