@@ -10,7 +10,7 @@
 {% endmacro write_footer %}
 
 {% macro write_static_footer() %}
-  <footer class="static-footer">
+  <footer class="fixed-footer">
     <p>Copyrights &copy; {{ now() | date(format="%Y") }}
       <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
       {{ config.extra.sleek_copyright }}

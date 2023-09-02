@@ -6,11 +6,11 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
     {% if config.extra.sleek_mathjax %}
       <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
     {% endif %}
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 
@@ -32,7 +32,7 @@
   </head>
   <body id="page">
     {% block header %}
-    <header id="site-header">
+    <header class="fixed-header">
       {% if config.extra.sleek_logo != "" %}
       <img class="logo" src="{{ config.extra.sleek_logo }}" alt="website logo"/>
       {% else %}
@@ -50,13 +50,14 @@
     </header>
     {% endblock %}
 
+    <div class="body">
     {% block content %}
     {% endblock content %}
+    </div>
 
     {% block footer %}
     {{ macros::write_footer() }}
     {% endblock footer %}
   </body>
 </html>
-
 <!-- vim: ft=htmldjango -->

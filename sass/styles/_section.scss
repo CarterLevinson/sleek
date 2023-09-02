@@ -8,6 +8,12 @@ $color-grey: rgba(0,0,0,.54);
 $color-lgrey: rgba(0,0,0,0.20);
 $color-link: #2c3e50;
 
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
 .main {
     width: 100%;
 
@@ -19,12 +25,13 @@ $color-link: #2c3e50;
 
 .sidebar {
     width: 100%;
-    display: none;
+    display: flex;
+    float: right;
 
     @media screen and (min-width: 900px) {
         width: 35%;
-        float: left;
-        display: block;
+        float: right;
+        display: flex;
     }
 
     h3 {
@@ -51,7 +58,7 @@ $color-link: #2c3e50;
 }
 
 .page-navigator {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     text-align: center;
 
     & > span, & > a {
