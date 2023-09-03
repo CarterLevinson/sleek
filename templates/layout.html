@@ -1,5 +1,5 @@
-{% import "macros.html" as macros %}
-<!-- vim: ft=htmldjango -->
+{% import "macros/macros.html" as macros %}
+
 <!DOCTYPE html>
 <html lang="{{config.default_language}}">
   <head>
@@ -86,11 +86,15 @@
 
     {% block footer %}
     <footer class="page-footer">
-      <p>Copyright &copy; {{ now() | date(format="%Y") }}
+      <p>&copy; {{ now() | date(format="%Y") }}
         <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
-        {{ config.extra.sleek_copyright }}
+          {{ config.extra.sleek_copyright }}
+      </p>
+      <br/>
+      <p>
       </p>
     </footer>
     {% endblock footer %}
   </body>
 </html>
+<!-- vim: ft=htmldjango -->

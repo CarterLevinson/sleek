@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// @use "variables" as vars;
+@use "variables";
+
+.post {
+  border-bottom: solid 1px variables.$off-white;
+}
+
+.pagination{
+  display: flex;
+}
+
+.next {
+  margin-left: auto;
+}
+
+.prev {
+  margin-right: auto;
+}

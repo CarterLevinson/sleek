@@ -1,5 +1,5 @@
+{% import "macros/icons.html" as icons %}
 {% extends "layout.html" %}
-<!-- vim: ft=htmldjango -->
 
 {% block head %}
 {% if config.generate_feed %}
@@ -9,21 +9,17 @@
 {% endblock head %}
 
 {% block content %}
-    <div class="spotlight" class="animated fadeIn">
-      <div class="home-center">
-        <h1 class="home-title">{{config.title}}</h1>
-        <p class="home-quote">{{config.extra.sleek_quote}}</p>
-        <div class="home-icons">
-          {{ macros::render_social_icons() }}
+      <div class="spotlight" class="animated fadeIn">
+        <div class="home-center">
+          <h1 class="home-title">{{config.title}}</h1>
+          <p class="home-quote">{{config.extra.sleek_quote}}</p>
+          <div class="home-icons">
+            {{ icons::render_social_icons() }}
+          </div>
+          {% if config.extra.sleek_image != "" %}
+          <image class="rounded" src="{{ config.extra.sleek_image }}"/>
+          {% endif %}
         </div>
-        {% if config.extra.sleek_image != "" %}
-        <image class="rounded" src="{{ config.extra.sleek_image }}"/>
-        {% endif %}
       </div>
-    </div>
 {% endblock content %}
-
-{#% block footer %}
-{{ macros::write_static_footer() }}
-{% endblock footer %#}
-
+<!-- vim: ft=htmldjango -->

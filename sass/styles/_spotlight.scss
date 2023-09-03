@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@use "master";
+@use "variables";
 
 //
 // spotlight
@@ -88,7 +88,7 @@ p.img-404 {
 
     a {
       display: inline-block;
-      border: 2px solid master.$text;
+      border: 2px solid variables.$text;
       border-radius: 5px;
       padding: 5px;
       transition-property: color, border-color;
