@@ -9,17 +9,17 @@
 {% endblock head %}
 
 {% block content %}
-      <div class="spotlight" class="animated fadeIn">
-        <div class="home-center">
-          <h1 class="home-title">{{config.title}}</h1>
-          <p class="home-quote">{{config.extra.sleek_quote}}</p>
-          <div class="home-icons">
-            {{ icons::render_social_icons() }}
-          </div>
-          {% if config.extra.sleek_image != "" %}
-          <image class="rounded" src="{{ config.extra.sleek_image }}"/>
-          {% endif %}
-        </div>
-      </div>
+<div class="spotlight" class="animated fadeIn">
+  <div class="spotlight-center">
+    <h1 class="spotlight-title">{{config.title}}</h1>
+    <p class="spotlight-quote">{{config.extra.sleek_quote}}</p>
+    <div class="social-icons">
+      {{ icons::render_social_icons() }}
+    </div>
+    {% if config.extra.sleek_image != "" %}
+    <image class="rounded" src="{{ config.extra.sleek_image }}"/>
+    {% endif %}
+  </div>
+</div>
 {% endblock content %}
 <!-- vim: ft=htmldjango -->

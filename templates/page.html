@@ -1,1 +1,56 @@
-<!-- vim: ft=htmldjango -->
+{% extends "layout.html" %}
+{% import "macros/posts.html" as post %}
+
+{% block content %}
+<div class="content">
+  {% if page.toc %}
+  <div class="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content-always-active">
+      <nav class="table-of-contents">
+        <ul class="nav-links">
+          {% for h1 in page.toc %}
+          <li>
+            <a href="{{ h1.permalink | safe }}" class="toc-link">{{ h1.title }}</a>
+            {% if h1.children %}
+            <ul class="nav-links">
+              {% for h2 in h1.children %}
+              <li>
+                <a href="{{ h2.permalink | safe }}" class="toc-link">{{ h2.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    <div>
+  </div>
+  {% endif %}
+  <article class="post">
+    {{ post::title(page=page) }}
+    <div class="post-content">
+      {{ page.content | safe }}
+    </div>
+    <div class="post-footer">
+      {% if page.taxonomies.tags %}
+      <div class="post-tags">
+        {% for tag in page.taxonomies.tags %}
+        <a href="{{ get_taxonomy_url(kind="tags",name=tag) }}">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if page.lower or page.higher %}
+      <div class="post-nav">
+        {% if page.lower %}
+          <a class="prev" href="{{ page.lower.permalink }}">‹ {{ page.lower.title }}</a>
+        {% endif %}
+        {% if page.higher %}
+          <a class="next" href="{{ page.higher.permalink }}">{{ page.higher.title }} ›</a>
+        {% endif %}
+      {% endif %}
+      </div>
+  </article>
+</div>
+{% endblock content %}

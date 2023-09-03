@@ -3,32 +3,32 @@
 {% extends "layout.html" %}
 
 {% block content %}
-      <div class="content">
-        <div class="posts">
-          {% for page in paginator.pages %}
-          <article class="post">
-            {{ posts::title(page=page) }}
-            <div class="post-summary">
-              {% if page.extra.summary %}
-              {{ page.extra.summary | safe }}
-              {% else %}
-              {{ page.summary | safe }}
-              {% endif %}
-            </div>
-            <div class="read-more">
-              <a href="{{ page.permalink }}">Read more...</a>
-            </div>
-          </article>
-          <hr/>
-          {% endfor %}
-          <nav class="pagination">
-            {% if paginator.previous %}
-              <a class="prev" href="{{ paginator.previous }}">‹ Previous</a>
-            {% endif %}
-            {% if paginator.next %}
-              <a class="next" href="{{ paginator.next }}">Next ›</a>
-            {% endif %}
-          </nav>
-        </div>
+<div class="content">
+  <div class="posts">
+    {% for page in paginator.pages %}
+    <article class="post">
+      {{ posts::title(page=page) }}
+      <div class="post-summary">
+        {% if page.extra.summary %}
+        {{ page.extra.summary | safe }}
+        {% else %}
+        {{ page.summary | safe }}
+        {% endif %}
       </div>
+      <div class="read-more">
+        <a href="{{ page.permalink }}">Read more...</a>
+      </div>
+    </article>
+    <hr/>
+    {% endfor %}
+    <nav class="pagination">
+      {% if paginator.previous %}
+        <a class="prev" href="{{ paginator.previous }}">‹ Previous</a>
+      {% endif %}
+      {% if paginator.next %}
+        <a class="next" href="{{ paginator.next }}">Next ›</a>
+      {% endif %}
+    </nav>
+  </div>
+</div>
 {% endblock content %}

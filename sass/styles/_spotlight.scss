@@ -22,19 +22,19 @@
   }
 }
 
-.home-center {
+.spotlight-center {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   justify-content: center;
 }
 
-.home-title {
+.spotlight-title {
   margin: 0;
   text-align: center;
 }
 
-.home-quote {
+.spotlight-quote {
   margin-top: 0;
   margin-bottom: 1.5em;
   text-align: center;
@@ -44,7 +44,7 @@
   opacity: 0.9;
 }
 
-.home-icons {
+.social-icons {
   font-size: 1.4em;
   text-align: center;
   opacity: 0.8;

@@ -1,20 +1,18 @@
 @charset "UTF-8";
 
 // @use "variables" as vars;
-@use "variables";
+// @use "variables";
 
-.post {
-  border-bottom: solid 1px variables.$off-white;
-}
 
-.pagination{
-  display: flex;
-}
+// .pagination {
+//   .next {
+//     float: right;
+//   }
+//   .prev {
+//     float: left;
+//   }
+// }
 
-.next {
-  margin-left: auto;
-}
-
-.prev {
-  margin-right: auto;
-}
+// .post {
+//   border-bottom: solid 1px variables.$off-white;
+// }
