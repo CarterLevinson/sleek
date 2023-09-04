@@ -2,9 +2,20 @@
 
 {% block content %}
 <div class="content">
+  <div class="search-page-bar">
+    <form class="search-container">
+      <input id="search" type="search" placeholder="Search ..."/>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
   <div class="search-results">
     <div class="search-results-items">
     </div>
   </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+<script src="{{ get_url(path="search.js") }}"></script>
+{% endblock script %}

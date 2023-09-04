@@ -27,7 +27,7 @@ input,
 select,
 textarea {
   color: variables.$text;
-  font-family: variables.$font, sans-serif;
+  font-family: variables.$font, sans-serif
 }
 
 /* handle buttons */
@@ -54,7 +54,7 @@ button:hover {
 pre,
 code,
 pre tt {
-  font-family: variables.$code-font, sans-serif;
+  font-family: variables.$code-font, sans-serif
 }
 
 pre {

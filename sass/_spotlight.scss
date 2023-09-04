@@ -8,34 +8,35 @@
 
 #spotlight {
   display: flex;
-  // min-height: 100vh;
-  flex-direction: column;
+  flex-flow: column wrap;
+
   align-items: center;
   justify-content: center;
-  max-width: 93%;
+
   margin: auto;
+  max-width: 93%;
   font-size: 1.5rem;
 
   &.error-404 {
-    flex-direction: row;
+    flex-flow: row wrap;
     line-height: normal;
   }
 }
 
 .spotlight-center {
   display: flex;
+  flex-flow: column wrap;
+
   flex-grow: 1;
-  flex-direction: column;
   justify-content: center;
 }
 
 .spotlight-title {
-  margin-bottom: 0.5em;
+  margin: auto;
   text-align: center;
 }
 
 .spotlight-quote {
-  margin-top: 2.0em;
   text-align: center;
   line-height: normal;
   font-size: 0.7em;
@@ -46,7 +47,6 @@
   font-size: 1.4em;
   text-align: center;
   opacity: 0.8;
-
   a {
     margin: 0 0.2em;
   }
@@ -106,4 +106,3 @@ p.img-404 {
     }
   }
 }
-

@@ -11,14 +11,14 @@
 {% block content %}
 <div id="spotlight" class="animated fadeIn">
   <h1 class="spotlight-title">{{config.title}}</h1>
+  <!-- <div class="search-padding"></div> -->
   <div class="spotlight-search">
-    <div class="search-container">
-      <input id="search" type="search" placeholder="🔎 Search..."/>
-      <div class="search-results">
-        <div class="search-results-items"></div>
-      </div>
-    </div>
+    <form class="search-container">
+      <input id="search" type="search" placeholder="Search..."/>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
   </div>
+  <div class="search-padding"></div>
   <div class="spotlight-center">
     <p class="spotlight-quote">{{config.extra.sleek_quote}}</p>
     <div class="social-icons">
@@ -32,7 +32,8 @@
 {% endblock content %}
 
 {% block script %}
-<script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
-<script src="{{ get_url(path="search.js") }}"></script>
+<script src="{{ get_url(path="main.js") }}"></script>
+<!-- <script src="{{ get_url(path="elasticlunr.min.js") }}"></script> -->
+<!-- <script src="{{ get_url(path="search.js") }}"></script> -->
 {% endblock script %}
 <!-- vim: ft=htmldjango -->
