@@ -11,13 +11,15 @@
 {% block content %}
 <div id="spotlight" class="animated fadeIn">
   <h1 class="spotlight-title">{{config.title}}</h1>
-  <div class="spotlight-center">
-    <div class="spotlight-search">
+  <div class="spotlight-search">
+    <div class="search-container">
       <input id="search" type="search" placeholder="🔎 Search..."/>
       <div class="search-results">
         <div class="search-results-items"></div>
       </div>
     </div>
+  </div>
+  <div class="spotlight-center">
     <p class="spotlight-quote">{{config.extra.sleek_quote}}</p>
     <div class="social-icons">
       {{ icons::render_social_icons() }}
@@ -28,4 +30,9 @@
   </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+<script src="{{ get_url(path="search.js") }}"></script>
+{% endblock script %}
 <!-- vim: ft=htmldjango -->

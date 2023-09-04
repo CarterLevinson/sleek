@@ -1,7 +1,11 @@
 {% import "macros/macros.html" as macros %}
 
 <!DOCTYPE html>
+{% if config.default_language %}
 <html lang="{{config.default_language}}">
+{% else %}
+<html lang="en">
+{% endif %}
   <head>
     <!-- preamble must come first for rendering -->
     <meta charset="UTF-8"/>
@@ -21,17 +25,6 @@
     <meta name="author" content="{{ config.extra.sleek_author }}"/>
     {% endif %}
 
-    {#
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
-    #}
-
-    {#
-    {% if config.extra.sleek_mathjax %}
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
-    {% endif %}
-    #}
-
     {% if page.title %}
     <title>{{ page.title }}</title>
     {% elif section.title %}
@@ -43,18 +36,11 @@
     {% endif %}
 
 
-    <link rel="shortcut icon" href"{{ get_url(path="favicon.ico") }}"/>
+    <link rel="shortcut icon" href="{{ get_url(path="favicon.ico") }}"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path="apple-touch-icon.png") }}"/>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path="favicon-32x32.png") }}"/>
     <link rel="icon" type="image/png" sizes="16x16" href="{{get_url(path="/favicon-16x16.png") }}"/>
     <link rel="manifest" href="{{ get_url(path="site.webmanifest") }}"/>
-
-    {#
-    {% block fonts %}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code"/>
-    {% endblock fonts %}
-    #}
 
     {#
     {% if config.extra.sleek_mathjax %}
@@ -114,8 +100,12 @@
         {% endblock footer %}
       </footer>
     </div>
+    {% block script %}
+    {#
     <script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
     <script src="{{ get_url(path="search.js") }}"></script>
+    #}
+    {% endblock script %}
   </body>
 </html>
 <!-- vim: ft=htmldjango -->

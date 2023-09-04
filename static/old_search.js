@@ -1,3 +1,17 @@
+function debounce(func, wait) {
+  var timeout;
+
+  return function () {
+    var context = this;
+    var args = arguments;
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function () {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+}
 
 // Taken from mdbook
 // The strategy is as follows:
@@ -107,7 +121,6 @@ function makeTeaser(body, terms) {
   return teaser.join("");
 }
 
-
 function formatSearchResultItem(item, terms) {
   return '<div class="search-results-item">'
   + `<a href="${item.ref}">${item.doc.title}</a>`
@@ -115,56 +128,98 @@ function formatSearchResultItem(item, terms) {
   + '</div>';
 }
 
-var index;
-
-var initIndex = async function () {
-  if (index === undefined) {
-    index = fetch("/search_index.en.json")
-      .then(
-        async function(response) {
-          return await elasticlunr.Index.load(await response.json());
-      }
-    );
-  }
-  let res = await index;
-  return res;
-}
-
- function performSearch(term, options) {
-  index =  initIndex();
-  window.location.href = "/search"
-  var $searchResults = document.querySelector(".search-results");
-  $searchResults.style.display = term === "" ? "none" : "block";
-  var $searchResultsItems = document.querySelector(".search-results-items");
-  $searchResultsItems.innerHTML = "";
-
-  for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
-    var item = document.createElement("li");
-    item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
-    $searchResultsItems.appendChild(item);
-  }
+function initSearch() {
+  var $searchInput = document.getElementbyId("search");
+  var MAX_ITEMS = 10
 }
 
 function initSearch() {
   var $searchInput = document.getElementById("search");
-  const MAX_ITEMS = 10;
+  // var $searchResults = document.querySelector(".search-results");
+  // var $searchResultsItems = document.querySelector(".search-results-items");
+  var MAX_ITEMS = 10;
 
-  const options = {
+  var options = {
     bool: "AND",
     fields: {
       title: {boost: 2},
       body: {boost: 1},
     }
   };
+  var currentTerm = "";
+  var index;
 
-  $searchInput.addEventListener('keydown', function(event) {
-    if (event.keyCode === 13 || event.key === 'Enter') {
-      var term = $searchInput.value.trim()
-      performSearch(term, options);
+  var initIndex = async function () {
+    if (index === undefined) {
+      index = fetch("/search_index.en.json")
+        .then(
+          async function(response) {
+            return await elasticlunr.Index.load(await response.json());
+        }
+      );
     }
-  })
+    let res = await index;
+    return res;
+  }
 
+  $searchInput.addEventListener('keydown', debounce(async function(event) {
+    if (event.keyCode === 13 || event.key === 'Enter') {
+      console.log("Success");
+      var term = $searchInput.value.trim();
+      var results = (await initIndex()).search(term, options);
+
+      if (results.length === 0) {
+        return;
+      }
+
+      window.location.href = "/search"
+
+      var $searchResults = document.querySelector(".search-results");
+      $searchResults.style.display = term === "" ? "none" : "block";
+      var $searchResultsItems = document.querySelector(".search-results-items");
+      $searchResultsItems.innerHTML = "";
+
+      for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+        var item = document.createElement("li");
+        item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
+        $searchResultsItems.appendChild(item);
+      }
+
+    }
+  }, 150));
+
+  // $searchInput.addEventListener("keyup", debounce(async function() {
+  //   var term = $searchInput.value.trim();
+  //   if (term === currentTerm) {
+  //     return;
+  //   }
+  //   $searchResults.style.display = term === "" ? "none" : "block";
+  //   $searchResultsItems.innerHTML = "";
+  //   currentTerm = term;
+  //   if (term === "") {
+  //     return;
+  //   }
+  //
+  //   var results = (await initIndex()).search(term, options);
+  //   if (results.length === 0) {
+  //     $searchResults.style.display = "none";
+  //     return;
+  //   }
+  //
+  //   for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+  //     var item = document.createElement("li");
+  //     item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
+  //     $searchResultsItems.appendChild(item);
+  //   }
+  // }, 150));
+  //
+  // window.addEventListener('click', function(e) {
+  //   if ($searchResults.style.display == "block" && !$searchResults.contains(e.target)) {
+  //     $searchResults.style.display = "none";
+  //   }
+  // });
 }
+
 
 if (document.readyState === "complete" ||
     (document.readyState !== "loading" && !document.documentElement.doScroll)
