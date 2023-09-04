@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+// @use "variables" as vars;
+@use "variables";
+
+
+.posts {
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  // min-height: 90%;
+  // justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+.post-title {
+  // margin: 0.33em 0;
+  // padding-top: 15px;
+  margin: 0;
+}
+
+.post-summary {
+  padding-bottom: 15px;
+}
+
+.post-meta {
+  // padding-top: 0.33em;
+  padding-bottom: 15px;
+}
+
+// .post-header {
+//   padding-top: 5%;
+// }
+
+// .post-footer {
+//   padding-bottom: 5%;
+// }
+// .post {
+//   padding-bottom: 15px;
+//   // border-bottom: solid 1px variables.$off-white;
+// }

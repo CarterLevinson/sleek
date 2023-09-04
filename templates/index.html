@@ -9,9 +9,15 @@
 {% endblock head %}
 
 {% block content %}
-<div class="spotlight" class="animated fadeIn">
+<div id="spotlight" class="animated fadeIn">
+  <h1 class="spotlight-title">{{config.title}}</h1>
   <div class="spotlight-center">
-    <h1 class="spotlight-title">{{config.title}}</h1>
+    <div class="spotlight-search">
+      <input id="search" type="search" placeholder="🔎 Search..."/>
+      <div class="search-results">
+        <div class="search-results-items"></div>
+      </div>
+    </div>
     <p class="spotlight-quote">{{config.extra.sleek_quote}}</p>
     <div class="social-icons">
       {{ icons::render_social_icons() }}
