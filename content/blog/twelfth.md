@@ -1,7 +1,7 @@
 +++
-title = "My sixth post"
-date = 2023-06-01
-[taxonomies]
+title = "My twelfth post"
+date = 2023-12-01
+# [taxonomies]
 # categories=["blog"]
 # tags=["post", "blog"]
 +++

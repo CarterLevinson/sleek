@@ -128,34 +128,55 @@ function formatSearchResultItem(item, terms) {
   + '</div>';
 }
 
+var index;
+
+var options = {
+  bool: "AND",
+  fields: {
+    title: {boost: 2},
+    body: {boost: 1},
+  }
+};
+
+var MAX_ITEMS = 10;
+
+var initIndex = async function () {
+  if (index === undefined) {
+    index = fetch("/search_index.en.json")
+      .then(
+        async function(response) {
+          return await elasticlunr.Index.load(await response.json());
+      }
+    );
+  }
+  let res = await index;
+  return res;
+}
+
+async function mySearch(query) {
+  var results = (await initIndex()).search(query, options);
+  var $searchResults = document.querySelector(".search-results");
+  var $searchResultsItems = document.querySelector(".search-results-items");
+
+  if (results.length === 0) {
+    $searchResults.style.display = "none";
+    return;
+  }
+
+  for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+    var item = document.createElement("li");
+    item.innerHTML = formatSearchResultItem(results[i], query.split(" "));
+    $searchResultsItems.appendChild(item);
+  };
+}
+
 function initSearch() {
   var $searchInput = document.getElementById("search");
   var $searchResults = document.querySelector(".search-results");
   var $searchResultsItems = document.querySelector(".search-results-items");
-  var MAX_ITEMS = 10;
 
-  var options = {
-    bool: "AND",
-    fields: {
-      title: {boost: 2},
-      body: {boost: 1},
-    }
-  };
   var currentTerm = "";
-  var index;
 
-  var initIndex = async function () {
-    if (index === undefined) {
-      index = fetch("/search_index.en.json")
-        .then(
-          async function(response) {
-            return await elasticlunr.Index.load(await response.json());
-        }
-      );
-    }
-    let res = await index;
-    return res;
-  }
 
   $searchInput.addEventListener("keyup", debounce(async function() {
     var term = $searchInput.value.trim();
@@ -189,11 +210,17 @@ function initSearch() {
   });
 }
 
-
 if (document.readyState === "complete" ||
     (document.readyState !== "loading" && !document.documentElement.doScroll)
 ) {
   initSearch();
 } else {
   document.addEventListener("DOMContentLoaded", initSearch);
+}
+
+var url = new URL(window.location.href);
+var params = new URLSearchParams(url.search);
+
+if (params.has("query")) {
+  mySearch(params.get("query"));
 }

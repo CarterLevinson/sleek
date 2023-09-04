@@ -1,6 +1,6 @@
 +++
 title = "My thrid post"
-date = 2021-11-12
+date = 2023-03-01
 # [taxonomies]
 # categories=["blog"]
 # tags=["post", "blog"]
