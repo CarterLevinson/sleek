@@ -8,24 +8,13 @@
 
 .spotlight-search {
   display: flex;
-  // position: fixed;
-  // min-width: 500px;
-  // padding: 25px 0px 50px 0px;
   margin-bottom: 15px;
   flex-flow: row wrap;
-  // padding-bottom: 15px;
-  // padding-top: 15px;
   justify-content: center;
   align-items: center;
-
-  // input {
-  //   // width: 100%;
-  //   padding: 0.5rem;
-  // }
 }
 
 .search-page-bar {
-  margin-top: 15px;
   justify-content: start;
   width: 100%;
   max-height: 5%;
@@ -37,13 +26,10 @@
   border: 1px solid variables.$off-white;
   border-radius: 50px;
   width: 100%;
-  // max-height: 5%;
   justify-content: center;
 
   button[type="submit"] {
     display: inline-block;
-    // text-indent: -999px;
-    // overflow: hidden;
     width: 40px;
     padding: 0;
     margin: 0;
@@ -59,54 +45,33 @@
     background: transparent;
     width: 100%;
     color: variables.$text;
-    // background-color: rgba(255, 255, 255, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     justify-content: center;
   }
 }
 
-// .search-results {
-//   margin: 0 auto;
-//   // display: block;
-//   // position: fixed;
-//   // top: 55%;
-//   right: 25%;
-//   left: 25%;
-//   width: 350px;
-//
-//   // max-height: 200px;
-//   // max-width: 200px;
-//   // max-width: %;
-//   z-index: 100;
-//
-//   &-items {
-//     position: relative;
-//     background-color: variables.$banner;
-//     list-style: none;
-//   }
-//
-//   li {
-//     margin-top: 1rem;
-//     border-bottom: 1px solid #ccc;
-//     font-size: 0.9rem;
-//
-//     &:first-of-type {
-//       margin-top: 0;
-//     }
-//   }
-//
-//   &-item {
-//     position: relative;
-//     margin-bottom: 1rem;
-//     z-index: 100;
-//
-//     a {
-//       font-size: 1.2rem;
-//       display: inline-block;
-//       margin-bottom: 0.5rem;
-//     }
-//   }
-// }
-//
-// .search-results-items {
-//   position: fixed;
-// }
+.search-results {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: start;
+  max-height: 90%;
+  &-items {
+    list-style: none;
+  }
+  &-item {
+    a {
+      font-size: 1.2rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+  li {
+    margin-top: 1rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.9rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}

@@ -10,7 +10,7 @@
     <!-- preamble must come first for rendering -->
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- extra preamble -->
+
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 
     {% if config.extra.sleek_author %}
@@ -48,18 +48,10 @@
     {% endif %}
     #}
 
-    {% block css %}
     <link rel="stylesheet" href="{{ get_url(path="site.css") }}"/>
-    {% endblock css %}
 
     {% block head %}
     {% endblock head %}
-    {#
-    {% block script %}
-    {% endblock script %}
-    {% block noscript %}
-    {% endblock noscript %}
-    #}
   </head>
   <body>
     <div class="page">

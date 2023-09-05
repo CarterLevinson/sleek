@@ -16,7 +16,7 @@ homepage        = "carterlevinson.net"
 
 [extra]
 sleek_author    = "John Q. Example"
-sleek_abbrev    = "JQE"
+sleek_abbr      = "JQE"
 sleek_quote     = "You get what you pay for!"
 
 sleek_copyright = "All rights reserved."
@@ -27,10 +27,12 @@ sleek_logo      = "images/logo.jpg"
 sleek_image     = "images/image.jpg"
 
 sleek_navbar    = [
-  { link        = "/",       name = "Home" },
-  { link        = "/blog",   name = "Blog" },
-  { link        = "/tags",   name = "Tags" },
-  { link        = "/about",  name = "About"}
+  { link        = "/",           name = "Home" },
+  { link        = "/blog",       name = "Blog" },
+  { link        = "/tags",       name = "Tags" },
+  { link        = "/categories", name = "Categories" },
+  { link        = "/tags",       name = "Tags" },
+  { link        = "/about",      name = "About"}
 ]
 
 sleek_pages     = [

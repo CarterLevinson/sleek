@@ -9,11 +9,16 @@ compile_sass       = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-minify_html        = false
+minify_html        = true
 
-generate_feed      = false
+generate_feed      = true
 
 default_language   = "en"
+
+taxonomies         = [
+  { name           = "tags", feed = true },
+  { name           = "categories", paginate_by = 5}
+]
 
 [search]
 index_format       = "elasticlunr_json"
@@ -37,13 +42,14 @@ sleek_logo         = ""
 sleek_image        = ""
 
 sleek_navbar       = [
-  { link           = "/",       name = "Home" },
-  { link           = "/blog",   name = "Blog" },
-  { link           = "/tags",   name = "Tags" },
-  { link           = "/about",  name = "About"}
+  { link           = "/",           name = "Home" },
+  { link           = "/blog",       name = "Blog" },
+  { link           = "/categories", name = "Categories" },
+  { link           = "/tags",       name = "Tags" },
+  { link           = "/about",      name = "About"}
 ]
 
-# sleek_menu        = []
+# sleek_menu       = []
 
 sleek_pages        = [
   { name           = "twitter", link = "https://twitter.com" },
