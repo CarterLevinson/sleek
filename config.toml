@@ -11,7 +11,7 @@ build_search_index = true
 
 minify_html        = true
 
-generate_feed      = true
+generate_feed      = false
 
 default_language   = "en"
 
@@ -44,8 +44,8 @@ sleek_image        = ""
 sleek_navbar       = [
   { link           = "/",           name = "Home" },
   { link           = "/blog",       name = "Blog" },
-  { link           = "/categories", name = "Categories" },
   { link           = "/tags",       name = "Tags" },
+  { link           = "/categories", name = "Categories" },
   { link           = "/about",      name = "About"}
 ]
 
