@@ -14,7 +14,7 @@
 
 .page {
   .page-header {
-    min-height: 50px;
+    max-height: 75px;
     padding: 15px 0%;
     justify-content: flex-end;
     align-items: center;
@@ -38,16 +38,42 @@
   .page-footer {
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
-    min-height: 50px;
+
+    max-height: 50px;
+
+    p {
+      font-size: 0.8em;
+    }
 
     a {
       vertical-align: bottom;
       transform: none;
     }
 
+
+    .taxonomies-container {
+      .taxonomies {
+        font-size: 0.8em;
+        a {
+          margin: 0px 0px 0px 5px;
+        }
+        .count {
+          position: relative;
+          top: -4px;
+          right: -2px;
+          color: variables.$text;
+          font-size: 12px;
+        }
+      }
+    }
+
+
+
     // align-items: center;
     // text-align: center;
+    flex-flow: row wrap;
     justify-content: center;
+    align-items: center;
     padding: 15px 0%;
     @include flexbox.flexbox();
     @include flexbox.flex(0 0 auto);

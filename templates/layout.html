@@ -96,6 +96,23 @@
           <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
           {{ config.extra.sleek_copyright }}
         </p>
+        <!-- <hr> -->
+        <div class="taxonomies-container">
+          <div class="taxonomies">
+            {% set tags = get_taxonomy(kind="tags") %}
+            {% for tag in tags.items %}
+            <i class="fa fa-tag"></i>
+            <a href="{{ tag.permalink }}">{{ tag.name }}</a>
+            <span class="count">{{ tag.pages | length }}</span>&nbsp;
+            {% endfor %}
+            {#<br/>
+            <i class="fa solid fa-tags"></i>
+            {{ tags.items | length }} tags in total
+            #}
+          </div>
+        </div>
+
+
         {% endblock footer %}
       </footer>
     </div>
@@ -104,4 +121,3 @@
     {% endblock script %}
   </body>
 </html>
-<!-- vim: ft=htmldjango -->

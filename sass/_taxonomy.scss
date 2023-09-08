@@ -14,7 +14,7 @@
 }
 
 .taxonomies {
-  margin: 2em 0 3em;
+  // margin: 2em 0 3em;
   text-align: center;
   // justify-self: start;
   // align-self: start;
@@ -23,14 +23,13 @@
     display: inline-block;
     font-size: 18px;
     color: variables.$text;
-    border-bottom: 2px solid variables.$off-white;
   }
 
   &-items {
-    margin: 10px 0;
+    // margin: 10px 0;
 
     a {
-      margin: 5px 10px;
+      // margin: 5px 10px;
       word-wrap: break-word;
       position: relative;
 
@@ -38,13 +37,13 @@
         color: variables.$nord6;
       }
 
-      .count {
-        position: relative;
-        top: -8px;
-        right: -2px;
-        color: variables.$text;
-        font-size: 12px;
-      }
+    }
+    .count {
+      position: relative;
+      top: -8px;
+      // right: -1px;
+      color: variables.$text;
+      font-size: 12px;
     }
   }
 }
