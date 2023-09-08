@@ -14,9 +14,6 @@
 
 .page {
   .page-header {
-    // display: flex;
-    // flex-grow: 0;
-    // flex-shrink: 0;
     min-height: 50px;
     padding: 15px 0%;
     justify-content: flex-end;
@@ -30,32 +27,30 @@
     // background-color: variables.$banner;
   }
   .page-body {
-    // display: flex;
-    // flex-grow: 1;
     border-top: variables.$off-white solid 1px;
     border-bottom: variables.$off-white solid 1px;
     justify-content: center;
-    align-content: center;
+    // align-content: start;
+    // align-content: center;
     @include flexbox.flexbox();
     @include flexbox.flex(1 1 auto);
   }
   .page-footer {
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
-    // display: flex;
-    // flex-grow: 0;
-    // flex-shrink: 0;
     min-height: 50px;
-    @include flexbox.flexbox();
-    @include flexbox.flex(0 0 auto);
+
     a {
-      // color: variables.$navy-blue;
-      text-decoration: underline;
+      vertical-align: bottom;
+      transform: none;
     }
-    align-items: center;
+
+    // align-items: center;
     // text-align: center;
     justify-content: center;
     padding: 15px 0%;
+    @include flexbox.flexbox();
+    @include flexbox.flex(0 0 auto);
   }
 }
 
@@ -66,9 +61,18 @@
   margin-top: 15px;
   max-height: 90%;
   max-width: 67%;
-  flex: 1;
+  @include flexbox.flexbox();
+  @include flexbox.flex(1 1 auto);
 }
 // navigation
+
+.next {
+  float: right;
+}
+
+.prev {
+  float: left;
+}
 
 .logo {
   cursor: pointer;
@@ -82,20 +86,11 @@
 .nav-links li {
   display: inline-block;
   padding: 0px 20px;
+  a {
+    transition: all 0.3 ease 0s;
+    &:hover {
+      color: variables.$nord8;
+    }
+  }
 }
 
-.nav-links li a {
-  // color: #0b0b45;
-  transition: all 0.3s ease 0s;
-}
-
-.nav-links li a:hover {
-  color: #0088a9;
-}
-.next {
-  float: right;
-}
-
-.prev {
-  float: left;
-}

@@ -113,7 +113,7 @@ a {
   @include animations.underline-from-center;
 
   &:hover {
-    color: #fff;
+    color: variables.$nord8;
   }
 
   &:focus {

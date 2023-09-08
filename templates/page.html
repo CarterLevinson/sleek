@@ -37,12 +37,14 @@
       </div>
       <div class="post-footer">
         {% if page.taxonomies.tags %}
+        <br/>
         <div class="post-tags">
           {% for tag in page.taxonomies.tags %}
-          <a href="{{ get_taxonomy_url(kind="tags",name=tag) }}">#{{ tag }}</a>
+          <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>&nbsp;
           {% endfor %}
         </div>
         {% endif %}
+        <hr/>
         {% if page.lower or page.higher %}
         <div class="post-nav">
           {% if page.lower %}
@@ -51,8 +53,9 @@
           {% if page.higher %}
             <a class="next" href="{{ page.higher.permalink }}">{{ page.higher.title }} ›</a>
           {% endif %}
-        {% endif %}
         </div>
+        {% endif %}
+      </div>
     </article>
   </div>
 </div>
