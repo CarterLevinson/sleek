@@ -20,6 +20,11 @@
   // align-self: start;
 
   &-title {
+    // margin: auto;
+    h1 {
+      margin-bottom: 5px;
+      margin-left: 0px;
+    }
     display: inline-block;
     font-size: 18px;
     color: variables.$text;
@@ -28,6 +33,10 @@
   &-items {
     // margin: 10px 0;
 
+    padding-left: 15px;
+    li {
+      list-style-type: "#";
+    }
     a {
       // margin: 5px 10px;
       word-wrap: break-word;
