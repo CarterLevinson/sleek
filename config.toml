@@ -1,32 +1,39 @@
 # The URL the site will be built for
 base_url           = "https://example.com"
+# The title of the website
 title              = "John Q. Example's Blog"
+# The description of the website
 description        = "Sample website to demonstrate Sleek theme"
 
-# Whether to automatically compile all Sass files in the sass directory
+# Compile all SASS files in the sass directory
 compile_sass       = true
 
-# Whether to build a search index to be used later on by a JavaScript library
+# Build a search index in the project root
 build_search_index = true
 
+# Compress generated HTML
 minify_html        = true
 
+# Generate feeds for posts and/ortaxonomies
 generate_feed      = false
 
+# Default language for html and search functions
 default_language   = "en"
 
+# Default taxonomy lists
 taxonomies         = [
   { name           = "tags", feed = true },
-  { name           = "categories", paginate_by = 5}
+  # { name           = "categories", paginate_by = 5}
 ]
 
 [search]
+# Use JSON over JS for the search index file
 index_format       = "elasticlunr_json"
 
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+# Perform syntax highlighting on code snippets
 highlight_code     = true
+# Use the following theme for highlights
 highlight_theme    = "monokai"
 
 [extra]

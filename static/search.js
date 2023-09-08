@@ -159,7 +159,7 @@ async function mySearch(query) {
   var $searchResultsItems = document.querySelector(".search-results-items");
 
   if (results.length === 0) {
-    $searchResults.style.display = "none";
+    // $searchResults.style.display = "none";
     return;
   }
 

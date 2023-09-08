@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
-// @use "variables" as vars;
+@use "flexbox";
 @use "variables";
 
 .posts {
-  display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
   margin-top: 5%;
   margin-bottom: 5%;
+  @include flexbox.flexbox();
 }
 
 .post-title {

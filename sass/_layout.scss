@@ -1,44 +1,53 @@
 @charset "UTF-8";
 
+
+@use "flexbox";
 @use "variables";
 
 /* page: vertical-flex container */
 .page {
-  display: flex;
-  flex-flow: column wrap;
   min-height: 100%;
-  flex: 1;
+  flex-flow: column wrap;
+  @include flexbox.flexbox();
+  @include flexbox.flex(1 1 auto);
 }
 
 .page {
   .page-header {
-    display: flex;
-    flex-grow: 0;
-    flex-shrink: 0;
+    // display: flex;
+    // flex-grow: 0;
+    // flex-shrink: 0;
     min-height: 50px;
     padding: 15px 0%;
     justify-content: flex-end;
     align-items: center;
     line-height: normal;
     z-index: 1;
+    @include flexbox.flexbox();
+    @include flexbox.flex(0 0 auto);
+
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
   }
   .page-body {
-    display: flex;
-    flex-grow: 1;
+    // display: flex;
+    // flex-grow: 1;
     border-top: variables.$off-white solid 1px;
     border-bottom: variables.$off-white solid 1px;
     justify-content: center;
     align-content: center;
+    @include flexbox.flexbox();
+    @include flexbox.flex(1 1 auto);
   }
   .page-footer {
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
-    display: flex;
-    flex-grow: 0;
-    flex-shrink: 0;
+    // display: flex;
+    // flex-grow: 0;
+    // flex-shrink: 0;
     min-height: 50px;
+    @include flexbox.flexbox();
+    @include flexbox.flex(0 0 auto);
     a {
       // color: variables.$navy-blue;
       text-decoration: underline;

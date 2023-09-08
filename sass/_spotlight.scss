@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+@use "flexbox";
 @use "variables";
 
 //
@@ -7,7 +8,6 @@
 //
 
 #spotlight {
-  display: flex;
   flex-flow: column wrap;
 
   align-items: center;
@@ -17,6 +17,8 @@
   max-width: 93%;
   font-size: 1.5rem;
 
+  @include flexbox.flexbox();
+
   &.error-404 {
     flex-flow: row wrap;
     line-height: normal;
@@ -24,11 +26,9 @@
 }
 
 .spotlight-center {
-  display: flex;
   flex-flow: column wrap;
-
-  flex-grow: 1;
   justify-content: center;
+  @include flexbox.flex(1 1 auto);
 }
 
 .spotlight-title {
