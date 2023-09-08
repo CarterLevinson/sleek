@@ -52,7 +52,7 @@ sleek_navbar       = [
   { link           = "/",           name = "Home" },
   { link           = "/blog",       name = "Blog" },
   { link           = "/tags",       name = "Tags" },
-  { link           = "/categories", name = "Categories" },
+  # { link           = "/categories", name = "Categories" },
   { link           = "/about",      name = "About"}
 ]
 

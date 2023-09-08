@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content">
+  <div class="taxonomies-container">
+    <div class="taxonomies">
+      <div class="taxomomies-title">
+        <i class="fa solid fa-tags"></i>
+        {{ terms | length }} tags in total
+      </div>
+      <div class="taxonomies-items">
+        |
+        {% for tag in terms %}
+        <i class="fa fa-tag"></i>
+        <a href="{{ tag.permalink }}">
+          {{ tag.name }}
+          <span class="count">{{ tag.pages | length }}</span>
+        </a>
+        |
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

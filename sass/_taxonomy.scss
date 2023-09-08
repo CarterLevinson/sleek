@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@use "flexbox";
+@use "variables";
+
+//
+// taxonomies
+//
+
+.taxonomies-container{
+  flex-flow: column wrap;
+  width: 100%;
+  @include flexbox.flexbox();
+}
+
+.taxonomies {
+  margin: 2em 0 3em;
+  text-align: center;
+  // justify-self: start;
+  // align-self: start;
+
+  &-title {
+    display: inline-block;
+    font-size: 18px;
+    color: variables.$text;
+    border-bottom: 2px solid variables.$off-white;
+  }
+
+  &-items {
+    margin: 10px 0;
+
+    a {
+      margin: 5px 10px;
+      word-wrap: break-word;
+      position: relative;
+
+      &:hover {
+        color: variables.$nord6;
+      }
+
+      .count {
+        position: relative;
+        top: -8px;
+        right: -2px;
+        color: variables.$text;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.taxonomy {
+  margin: 2em 0;
+
+  &-item {
+    padding: 3px 20px;
+    border-left: 1px solid #cacaca;
+    transition: 0.2s ease-out;
+
+    &:hover {
+      border-left: 3px solid variables.$banner;
+      transform: translateX(4px);
+    }
+
+    &-time {
+      margin-right: 10px;
+      color: #757575;
+    }
+
+    &-title a {
+      color: variables.$text;
+    }
+  }
+}

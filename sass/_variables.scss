@@ -7,6 +7,7 @@ $navy-blue: #0B0B45;
 $highlight-grey: #7d828a;
 $midnightblue: #31333d;
 $off-white: #edf0f1;
+$dark-bg: #121212;
 
 //
 // Nord
@@ -21,6 +22,7 @@ $nord8: #88C0D0; // green-blue
 
 $text: $nord6;
 $background: $nord0;
+$background: $dark-bg;
 $banner: $nord8;
 $banner-text: $navy-blue;
 
@@ -36,6 +38,7 @@ $theme: #018574;
 //
 // Fonts
 //
+
 @font-face {
   font-family: "Fira Code";
   font-style: normal;

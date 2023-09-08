@@ -41,6 +41,7 @@
     cursor: pointer;
     font-size: 20px;
   }
+
   #search {
     border: 1px solid transparent;
     border-radius: inherit;
@@ -65,6 +66,7 @@
   &-item {
     min-height: 0;
     min-width: 0;
+    justify-self: start;
     a {
       font-size: 1.2rem;
       display: inline-block;
@@ -75,8 +77,8 @@
     margin-top: 1rem;
     border-bottom: 1px solid #ccc;
     font-size: 0.9rem;
-
     @include flexbox.flex(1 1 auto);
+
     &:first-of-type {
       margin-top: 0;
     }

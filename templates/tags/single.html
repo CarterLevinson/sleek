@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content">
+  <div class="taxonomy">
+    <h2>{{ term.name }}</h2>
+    {% for page in term.pages %}
+    <div class="taxonomy-item">
+      <span class="taxonomy-item-time">
+        {{ page.date | date(format="%F") }}
+      </span>
+      <span class="taxonomy-item-title">
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
