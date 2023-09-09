@@ -15,7 +15,7 @@ build_search_index = true
 minify_html        = true
 
 # Generate feeds for posts and/ortaxonomies
-generate_feed      = false
+# generate_feed      = false
 
 # Default language for html and search functions
 default_language   = "en"
@@ -44,10 +44,7 @@ sleek_quote        = "You get what you pay for!"
 sleek_copyright    = "All rights reserved."
 sleek_mathjax      = true
 
-sleek_logo           = "images/globe-nord6.svg"
-# sleek_icon         = ""
-# sleek_logo         = "images/lambda-white.svg"
-# sleek_image        = ""
+sleek_logo         = "images/globe-nord6.svg"
 
 sleek_navbar       = [
   { name           = "Home",       link = "/"},

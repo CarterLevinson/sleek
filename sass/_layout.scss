@@ -100,11 +100,11 @@
   float: left;
 }
 
-.logo {
+.logo-link {
   cursor: pointer;
   margin-right: auto;
   // flex sized image?
-  img {
+  .logo {
     height: 24px;
     width: 24px;
   }
