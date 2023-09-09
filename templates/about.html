@@ -1,17 +1,16 @@
-{% extends "layout.html" %}
+{% import "macros/posts.html" as posts %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="content">
-  <article>
-    {% if page.title %}
-    <h1>{{ page.title | safe }}</h1>
-    {% else %}
-    <h1>About</h1>
-    {% endif %}
-    <main>
-      {{ page.content | safe }}
-    </main>
-  </article>
-</div>
+  {% filter indent() %}
+    <div class="content">
+      <article class="post">
+        {{ posts::title(page=page, meta=False) }}
+        <main class="about">
+          {{ page.content | safe }}
+        </main>
+        <hr/>
+      </article>
+    </div>
+  {% endfilter %}
 {% endblock content %}
-<!-- vim: ft=htmldjango -->

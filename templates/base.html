@@ -1,131 +1,151 @@
 {% import "macros/macros.html" as macros %}
-
 <!DOCTYPE html>
-{% if config.default_language %}
-<html lang="{{config.default_language}}">
-{% else %}
-<html lang="en">
-{% endif %}
+<html lang="{{ config.default_language }}">
   <head>
-    <!-- preamble must come first for rendering -->
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-
-    {% if config.extra.sleek_author %}
-    <meta name="author" content="{{ config.extra.sleek_author }}"/>
-    {% endif %}
-
-    {% if page.description %}
-    <meta name="description" content="{{ page.description }}"/>
-    {% elif section.description %}
-    <meta name="description" content="{{ section.description }}"/>
-    {% elif config.description %}
-    <meta name="description" content="{{ config.description }}"/>
-    {% endif %}
-
-    {% if page.title %}
-    <title>{{ page.title }}</title>
-    {% elif section.title %}
-    <title>{{ section.title }}</title>
-    {% elif config.title %}
-    <title>{{ config.title }}</title>
-    {% else %}
-    <title>{{ config.base_url }}</title>
-    {% endif %}
-
-
-    <link rel="shortcut icon" href="{{ get_url(path="icons/favicon.ico") }}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path="icons/apple-touch-icon.png") }}"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path="icons/favicon-32x32.png") }}"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{get_url(path="icons/favicon-16x16.png") }}"/>
-    <link rel="manifest" href="{{ get_url(path="icons/site.webmanifest") }}"/>
-
-    {#
-    {% if config.extra.sleek_mathjax %}
-    {{ macros::mathjax() }}
-    {% endif %}
-    #}
-
-    <link rel="stylesheet" href="{{ get_url(path="site.css") }}"/>
-
     {% block head %}
+    {# document preamble #}
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable"
+          content="yes"/>
+    {# document metadata #}
+    {% filter trim() %}
+      {% if config.extra.sleek_author %}
+        <meta name="author"
+              content="{{ config.extra.sleek_author }}"/>
+      {% endif %}
+    {% endfilter %}
+    {% filter trim() %}
+      {% if page.description %}
+        <meta name="description"
+              content="{{ page.description }}"/>
+      {% elif section.description %}
+        <meta name="description"
+              content="{{ section.description }}"/>
+      {% elif config.description %}
+        <meta name="description"
+              content="{{ config.description }}"/>
+      {% endif %}
+    {% endfilter %}
+    {# favicon links #}
+    <link rel="manifest"
+          href="{{ get_url(path="icons/site.webmanifest") }}"/>
+    <link rel="shortcut icon"
+          href="{{ get_url(path="icons/favicon.ico") }}"/>
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="{{ get_url(path="icons/favicon-16x16.png") }}"/>
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="{{ get_url(path="icons/favicon-32x32.png") }}"/>
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="{{ get_url(path="icons/apple-touch-icon.png") }}"/>
+    {# document stylesheet #}
+    <link rel="stylesheet"
+          href="{{ get_url(path="site.css") }}"/>
+
+    {% if config.extra.sleek_mathjax %}
+    {% endif %}
+
     {% endblock head %}
+    <title>
+      {% if page.title %}
+        {{ page.title }}
+      {% elif section.title %}
+        {{ section.title }}
+      {% elif config.title %}
+        {{ config.title }}
+      {% else %}
+        {{ config.base_url }}
+      {% endif %}
+    </title>
   </head>
   <body>
     <div class="page">
       <header class="page-header">
-        {% block header %}
-        <a class="logo" href="{{ get_url(path="/") }}">
-          {% if config.extra.sleek_logo != "" %}
-          <img src="{{ get_url(path=config.extra.sleek_logo) }}" alt="logo"/>
-          {% else %}
-          <p><b><i>{{ config.extra.sleek_abbr }}</i></b></p>
-          {% endif %}
+        <a class="logo-link" href="{{ config.base_url }}">
+          {% filter trim() %}
+            {% if config.extra.sleek_logo and config.extra.sleek_abbr %}
+              <img class="logo"
+                   src="{{ get_url(path=config.extra.sleek_logo) }}"
+                   alt="{{ config.extra.sleek_abbr }}"/>
+            {% elif config.extra.sleek_logo %}
+              <img class="logo"
+                   src="{{ get_url(path=config.extra.sleek_logo) }}"
+                   alt="logo"/>
+            {% elif config.extra.sleek_abbr %}
+            {# add special font to class in logo #}
+              <span class="logo">
+                {{ config.extra.sleek_abbr }}
+              </span>
+            {% else %}
+              <span class="logo">
+                {{ config.base_url }}
+              </span>
+            {% endif %}
+          {% endfilter %}
         </a>
         <nav>
           <menu class="nav-links">
-            {% for target in config.extra.sleek_navbar %}
-            <li>
-              <a href="{{ config.base_url ~ target.link }}">
-                  {{ target.name }}
-              </a>
-            </li>
-            {% endfor %}
+            {%- for target in config.extra.sleek_navbar -%}
+                <li>
+                  <a href="{{ config.base_url ~ target.link }}">
+                    {{ target.name }}
+                  </a>
+                </li>
+            {%- endfor -%}
             <li>
               <a href="{{ config.base_url ~ "/search" }}">
-                  <i class="fa fa-search"></i>
+                <i class="fa fa-search"></i>
               </a>
             </li>
           </menu>
         </nav>
-      {% endblock header %}
       </header>
-
       <div class="page-body">
         {% block content %}
-        <div class="content">
-        </div>
+          <div class="content"></div>
         {% endblock content %}
       </div>
-
       <footer class="page-footer">
         {% block footer %}
-        <p>&copy; {{ now() | date(format="%Y") }}
-          <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
-          {{ config.extra.sleek_copyright }}
-        </p>
-        <div class="taxonomies-container">
-          <div class="taxonomies">
-            {% for tag in config.extra.sleek_tags %}
-            {% set term = get_taxonomy_term(kind="tags", term=tag.name) %}
-            <i class="fa fa-tag"></i>
-            <a href="{{ config.base_url ~ tag.link }}">{{ tag.name }}</a>
-            <span class="count">{{ term.pages | length }}</span>&nbsp;
-            {% endfor %}
-            <br/>
-            <i class="fa solid fa-tags"></i>
-            {% set tags = get_taxonomy(kind="tags") %}
-            {% set tags_count = tags.items | length %}
-            {% set sleek_count = config.extra.sleek_tags | length %}
-            {% if sleek_count != tags_count %}
-              {% if tags_count - sleek_count == 1 %}
-              1 tag not shown
+          <p>&copy; {{ now() | date(format="%Y") }}
+            <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
+            {{ config.extra.sleek_copyright }}
+          </p>
+          <div class="taxonomies-container">
+            <div class="taxonomies">
+              {% for tag in config.extra.sleek_tags %}
+                {% set term = get_taxonomy_term(kind="tags", term=tag.name) %}
+                <i class="fa fa-tag"></i>
+                <a href="{{ config.base_url ~ tag.link }}">{{ tag.name }}</a>
+                <span class="count">{{ term.pages | length }}</span>&nbsp;
+              {% endfor %}
+              <br/>
+              <i class="fa solid fa-tags"></i>
+              {% set tags = get_taxonomy(kind="tags") %}
+              {% set tags_count = tags.items | length %}
+              {% set sleek_count = config.extra.sleek_tags | length %}
+              {% if sleek_count != tags_count %}
+                {% if tags_count - sleek_count == 1 %}
+                  1 tag not shown
+                {% else %}
+                  {{ tags_count - sleek_count }} tags not shown
+                {% endif %}
               {% else %}
-              {{ tags_count - sleek_count }} tags not shown
+                {{ tags_count }} tags in total
               {% endif %}
-            {% else %}
-            {{ tags_count }} tags in total
-            {% endif %}
-
+            </div>
           </div>
-        </div>
         {% endblock footer %}
       </footer>
     </div>
     {% block script %}
-    <script src="{{ get_url(path="main.js") }}"></script>
+      <script src="{{ get_url(path="main.js") }}"></script>
     {% endblock script %}
   </body>
 </html>

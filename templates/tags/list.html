@@ -1,24 +1,27 @@
-{% extends "layout.html" %}
+{% import "macros/posts.html" as posts %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="content">
-  <div class="taxonomies-container">
-    <div class="taxonomies-title">
-      <h1>Tags</h1>
+    {% filter indent() %}
+    <div class="content">
+      <div class="taxonomies-container">
+        <div class="taxonomies-title">
+          <a href="{{ current_url }}"><h1>Tags</h1></a>
+        </div>
+        <div class="taxonomies-items">
+          <ul>
+            {% for tag in terms %}
+              <li>
+                <a href="{{ tag.permalink }}">{{ tag.name }}</a>
+                <span class="count">{{ tag.pages | length }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="taxonomies-items">
-      <ul>
-        {% for tag in terms %}
-        <li>
-          <a href="{{ tag.permalink }}">{{ tag.name }}</a>
-          <span class="count">{{ tag.pages | length }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-</div>
-
+  {% endfilter %}
+{% endblock content %}
 
 {#
 <div class="content">
@@ -43,4 +46,3 @@
   </div>
 </div>
 #}
-{% endblock content %}

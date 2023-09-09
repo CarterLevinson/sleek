@@ -1,13 +1,15 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="content">
-  <div id="spotlight" class="animated fadeIn">
-    <span class="banner-404">
-      <h1>404</h1>
-      <p>The requested page was not found.</p>
-    </span>
-  </div>
-</div>
+  {% filter indent() %}
+    <div class="content">
+      <div id="spotlight" class="animated fadeIn">
+        <span class="banner-404">
+          <h1>404</h1>
+          <p>The requested page was not found.</p>
+        </span>
+      </div>
+    </div>
+  {% endfilter %}
 {% endblock content %}
 <!-- vim: ft=htmldjango -->

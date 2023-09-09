@@ -1,12 +1,21 @@
 <!-- vim: ft=htmldjango -->
 
-{% macro mathjax() %}
-    <script id="MathJax-script" crossorigin async
-      src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
-    </script>
+{% macro copyright() %}
 
-    <script id="MathJax-font" type="module">
-      import mathjaxFiraFont from "https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm"
-    </script>
+
+{% endmacro %}
+
+{% macro zola() %}
+
+{% endmacro %}
+
+{% macro mathjax() %}
+  <script id="MathJax-script" crossorigin async
+          src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
+  </script>
+
+  <script id="MathJax-font" type="module">
+    import mathjaxFiraFont from "https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm"
+  </script>
 {% endmacro mathjax %}
 

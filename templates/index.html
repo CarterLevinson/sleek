@@ -1,36 +1,40 @@
 {% import "macros/icons.html" as icons %}
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
+{#
 {% block head %}
-{% if config.generate_feed %}
-  <link rel="alternate" type="application/rss+xml" title="RSS"
-    href="{{ get_url(path=config.feed_filename, trailing_slash=false) }}"/>
-{% endif %}
+  {% if config.generate_feed %}
+    <link rel="alternate" type="application/rss+xml" title="RSS"
+          href="{{ get_url(path=config.feed_filename, trailing_slash=false) }}"/>
+  {% endif %}
 {% endblock head %}
+#}
 
 {% block content %}
-<div id="spotlight" class="animated fadeIn">
-  <h1 class="spotlight-title">{{ config.title }}</h1>
-  <div class="spotlight-search">
-    <form class="search-container">
-      <input id="search" type="search" autocomplete="off" placeholder="Search..."/>
-      <button id="button" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-  <div class="search-padding"></div>
-  <div class="spotlight-center">
-    <p class="spotlight-quote">{{ config.extra.sleek_quote }}</p>
-    <div class="social-icons">{{ icons::render_social_icons() }}</div>
+  {% filter indent() %}
+    <div id="spotlight" class="animated fadeIn">
+      <h1 class="spotlight-title">{{ config.title }}</h1>
+      <div class="spotlight-search">
+        <form class="search-container">
+          <input id="search" type="search" autocomplete="off" placeholder="Search..."/>
+          <button id="button" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <div class="search-padding"></div>
+      <div class="spotlight-center">
+        <p class="spotlight-quote">{{ config.extra.sleek_quote }}</p>
+        <div class="social-icons">{{ icons::render_social_icons() }}</div>
     {#
     {% if config.extra.sleek_image != "" %}
     <image class="rounded" src="{{ config.extra.sleek_image }}"/>
     {% endif %}
     #}
-  </div>
-</div>
+      </div>
+    </div>
+  {% endfilter %}
 {% endblock content %}
 
 {% block script %}
-<script src="{{ get_url(path="main.js") }}"></script>
+  <script src="{{ get_url(path="main.js") }}"></script>
 {% endblock script %}
 <!-- vim: ft=htmldjango -->
