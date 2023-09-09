@@ -103,6 +103,11 @@
 .logo {
   cursor: pointer;
   margin-right: auto;
+  // flex sized image?
+  img {
+    height: 24px;
+    width: 24px;
+  }
 }
 
 .nav-links {

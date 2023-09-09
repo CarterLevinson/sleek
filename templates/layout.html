@@ -59,7 +59,7 @@
         {% block header %}
         <a class="logo" href="{{ get_url(path="/") }}">
           {% if config.extra.sleek_logo != "" %}
-          <img src="{{ config.extra.sleek_logo }}" alt="logo"/>
+          <img src="{{ get_url(path=config.extra.sleek_logo) }}" alt="logo"/>
           {% else %}
           <p><b><i>{{ config.extra.sleek_abbr }}</i></b></p>
           {% endif %}
@@ -96,23 +96,31 @@
           <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
           {{ config.extra.sleek_copyright }}
         </p>
-        <!-- <hr> -->
         <div class="taxonomies-container">
           <div class="taxonomies">
-            {% set tags = get_taxonomy(kind="tags") %}
-            {% for tag in tags.items %}
+            {% for tag in config.extra.sleek_tags %}
+            {% set term = get_taxonomy_term(kind="tags", term=tag.name) %}
             <i class="fa fa-tag"></i>
-            <a href="{{ tag.permalink }}">{{ tag.name }}</a>
-            <span class="count">{{ tag.pages | length }}</span>&nbsp;
+            <a href="{{ config.base_url ~ tag.link }}">{{ tag.name }}</a>
+            <span class="count">{{ term.pages | length }}</span>&nbsp;
             {% endfor %}
-            {#<br/>
+            <br/>
             <i class="fa solid fa-tags"></i>
-            {{ tags.items | length }} tags in total
-            #}
+            {% set tags = get_taxonomy(kind="tags") %}
+            {% set tags_count = tags.items | length %}
+            {% set sleek_count = config.extra.sleek_tags | length %}
+            {% if sleek_count != tags_count %}
+              {% if tags_count - sleek_count == 1 %}
+              1 tag not shown
+              {% else %}
+              {{ tags_count - sleek_count }} tags not shown
+              {% endif %}
+            {% else %}
+            {{ tags_count }} tags in total
+            {% endif %}
+
           </div>
         </div>
-
-
         {% endblock footer %}
       </footer>
     </div>
