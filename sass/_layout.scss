@@ -26,6 +26,7 @@
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
   }
+  /* page body: horizontal-flex container */
   .page-body {
     border-top: variables.$off-white solid 1px;
     border-bottom: variables.$off-white solid 1px;
@@ -80,10 +81,8 @@
   }
 }
 
-/* content: horizontal-flex container */
 .content {
-  display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   margin-top: 15px;
   max-height: 90%;
   max-width: 67%;
