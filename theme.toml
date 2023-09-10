@@ -7,7 +7,7 @@ homepage        = "https://github.com/CarterLevo/Sleek"
 min_version     = "0.17.0"
 
 # use a Github pages site to host theme?
-demo            = "https://7b268347.sleek-4lj.pages.dev/"
+demo            = "https://sleek-4lj.pages.dev/"
 
 [author]
 name            = "Carter S. Levinson"
