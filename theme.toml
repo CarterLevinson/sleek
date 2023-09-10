@@ -1,14 +1,13 @@
 name            = "Sleek"
 description     = "A minimalistic theme a for personal website or blog"
 license         = "MIT"
-homepage        = "https://github.com/carterlevo/sleek"
+homepage        = "https://github.com/CarterLevo/Sleek"
 
 # test other versions?
 min_version     = "0.17.0"
 
 # use a Github pages site to host theme?
-# demo          = "https://github.io/carterlevo/sleek"
-demo            = ""
+demo            = "https://7b268347.sleek-4lj.pages.dev/"
 
 [author]
 name            = "Carter S. Levinson"
