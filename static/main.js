@@ -7,23 +7,45 @@ function goToSearchPage(query) {
 }
 
 function init() {
-  var $search = document.getElementById("search")
-  $search.addEventListener("keydown",
-    function(event) {
-      if (event.keyCode === 13 || event.key === "Enter") {
+  var $search = document.getElementById("main-search");
+  if ($search !== null) {
+    $search.addEventListener("keydown",
+      function(event) {
+        if (event.keyCode === 13 || event.key === "Enter") {
+          event.preventDefault();
+          goToSearchPage($search.value.trim())
+        }
+      }
+    );
+
+    var $mainButton = document.getElementById("main-button");
+    $mainButton.addEventListener("click",
+      function(event) {
         event.preventDefault();
         goToSearchPage($search.value.trim())
       }
-    }
-  );
+    );
+  }
 
-  var $button = document.getElementById("button");
-  $button.addEventListener("click",
-    function(event) {
-      event.preventDefault();
-      goToSearchPage($search.value.trim())
-    }
-  );
+  var $navSearch = document.getElementById("nav-search");
+  if ($navSearch !== null) {
+    $navSearch.addEventListener("keydown",
+      function(event) {
+        if (event.keyCode === 13 || event.key === "Enter") {
+          event.preventDefault();
+          goToSearchPage($navSearch.value.trim());
+        }
+      }
+    );
+
+    var $navButton = document.getElementById("nav-button");
+    $navButton.addEventListener("click",
+      function(event) {
+        event.preventDefault();
+        goToSearchPage($navSearch.value.trim());
+      }
+    );
+  }
 }
 
 if (document.readyState === "complete") {

@@ -1,19 +1,4 @@
-function debounce(func, wait) {
-  var timeout;
-
-  return function () {
-    var context = this;
-    var args = arguments;
-    clearTimeout(timeout);
-
-    timeout = setTimeout(function () {
-      timeout = null;
-      func.apply(context, args);
-    }, wait);
-  };
-}
-
-// Taken from mdbook
+// Taken and modified from mdbook
 // The strategy is as follows:
 // First, assign a value to each word in the document:
 //  Words that correspond to search terms (stemmer aware): 40
@@ -24,10 +9,10 @@ function debounce(func, wait) {
 // maximum sum. If there are multiple maximas, then get the last one.
 // Enclose the terms in <b>.
 function makeTeaser(body, terms) {
-  var TERM_WEIGHT = 40;
-  var NORMAL_WORD_WEIGHT = 2;
-  var FIRST_WORD_WEIGHT = 8;
-  var TEASER_MAX_WORDS = 30;
+  const TERM_WEIGHT = 40;
+  const NORMAL_WORD_WEIGHT = 2;
+  const FIRST_WORD_WEIGHT = 8;
+  const TEASER_MAX_WORDS = 30;
 
   var stemmedTerms = terms.map(function (w) {
     return elasticlunr.stemmer(w.toLowerCase());
@@ -122,15 +107,16 @@ function makeTeaser(body, terms) {
 }
 
 function formatSearchResultItem(item, terms) {
-  return '<div class="search-results-item">'
+  // return '<span class="search-results-item">'
+  return ''
   + `<a href="${item.ref}">${item.doc.title}</a>`
   + `<div>${makeTeaser(item.doc.body, terms)}</div>`
   + '</div>';
 }
 
-var index;
+let index = null;
 
-var options = {
+let options = {
   bool: "AND",
   fields: {
     title: {boost: 2},
@@ -138,92 +124,93 @@ var options = {
   }
 };
 
-var MAX_ITEMS = 10;
+const MAX_ITEMS = 100;
 
-var initIndex = async function () {
-  if (index === undefined) {
+async function initIndex() {
+  if (index === undefined || index === null) {
     index = fetch("/search_index.en.json")
-      .then(
-        async function(response) {
-          return await elasticlunr.Index.load(await response.json());
+      .then(async function(response) {
+        return await elasticlunr.Index.load(await response.json());
       }
     );
   }
-  let res = await index;
-  return res;
+  return (await index);
 }
 
-async function mySearch(query) {
-  var results = (await initIndex()).search(query, options);
+async function elasticSearch(query) {
   var $searchResults = document.querySelector(".search-results");
   var $searchResultsItems = document.querySelector(".search-results-items");
 
+  let results = (await initIndex()).search(query, options);
   if (results.length === 0) {
-    // $searchResults.style.display = "none";
     return;
   }
 
   for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
     var item = document.createElement("li");
+    item.className = "search-results-item";
     item.innerHTML = formatSearchResultItem(results[i], query.split(" "));
     $searchResultsItems.appendChild(item);
   };
 }
 
-function initSearch() {
-  var $searchInput = document.getElementById("search");
-  var $searchResults = document.querySelector(".search-results");
-  var $searchResultsItems = document.querySelector(".search-results-items");
-
-  var currentTerm = "";
-
-
-  $searchInput.addEventListener("keyup", debounce(async function() {
-    var term = $searchInput.value.trim();
-    if (term === currentTerm) {
-      return;
-    }
-    $searchResults.style.display = term === "" ? "none" : "block";
-    $searchResultsItems.innerHTML = "";
-    currentTerm = term;
-    if (term === "") {
-      return;
-    }
-
-    var results = (await initIndex()).search(term, options);
-    if (results.length === 0) {
-      $searchResults.style.display = "none";
-      return;
-    }
-
-    for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
-      var item = document.createElement("li");
-      item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
-      $searchResultsItems.appendChild(item);
-    }
-  }, 150));
-
-  window.addEventListener('click', function(e) {
-    if ($searchResults.style.display == "block" && !$searchResults.contains(e.target)) {
-      $searchResults.style.display = "none";
-    }
-  });
+function getSearchParams() {
+  return new URLSearchParams(window.location.search);
 }
 
-if (document.readyState === "complete" ||
-    (document.readyState !== "loading" && !document.documentElement.doScroll)
-) {
-  initSearch();
+function init() {
+  var $search = document.getElementById("main-search");
+  if ($search !== null) {
+    $search.addEventListener("keydown",
+      function(event) {
+        if (event.keyCode === 13 || event.key === "Enter") {
+          event.preventDefault();
+          elasticSearch($search.value.trim())
+        }
+      }
+    );
+
+    var $mainButton = document.getElementById("main-button");
+    $mainButton.addEventListener("click",
+      function(event) {
+        event.preventDefault();
+        elasticSearch($search.value.trim())
+      }
+    );
+  }
+
+  var $navSearch = document.getElementById("nav-search");
+  if ($navSearch !== null) {
+    $navSearch.addEventListener("keydown",
+      function(event) {
+        if (event.keyCode === 13 || event.key === "Enter") {
+          event.preventDefault();
+          elasticSearch($navSearch.value.trim());
+        }
+      }
+    );
+
+    var $navButton = document.getElementById("nav-button");
+    $navButton.addEventListener("click",
+      function(event) {
+        event.preventDefault();
+        elasticSearch($navSearch.value.trim());
+      }
+    );
+  }
+
+  var params = getSearchParams();
+  if (params.has("query")) {
+    var $input = document.getElementById("main-search");
+    if ($input !== null) {
+      $input.value = params.get("query");
+    }
+    elasticSearch(params.get("query"));
+  }
+}
+
+if (document.readyState === "complete") {
+  init();
 } else {
-  document.addEventListener("DOMContentLoaded", initSearch);
-}
-
-var url = new URL(window.location.href);
-var params = new URLSearchParams(url.search);
-
-if (params.has("query")) {
-  var $query = params.get("query")
-  var $input = document.getElementById("search")
-  $input.value = $query
-  mySearch($query);
+  document.addEventListener("DOMContentLoaded", init);
 }
