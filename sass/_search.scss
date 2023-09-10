@@ -40,6 +40,12 @@
     border: none;
     cursor: pointer;
     font-size: 20px;
+    svg {
+      fill: variables.$text;
+      height: 24px;
+      width: 24px;
+      vertical-align: -0.125em;
+    }
   }
 
   #search {

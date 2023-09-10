@@ -123,5 +123,12 @@
       color: variables.$nord8;
     }
   }
+  svg {
+    fill: variables.$text;
+    height: 1.0em;
+    vertical-align: -0.125em;
+    // height: 1em;
+    // width: 1em;
+  }
 }
 

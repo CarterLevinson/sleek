@@ -2,47 +2,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% filter indent() %}
-    <div class="content">
-      <div class="taxonomies-container">
-        <div class="taxonomies-title">
-          <a href="{{ current_url }}"><h1>Tags</h1></a>
-        </div>
-        <div class="taxonomies-items">
-          <ul>
-            {% for tag in terms %}
-              <li>
-                <a href="{{ tag.permalink }}">{{ tag.name }}</a>
-                <span class="count">{{ tag.pages | length }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-  {% endfilter %}
-{% endblock content %}
-
-{#
-<div class="content">
-  <div class="taxonomies-container">
-    <div class="taxonomies">
-      <div class="taxomomies-title">
-        <i class="fa solid fa-tags"></i>
-        {{ terms | length }} tags in total
+  <div class="content">
+    <div class="taxonomies-container">
+      <div class="taxonomies-title">
+        <a href="{{ current_url }}"><h1>Tags</h1></a>
       </div>
       <div class="taxonomies-items">
-        |
-        {% for tag in terms %}
-        <i class="fa fa-tag"></i>
-        <a href="{{ tag.permalink }}">
-          {{ tag.name }}
-          <span class="count">{{ tag.pages | length }}</span>
-        </a>
-        |
-        {% endfor %}
+        <ul>
+          {% for tag in terms %}
+            <li>
+              <a href="{{ tag.permalink }}">{{ tag.name }}</a>
+              <span class="count">{{ tag.pages | length }}</span>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
-</div>
-#}
+{% endblock content %}

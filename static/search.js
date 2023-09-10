@@ -222,5 +222,8 @@ var url = new URL(window.location.href);
 var params = new URLSearchParams(url.search);
 
 if (params.has("query")) {
-  mySearch(params.get("query"));
+  var $query = params.get("query")
+  var $input = document.getElementById("search")
+  $input.value = $query
+  mySearch($query);
 }

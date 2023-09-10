@@ -3,6 +3,19 @@
 @use "flexbox";
 @use "variables";
 
+@mixin aTag {
+  a {
+    word-break: break-all;
+    border: none;
+    box-shadow: inset 0 -4px 0 $theme;
+    transition-property: background-color;
+
+    &:hover {
+      background-color: $theme;
+    }
+  }
+}
+
 //
 // taxonomies
 //
@@ -18,6 +31,11 @@
   text-align: center;
   // justify-self: start;
   // align-self: start;
+  svg {
+    height: 1em;
+    fill: variables.$text;
+    vertical-align: -0.125em;
+  }
 
   &-title {
     // margin: auto;

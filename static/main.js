@@ -1,4 +1,4 @@
-function performSearch(query) {
+function goToSearchPage(query) {
   if (query === "") {
     window.location.href = "/search";
   } else {
@@ -12,7 +12,7 @@ function init() {
     function(event) {
       if (event.keyCode === 13 || event.key === "Enter") {
         event.preventDefault();
-        performSearch($search.value.trim())
+        goToSearchPage($search.value.trim())
       }
     }
   );
@@ -21,13 +21,12 @@ function init() {
   $button.addEventListener("click",
     function(event) {
       event.preventDefault();
-      performSearch($search.value.trim())
+      goToSearchPage($search.value.trim())
     }
   );
 }
 
-if (document.readyState === "complete" ||
-    (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+if (document.readyState === "complete") {
   init();
 } else {
   document.addEventListener("DOMContentLoaded", init);

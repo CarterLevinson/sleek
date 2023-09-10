@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@use "fonts";
+
 //
 // Colors
 //
@@ -7,10 +9,17 @@ $navy-blue: #0B0B45;
 $highlight-grey: #7d828a;
 $midnightblue: #31333d;
 $off-white: #edf0f1;
-$dark-bg: #121212;
+// $dark-bg: #121212;
+// $theme: #2e3440;
+// $text: #c6cddb;
+// $text: #eceff4;
+// $dark-grey: #88C0D0;
+// $highlight-grey: #7d828a;
+// $dark-grey: #2e3440;
+// $light-grey: #2e3440;
 
 //
-// Nord
+// Nord colors
 //
 $nord0: #2E3440; // dark-grey
 $nord6: #ECEFF4; // bright-white
@@ -21,62 +30,12 @@ $nord8: #88C0D0; // green-blue
 //
 
 $text: $nord6;
-$background: $nord0;
-$background: $dark-bg;
+// $background: $nord0;
+$background: #121212;
 $banner: $nord8;
 $banner-text: $navy-blue;
-
 $theme: #018574;
-// $theme: #2e3440;
-// $text: #c6cddb;
-// $text: #eceff4;
-// $dark-grey: #88C0D0;
-// $highlight-grey: #7d828a;
-// $dark-grey: #2e3440;
-// $light-grey: #2e3440;
 
-//
-// Fonts
-//
-
-@font-face {
-  font-family: "Fira Code";
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/fira-code-v21-lating-regular.woff2") format("woff2")
-}
-
-@font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/fira-sans-v17-latin-regular.woff2") format("woff2")
-}
-
-$font: "Fira Sans";
-
-$code-font: "Fira Code";
-
-$math-font: "";
-
-$fa-font-path: "fonts/webfonts";
-//
-// Mixins
-//
-
-@mixin dimmed {
-  opacity: 0.6;
-}
-
-@mixin aTag {
-  a {
-    word-break: break-all;
-    border: none;
-    box-shadow: inset 0 -4px 0 $theme;
-    transition-property: background-color;
-
-    &:hover {
-      background-color: $theme;
-    }
-  }
-}
+$font: fonts.$font;
+$code-font: fonts.$code-font;
+$math-font: fonts.$math-font;
