@@ -3,6 +3,11 @@
 @use "flexbox";
 @use "variables";
 
+@mixin background-clip() {
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
 
 //
 // Search
@@ -22,13 +27,61 @@
   max-height: 5%;
 }
 
+.nav-search {
+  .search-container {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    transition: width 300ms ease-in-out;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.0);
+    border: none;
+    @include flexbox.flexbox();
+    #nav-search {
+      // align-self: center;
+      position: absolute;
+      padding-left: 10px;
+      height:100%;
+      width: 100%;
+      opacity: 0;
+      top: 0;
+      bottom: 0;
+      // line-height: 5px;
+      background: transparent;
+      // margin-top: 5px;
+      @include flexbox.flex(1 0 auto);
+
+    }
+    &:focus-within {
+      width: 300px;
+      border: 2px solid variables.$off-white;
+      background-color: rgba(variables.$nord0, 1.0);
+      #nav-search {
+        opacity: 1;
+        width: 100%;
+      }
+    }
+    button {
+      margin-left: auto;
+      font-size: 1.6em;
+      svg {
+        vertical-align: -0.125em;
+      }
+      // padding-left: 0;
+    }
+
+  }
+}
 .search-container {
   padding: 5px;
-  border: 1px solid variables.$off-white;
+  border: 2px solid variables.$off-white;
+  background-color: variables.$nord0;
   border-radius: 50px;
   width: 100%;
   justify-content: center;
   @include flexbox.flexbox();
+  @include background-clip();
 
   button {
     display: inline-block;
@@ -45,17 +98,19 @@
       height: 24px;
       width: 24px;
       vertical-align: -0.125em;
+      margin-right: 10px;
     }
   }
 
   #main-search {
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: inherit;
     background: transparent;
+    padding-left: 10px;
     width: 100%;
     color: variables.$text;
-    background-color: rgba(255, 255, 255, 0.0);
-    justify-content: center;
+    // background-color: rgba(255, 255, 255, 0.0);
+    // justify-content: center;
     &:focus {
       outline: none;
     }

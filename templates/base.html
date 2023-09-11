@@ -90,10 +90,15 @@
                 </a>
               </li>
             {% endfor %}
-            <li>
-              <a href="{{ config.base_url ~ "/search" }}">
-                {{ icons::render_magnifying_glass() }}
-              </a>
+            <li class="nav-search">
+              <form class="search-container">
+                <input id="nav-search"
+                  autocomplete="off"
+                  placeholder="Search..."/>
+                <button id="nav-button">
+                  {{ icons::render_magnifying_glass() }}
+                </button>
+              </form>
             </li>
           </menu>
         </nav>

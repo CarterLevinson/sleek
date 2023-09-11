@@ -1,3 +1,5 @@
+// import debounce from "./suggest.js"
+
 // Taken and modified from mdbook
 // The strategy is as follows:
 // First, assign a value to each word in the document:
@@ -107,8 +109,7 @@ function makeTeaser(body, terms) {
 }
 
 function formatSearchResultItem(item, terms) {
-  // return '<span class="search-results-item">'
-  return ''
+  return '<div>'
   + `<a href="${item.ref}">${item.doc.title}</a>`
   + `<div>${makeTeaser(item.doc.body, terms)}</div>`
   + '</div>';
@@ -140,6 +141,8 @@ async function initIndex() {
 async function elasticSearch(query) {
   var $searchResults = document.querySelector(".search-results");
   var $searchResultsItems = document.querySelector(".search-results-items");
+
+  $searchResultsItems.innerHTML = ""
 
   let results = (await initIndex()).search(query, options);
   if (results.length === 0) {

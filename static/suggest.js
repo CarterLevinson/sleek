@@ -1,4 +1,4 @@
-function debounce(func, wait) {
+export function debounce(func, wait) {
   var timeout;
 
   return function () {
@@ -13,32 +13,17 @@ function debounce(func, wait) {
   };
 }
 
-function formatSuggestionsItem() {
-
+export function formatSuggestionsItem(item) {
+  return '<div>'
+  + `<a href="${item.ref}">${item.doc.title}</a>`
+  + '</div>'
 }
 
-let index = null;
-
-let options = {
-  bool: "AND",
-  fields: {
-    title: {boost: 3},
-    body: {boost: 1},
-  }
-};
-
-const MAX_ITEMS = 5;
-
-async function initIndex() {
-  if (index === undefined || index === null) {
-    index = fetch("/search_index.en.json")
-      .then(async function(response) {
-        return await elasticlunr.Index.load(await response.json());
-      }
-    );
-  }
-  return (await index);
+export function elasticSuggest() {
+  var $mainSearch = document.getElementById("main-search");
+  var $suggestionsBox =
 }
+
 
 function init() {
   var $search = document.getElementById("main-search");
@@ -69,6 +54,7 @@ function init() {
 
     for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
       var item = document.createElement("li");
+      item.className = "search-suggestions-item"
       item.innerHTML = formatSuggestionsItem(results[i], term.split(" "));
       $suggestionsItems.appendChild(item);
     }
@@ -79,6 +65,7 @@ function init() {
       $suggestionsBox.style.display = "none";
     }
   });
+
 }
 
 if (document.readyState === "complete") {
