@@ -1,21 +1,17 @@
-<!-- vim: ft=htmldjango -->
+{% import "macros/utils.html" as utils %}
 
-{% macro copyright() %}
+{% macro render_mathjax() %}
+{% endmacro render_mathjax %}
 
+{% macro make_header() %}
+  {% set logo = config.extra.sleek_logo %}
+  {% set abbr = config.extra.sleek_abbr %}
+  {{ utils::make_header_logo(logo=logo, abbr=abbr) }}
+  {% set menu = config.extra.sleek_menu %}
+  {{ utils::make_header_menu(menu=menu) }}
+{% endmacro header %}
 
-{% endmacro %}
-
-{% macro zola() %}
-
-{% endmacro %}
-
-{% macro mathjax() %}
-  <script id="MathJax-script" crossorigin async
-          src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.3/tex-mml-chtml.js">
-  </script>
-
-  <script id="MathJax-font" type="module">
-    import mathjaxFiraFont from "https://cdn.jsdelivr.net/npm/mathjax-fira-font@4.0.0-beta.3/+esm"
-  </script>
-{% endmacro mathjax %}
-
+{% macro make_footer() %}
+  {{ utils::make_footer_copyright() }}
+  {{ utils::make_footer_taxonomies() }}
+{% endmacro make_footer %}

@@ -1,5 +1,5 @@
 {% import "macros/macros.html" as macros %}
-{% import "macros/icons.html" as icons %}
+
 <!DOCTYPE html>
 <html lang="{{ config.default_language }}">
   <head>
@@ -41,6 +41,7 @@
       <link rel="stylesheet"
             href="{{ get_url(path="site.css") }}"/>
       {% if config.extra.sleek_mathjax %}
+        {{ macros::render_mathjax() }}
       {% endif %}
       {% block title %}
         <title>
@@ -59,85 +60,16 @@
   </head>
   <body>
     <div class="page">
-      {# clean up header code #}
       <header class="page-header">
-        <a class="logo-link" href="{{ config.base_url }}">
-          {% if config.extra.sleek_logo and config.extra.sleek_abbr %}
-            <img class="logo"
-                 src="{{ get_url(path=config.extra.sleek_logo) }}"
-                 alt="{{ config.extra.sleek_abbr }}"/>
-          {% elif config.extra.sleek_logo %}
-            <img class="logo"
-                 src="{{ get_url(path=config.extra.sleek_logo) }}"
-                 alt="logo"/>
-          {% elif config.extra.sleek_abbr %}
-            {# add special font to class in logo #}
-            <span class="logo">
-              {{ config.extra.sleek_abbr }}
-            </span>
-          {% else %}
-            <span class="logo">
-              {{ config.base_url }}
-            </span>
-          {% endif %}
-        </a>
-        <nav>
-          <menu class="nav-links">
-            {% for target in config.extra.sleek_navbar %}
-              <li>
-                <a href="{{ config.base_url ~ target.link }}">
-                  {{ target.name }}
-                </a>
-              </li>
-            {% endfor %}
-            <li class="nav-search">
-              <form class="search-container">
-                <input id="nav-search"
-                       autocomplete="off"
-                       placeholder="Search..."/>
-                <button id="nav-button">
-                  {{ icons::render_magnifying_glass() }}
-                </button>
-              </form>
-            </li>
-          </menu>
-        </nav>
+        {{ macros::make_header() }}
       </header>
       <div class="page-body">
         {% block content %}
           <div class="content"></div>
         {% endblock content %}
       </div>
-      {# clean up footer code #}
       <footer class="page-footer">
-        <p>&copy; {{ now() | date(format="%Y") }}
-          <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
-          {{ config.extra.sleek_copyright }}
-        </p>
-        <div class="taxonomies-container">
-          <div class="taxonomies">
-            {% for tag in config.extra.sleek_tags %}
-              {% set term = get_taxonomy_term(kind="tags", term=tag.name) %}
-              {{ icons::render_tag_icon() }}
-              <a href="{{ config.base_url ~ tag.link }}">{{ tag.name }}</a>
-              <span class="count">{{ term.pages | length }}</span>&nbsp;
-            {% endfor %}
-            <br/>
-            {{ icons::render_tags_icon() }}
-            {% set tags = get_taxonomy(kind="tags") %}
-            {% set tags_count = tags.items | length %}
-            {% set sleek_count = config.extra.sleek_tags | length %}
-            {% if sleek_count != tags_count %}
-              {% if tags_count - sleek_count == 1 %}
-                1 tag not shown
-              {% else %}
-                {{ tags_count - sleek_count }} tags not shown
-              {% endif %}
-            {% else %}
-              {{ tags_count }} tags in total
-            {% endif %}
-          </div>
-        </div>
+        {{ macros::make_footer() }}
       </footer>
     </div>
     {% block script %}

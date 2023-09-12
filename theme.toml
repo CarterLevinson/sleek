@@ -23,7 +23,7 @@ sleek_mathjax      = true
 
 sleek_logo         = "images/globe-nord6.svg"
 
-sleek_navbar       = [
+sleek_menu         = [
   { name           = "Home",       link = "/"},
   { name           = "Blog",       link = "/blog" },
   { name           = "Tags",       link = "/tags" },

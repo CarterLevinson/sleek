@@ -43,10 +43,11 @@ sleek_quote        = "You get what you pay for!"
 
 sleek_copyright    = "All rights reserved."
 sleek_mathjax      = true
+sleek_footer_tags  = true
 
-sleek_logo         = "images/globe-nord6.svg"
+sleek_logo         = "images/Q-nord6.svg"
 
-sleek_navbar       = [
+sleek_menu         = [
   { name           = "Home",       link = "/"},
   { name           = "Blog",       link = "/blog" },
   { name           = "Tags",       link = "/tags" },
@@ -61,7 +62,7 @@ sleek_pages        = [
 ]
 
 sleek_tags         = [
-  { name           = "blog",       link = "/tags/blog" },
-  { name           = "lorem",      link = "/tags/lorem" },
-  { name           = "post",       link = "/tags/post" }
+  "blog",
+  "lorem",
+  "post"
 ]
