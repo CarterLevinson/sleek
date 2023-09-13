@@ -156,7 +156,6 @@ async function resetSearchResults() {
    + "<ul class=&quot;search-results-item&quot;></ul>";
 }
 
-
 async function elasticSearch(term) {
   resetSearchResults();
 
@@ -188,7 +187,6 @@ async function elasticSearchAuto(term) {
 
   elasticSearch(term);
 }
-
 
 function parseQueryString() {
   var params = new URLSearchParams(window.location.search);
