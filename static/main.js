@@ -50,6 +50,7 @@ function initSpotlightSearch() {
 
     var $spotlightButton = document.getElementById("spotlight-button");
     $spotlightButton.addEventListener("click", function(event) {
+      event.preventDefault();
       goToSearchPage($spotlightSearch.value.trim());
     });
   }
