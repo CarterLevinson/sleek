@@ -1,44 +1,46 @@
-name            = "Sleek"
-description     = "A minimalistic theme a for personal website or blog"
-license         = "MIT"
-homepage        = "https://github.com/CarterLevo/Sleek"
+name              = "Sleek"
+description       = "A minimalistic theme a for personal website or blog"
+license           = "MIT"
+homepage          = "https://github.com/CarterLevo/Sleek"
 
 # test other versions?
-min_version     = "0.17.0"
+min_version       = "0.17.0"
 
 # Cloudflare pages URL
-demo            = "https://sleek-4lj.pages.dev"
+demo              = "https://sleek-4lj.pages.dev"
 
 [author]
-name            = "Carter S. Levinson"
-homepage        = "carterlevinson.net"
+name              = "Carter S. Levinson"
+homepage          = "carterlevinson.net"
 
 [extra]
-sleek_author       = "John Q. Example"
-sleek_abbr         = "JQE"
-sleek_quote        = "You get what you pay for!"
+sleek_author      = "John Q. Example"
+sleek_abbr        = "JQE"
+sleek_quote       = "You get what you pay for!"
 
-sleek_copyright    = "All rights reserved."
-sleek_mathjax      = true
+sleek_copyright   = "All rights reserved"
+# to implement
+sleek_mathjax     = false
+sleek_footer_tags = true
 
-sleek_logo         = "images/globe-nord6.svg"
+sleek_logo        = "images/Q-nord6.svg"
 
-sleek_menu         = [
-  { name           = "Home",       link = "/"},
-  { name           = "Blog",       link = "/blog" },
-  { name           = "Tags",       link = "/tags" },
-  # { name         = "Categories", link ="/categories" },
-  { name           = "About",      link  = "/about"}
+sleek_menu        = [
+  { name          = "Home",       link = "/"},
+  { name          = "Blog",       link = "/blog" },
+  { name          = "Tags",       link = "/tags" },
+  # { name        = "Categories", link ="/categories" },
+  { name          = "About",      link  = "/about"}
 ]
 
-sleek_pages        = [
-  { name           = "twitter",    link = "https://twitter.com" },
-  { name           = "github",     link = "https://github.com" },
-  { name           = "email",      link = "mailto:author@domain.com" }
+sleek_pages       = [
+  { name          = "twitter",    link = "https://twitter.com/johnqe" },
+  { name          = "github",     link = "https://github.com/johnqe" },
+  { name          = "email",      link = "mailto:john@example.com" }
 ]
 
-sleek_tags         = [
-  { name           = "blog",       link = "/tags/blog" },
-  { name           = "lorem",      link = "/tags/lorem" },
-  { name           = "post",       link = "/tags/post" }
+sleek_tags        = [
+  "blog",
+  "lorem",
+  "post"
 ]
