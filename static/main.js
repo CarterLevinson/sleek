@@ -18,8 +18,11 @@ function initNavSearch() {
     var $navButton = document.getElementById("nav-button");
     $navButton.addEventListener("click", function(event) {
       event.preventDefault();
-      if ($navSearch.matches(":focus-within")) {
-          goToSearchPage($navSearch.value.trim());
+      if(document.querySelector(".nav-search .search-container")
+        .matches(":focus-within")) {
+          if ($navSearch.value.length !== 0) {
+            goToSearchPage($navSearch.value.trim());
+          }
       }
     });
   }
