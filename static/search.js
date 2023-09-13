@@ -1,4 +1,17 @@
-// import debounce from "./suggest.js"
+ function debounce(func, wait) {
+  var timeout;
+
+  return function () {
+    var context = this;
+    var args = arguments;
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function() {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+}
 
 // Taken and modified from mdbook
 // The strategy is as follows:
@@ -115,7 +128,7 @@ function formatSearchResultItem(item, terms) {
   + '</div>';
 }
 
-let index = null;
+let index = undefined;
 
 let options = {
   bool: "AND",
@@ -138,13 +151,16 @@ async function initIndex() {
   return (await index);
 }
 
-async function elasticSearch(query) {
-  var $searchResults = document.querySelector(".search-results");
-  var $searchResultsItems = document.querySelector(".search-results-items");
+async function resetSearchResults() {
+ document.querySelector(".search-results-items").innerHTML = ""
+   + "<ul class=&quot;search-results-item&quot;></ul>";
+}
 
-  $searchResultsItems.innerHTML = ""
 
-  let results = (await initIndex()).search(query, options);
+async function elasticSearch(term) {
+  resetSearchResults();
+
+  var results = (await initIndex()).search(term, options);
   if (results.length === 0) {
     return;
   }
@@ -152,64 +168,49 @@ async function elasticSearch(query) {
   for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
     var item = document.createElement("li");
     item.className = "search-results-item";
-    item.innerHTML = formatSearchResultItem(results[i], query.split(" "));
-    $searchResultsItems.appendChild(item);
+    item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
+    document.querySelector(".search-results-items").appendChild(item);
   };
 }
 
-function getSearchParams() {
-  return new URLSearchParams(window.location.search);
+let currentTerm = undefined;
+
+async function elasticSearchAuto(term) {
+  if (term === currentTerm) {
+   return;
+  }
+
+  resetSearchResults();
+  currentTerm = term;
+  if (term === "") {
+    return;
+  }
+
+  elasticSearch(term);
+}
+
+
+function parseQueryString() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.has("query")){
+    return params.get("query");
+  } else {
+    return null;
+  }
 }
 
 function init() {
-  var $search = document.getElementById("main-search");
-  if ($search !== null) {
-    $search.addEventListener("keydown",
-      function(event) {
-        if (event.keyCode === 13 || event.key === "Enter") {
-          event.preventDefault();
-          elasticSearch($search.value.trim())
-        }
-      }
-    );
-
-    var $mainButton = document.getElementById("main-button");
-    $mainButton.addEventListener("click",
-      function(event) {
-        event.preventDefault();
-        elasticSearch($search.value.trim())
-      }
-    );
+  var $mainSearch = document.getElementById("main-search");
+  var query = parseQueryString();
+  if (query !== null) {
+     $mainSearch.value = query;
+     elasticSearch(query);
   }
 
-  var $navSearch = document.getElementById("nav-search");
-  if ($navSearch !== null) {
-    $navSearch.addEventListener("keydown",
-      function(event) {
-        if (event.keyCode === 13 || event.key === "Enter") {
-          event.preventDefault();
-          elasticSearch($navSearch.value.trim());
-        }
-      }
-    );
+  $mainSearch.addEventListener("keyup", debounce(async function() {
+    elasticSearchAuto($mainSearch.value.trim());
+  }, 150));
 
-    var $navButton = document.getElementById("nav-button");
-    $navButton.addEventListener("click",
-      function(event) {
-        event.preventDefault();
-        elasticSearch($navSearch.value.trim());
-      }
-    );
-  }
-
-  var params = getSearchParams();
-  if (params.has("query")) {
-    var $input = document.getElementById("main-search");
-    if ($input !== null) {
-      $input.value = params.get("query");
-    }
-    elasticSearch(params.get("query"));
-  }
 }
 
 if (document.readyState === "complete") {

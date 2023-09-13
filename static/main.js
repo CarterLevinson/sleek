@@ -1,50 +1,54 @@
 function goToSearchPage(query) {
-  if (query === "") {
-    window.location.href = "/search";
-  } else {
-    window.location.href = "/search?query=" + query;
+  window.location.href = "/search?query=" + query;
+}
+
+function searchPageOnEnterKey(event, query) {
+  if(event.key === "Enter" || event.keyCode === 13) {
+    goToSearchPage(query);
   }
 }
 
 function init() {
-  var $search = document.getElementById("main-search");
-  if ($search !== null) {
-    $search.addEventListener("keydown",
-      function(event) {
-        if (event.keyCode === 13 || event.key === "Enter") {
-          event.preventDefault();
-          goToSearchPage($search.value.trim())
-        }
-      }
-    );
+  var $mainSearch = document.getElementById("main-search");
+  if ($mainSearch !== null) {
+
+    $mainSearch.addEventListener("keydown", function(event) {
+      searchPageOnEnterKey(event, $mainSearch.value.trim());
+    });
 
     var $mainButton = document.getElementById("main-button");
-    $mainButton.addEventListener("click",
-      function(event) {
-        event.preventDefault();
-        goToSearchPage($search.value.trim())
-      }
-    );
+    $mainButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      goToSearchPage($mainSearch.value.trim());
+    });
   }
 
   var $navSearch = document.getElementById("nav-search");
   if ($navSearch !== null) {
-    $navSearch.addEventListener("keydown",
-      function(event) {
-        if (event.keyCode === 13 || event.key === "Enter") {
-          event.preventDefault();
-          goToSearchPage($navSearch.value.trim());
-        }
-      }
-    );
+    $navSearch.addEventListener("keydown", function(event) {
+      searchPageOnEnterKey(event, $navSearch.value.trim());
+    });
+
 
     var $navButton = document.getElementById("nav-button");
-    $navButton.addEventListener("click",
-      function(event) {
-        event.preventDefault();
+    $navButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      if ($navSearch.matches(":focus-within")) {
         goToSearchPage($navSearch.value.trim());
       }
-    );
+    });
+  }
+
+  var $spotlightSearch = document.getElementById("spotlight-search");
+  if ($spotlightSearch !== null) {
+    $spotlightSearch.addEventListener("keydown", function(event) {
+      searchPageOnEnterKey(event, $spotlightSearch.value.trim());
+    });
+
+    var $spotlightButton = document.getElementById("spotlight-button");
+    $spotlightButton.addEventListener("click", function(event) {
+      goToSearchPage($spotlightSearch.value.trim());
+    });
   }
 }
 
