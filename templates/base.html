@@ -43,6 +43,18 @@
       {% if config.extra.sleek_mathjax %}
         {{ macros::render_mathjax() }}
       {% endif %}
+      {% block rss %}
+      {% if config.generate_feed and config.feed_filename == "atom.xml" %}
+        <link rel="alternate"
+              type="application/atom+xml"
+              href="{{ get_url(path="atom.xml") }}"/>
+      {% endif %}
+      {% if config.generate_feed and config.feed_filename == "rss.xml" %}
+        <link rel="alternate"
+              type="application/rss+xml"
+              href="{{ get_url(path="rss.xml") }}"/>
+      {% endif %}
+      {% endblock rss %}
       {% block title %}
         <title>
           {% if page.title %}

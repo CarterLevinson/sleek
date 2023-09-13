@@ -14,9 +14,11 @@ build_search_index = true
 # Compress generated HTML
 minify_html        = true
 
-# Generate feeds for posts and/ortaxonomies
-# generate_feed      = false
+# Generate feeds for posts and/or taxonomies
+generate_feed      = true
 
+# The feed file name to use for syndication
+feed_filename      = "atom.xml"
 # Default language for html and search functions
 default_language   = "en"
 

@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 
+{% block rss %}
+  {% if config.generate_feed and config.feed_filename == "atom.xml" %}
+    {% set atom_path = "tags/" ~ term.name ~  "/atom.xml" %}
+      <link rel="alternate"
+            type="application/atom+xml"
+            href="{{ get_url(path=atom_path) }}"/>
+  {% endif %}
+  {% if config.generate_feed and config.feed_filename == "rss.xml" %}
+      {% set rss_path = "tags/" ~ term.name ~ "/rss.xml" %}
+      <link rel="alternate"
+            type="application/rss+xml"
+            href="{{ get_url(path=rss_path) }}"/>
+  {% endif %}
+{% endblock rss %}
+
 {% block content %}
-  <div class="content">
-    <div class="taxonomy">
-      <h2>{{ term.name }}</h2>
-      {% for page in term.pages %}
-        <div class="taxonomy-item">
-          <span class="taxonomy-item-time">
+<div class="content">
+  <div class="taxonomy">
+    <h2>{{ term.name }}</h2>
+    {% for page in term.pages %}
+      <div class="taxonomy-item">
+        <span class="taxonomy-item-time">
             {{ page.date | date(format="%F") }}
           </span>
           <span class="taxonomy-item-title">
