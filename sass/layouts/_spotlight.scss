@@ -16,9 +16,8 @@
   font-size: 1.5em;
 
   @include fb.flexbox();
-
   &.error-404 {
-    flex-flow: row wrap;
+    // flex-flow: column wrap;
     line-height: normal;
   }
 }

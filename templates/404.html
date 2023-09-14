@@ -1,13 +1,30 @@
+{% import "macros/icons.html" as icons %}
 {% extends "base.html" %}
 
 {% block page_body %}
-  <div id="spotlight">
+  <div id="spotlight" class="error-404">
+    <img class="img-404"
+         alt="Error 404"
+         src="{{ get_url(path="images/404-error-nord6.svg") }}"/>
     <div class="banner-404">
-      <img src="{{ get_url(path="images/404-error-nord6.svg") }}" alt="404"/>
       <h1>Page Not Found</h1>
       <p>
         The requested page was not found or does not exist on this website.
       </p>
-    </div>
+      <nav class="btn-container">
+        <div id="home-btn" class="btn-404">
+          <a href="{{ config.base_url }}">
+            {{  icons::render_home_icon() }}
+          </a>
+        </div>
+        {% block buttons %}
+        {% endblock buttons %}
+        <div id="search-btn" class="btn-404">
+          <a href="{{ get_url(path="search") }}">
+            {{ icons::render_magnifying_glass() }}
+          </a>
+        </div>
+      </nav>
   </div>
+</div>
 {% endblock page_body %}

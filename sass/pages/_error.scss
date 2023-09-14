@@ -1,17 +1,19 @@
+@use "../abstracts/flexbox" as fb;
 @use "../abstracts/variables" as *;
 
 //
 // 404
 //
 
+.img-404 {
+  object-fit: scale-down;
+}
+
 .banner-404 {
   margin-left: 2em;
   // display: flex column;
   // justify-content: center;
 
-  img {
-    object-fit: scale-down;
-  }
   h1 {
     text-align: center;
     font-size: 3em;
@@ -24,14 +26,35 @@
     margin-bottom: 0.6em;
   }
 
+  // #home-btn {
+  //   float: left;
+  // }
+
+  svg {
+    height: 1em;
+    width: 1em;
+    padding-top: 0.125em;
+  }
+
+  #search-btn {
+    fill: $text;
+    padding-bottom: 0.1em;
+    // margin-bottom: 0.1em;
+  }
+
+  .btn-container {
+    flex-flow: column-wrap;
+    justify-content: center;
+    @include fb.flexbox();
+  }
   .btn-404 {
-    font-size: 0.8em;
+    // font-size: 0.8em;
 
     a {
       display: inline-block;
       border: 2px solid $text;
       border-radius: 5px;
-      padding: 5px;
+      padding: 0.25rem;
       transition-property: color, border-color;
       word-break: break-all;
 
@@ -43,9 +66,9 @@
         border-color: #fff;
       }
 
-      svg {
-        margin-right: 0.5em;
-      }
+      // svg {
+        // margin-right: 0.5em;
+      // }
     }
   }
 }
