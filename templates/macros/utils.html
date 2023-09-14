@@ -50,7 +50,7 @@
               <a href="{{ term.permalink }}">{{ term.name }}</a>
               <!-- &nbsp; -->
             </li>
-          |
+            |
           {% endfor %}
         </ul>
         <!-- <br/> -->
@@ -75,13 +75,13 @@
 {% macro make_header_menu(menu) %}
   <nav>
     <menu class="nav-links">
-        {% for target in menu %}
-          <li class="nav-link">
-            <a href="{{ config.base_url ~ target.link }}">
-              {{ target.name }}
-            </a>
-          </li>
-        {% endfor %}
+      {% for target in menu %}
+        <li class="nav-link">
+          <a href="{{ config.base_url ~ target.link }}">
+            {{ target.name }}
+          </a>
+        </li>
+      {% endfor %}
       <li class="nav-search">
         <form class="search-container">
           <input id="nav-search"

@@ -1,8 +1,8 @@
 +++
 title = "Blog"
 description = "Blog posts"
-template = "section.html"
+template = "blog.html"
 page_template = "page.html"
 sort_by = "date" 
-paginate_by = 10
+paginate_by = 5
 +++

@@ -16,13 +16,15 @@
         </button>
       </form>
     </div>
-    <div class="search-padding"></div>
     <div class="spotlight-center">
       <p class="spotlight-quote">
         {{ config.extra.sleek_quote }}
       </p>
       <div class="social-icons">
         {{ icons::render_social_icons() }}
+        {% if config.generate_feed %}
+          {{ icons::render_rss_icon() }}
+        {% endif %}
       </div>
     </div>
   </div>

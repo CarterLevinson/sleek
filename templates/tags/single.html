@@ -26,15 +26,11 @@
         </a>
         {% if atom_path is defined %}
           &nbsp;
-          <a href="{{ get_url(path=atom_path) }}">
           {{ icons::render_rss_icon() }}
-        </a>
         {% endif %}
         {% if rss_path is defined %}
           &nbsp;
-          <a href="{{ get_url(path=rss_path) }}">
           {{ icons::render_rss_icons() }}
-        </a>
         {% endif %}
       </div>
       {% for page in term.pages %}

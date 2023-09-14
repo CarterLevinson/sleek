@@ -1,45 +1,6 @@
-{% import "macros/posts.html" as posts %}
-{% import "macros/icons.html" as icons %}
-
 {% extends "base.html" %}
 
 {% block page_body %}
   <div class="content">
-    <div class="posts">
-      {% for page in paginator.pages %}
-        <article class="post">
-          {{ posts::title(page=page) }}
-          <div class="post-summary">
-            {% if page.extra.summary %}
-              {{ page.extra.summary | safe }}
-            {% else %}
-              {{ page.summary | safe }}
-            {% endif %}
-          </div>
-          {% if page.taxonomies and page.taxonomies.tags %}
-          <div class="taxonomies">
-          </div>
-          {% endif %}
-          <div class="read-more">
-            <a href="{{ page.permalink }}">Read more...</a>
-          </div>
-          <hr/>
-        </article>
-      {% endfor %}
-      <nav class="pagination">
-        {% if paginator.previous %}
-          <div class="prev">
-            {{ icons::render_chevrons_left() }}
-            <a href="{{ paginator.previous }}">Previous</a>
-          </div>
-        {% endif %}
-        {% if paginator.next %}
-          <div class="next">
-            <a href="{{ paginator.next }}">Next</a>
-            {{ icons::render_chevrons_right() }}
-          </div>
-        {% endif %}
-      </nav>
-    </div>
   </div>
 {% endblock page_body %}

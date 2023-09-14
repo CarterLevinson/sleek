@@ -36,7 +36,8 @@ index_format       = "elasticlunr_json"
 # Perform syntax highlighting on code snippets
 highlight_code     = true
 # Use the following theme for highlights
-highlight_theme    = "monokai"
+# highlight_theme    = "monokai"
+highlight_theme    = "nord"
 
 [extra]
 # The author of the website

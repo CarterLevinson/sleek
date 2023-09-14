@@ -1,6 +1,7 @@
 +++
 title = "My eleventh post"
 date = 2023-11-01
+authors = ["John Q. Example", "Jane Example"]
 [taxonomies]
 # categories=["blog"]
 tags=["post", "blog"]

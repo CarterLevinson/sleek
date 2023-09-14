@@ -28,8 +28,8 @@
                 {% endfor %}
               </ul>
             </nav>
-            <div>
-            </div>
+          </div>
+        </div>
       {% endif %}
       <article class="post">
         {{ posts::title(page=page) }}
@@ -50,7 +50,7 @@
           {% endif %}
           <hr/>
           {% if page.lower or page.higher %}
-            <div class="post-nav">
+            <nav class="post-nav">
               {% if page.lower %}
                 <div class="prev">
                   {{ icons::render_chevrons_left() }}
@@ -67,7 +67,7 @@
                   {{ icons::render_chevrons_right() }}
                 </div>
               {% endif %}
-            </div>
+            </nav>
           {% endif %}
         </div>
       </article>

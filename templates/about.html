@@ -1,15 +1,16 @@
-{% import "macros/posts.html" as posts %}
-
 {% extends "base.html" %}
 
 {% block page_body %}
   <div class="content">
-    <article class="post">
-      {{ posts::title(page=page, meta=False) }}
-      <main class="about">
+    <article class="about">
+      <header class="about-header">
+        <h2 class="about-title">
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </h2>
+      </header>
+      <main class="about-content">
         {{ page.content | safe }}
       </main>
-      <hr/>
     </article>
   </div>
 {% endblock page_body %}
