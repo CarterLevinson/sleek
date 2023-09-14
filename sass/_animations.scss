@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@use "variables";
+@use "variables" as *;
 
 @mixin underline-from-center() {
   display: inline-block;
@@ -20,7 +20,7 @@
     left: 51%;
     right: 51%;
     background: #eee;
-    // background: variables.$light-grey;
+    background: $light-grey;
     transition-duration: 0.2s;
     transition-property: right, left;
     transition-timing-function: ease-out;
@@ -109,7 +109,7 @@
     top: calc((100% - 1px) / 2);
     width: 20px;
     height: 1px;
-    background-color: variables.$light-grey;
+    background-color: $light-grey;
 
     &:nth-child(1) {
       transform: translateY(6px) rotate(0deg);

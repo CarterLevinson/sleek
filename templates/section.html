@@ -2,7 +2,7 @@
 
 {% extends "base.html" %}
 
-{% block content %}
+{% block page_body %}
   <div class="content">
     <div class="posts">
       {% for page in paginator.pages %}
@@ -15,6 +15,10 @@
               {{ page.summary | safe }}
             {% endif %}
           </div>
+          {% if page.taxonomies and page.taxonomies.tags %}
+          <div class="taxonomies">
+          </div>
+          {% endif %}
           <div class="read-more">
             <a href="{{ page.permalink }}">Read more...</a>
           </div>
@@ -31,4 +35,4 @@
       </nav>
     </div>
   </div>
-{% endblock content %}
+{% endblock page_body %}

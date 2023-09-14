@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @use "flexbox";
-@use "variables";
+@use "variables" as *;
 
 @mixin background-clip() {
   -webkit-background-clip: padding-box;
@@ -27,21 +27,25 @@
   max-height: 5%;
 }
 
+
 .nav-search {
+  display: inline-block;
   .search-container {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     transition: width 300ms ease-in-out;
-    align-items: center;
+    // align-items: baseline;
+    // margin-top: 10px;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.0);
+    // background-color: rgba(255, 255, 255, 0.0);
     border: none;
     @include flexbox.flexbox();
     #nav-search {
       // align-self: center;
       position: absolute;
       padding-left: 10px;
+      margin: auto;
       height:100%;
       width: 100%;
       opacity: 0;
@@ -55,8 +59,8 @@
     }
     &:focus-within {
       width: 300px;
-      border: 2px solid variables.$off-white;
-      background-color: rgba(variables.$nord0, 1.0);
+      border: 2px solid $off-white;
+      // background-color: rgba($nord0, 1.0);
       #nav-search {
         opacity: 1;
         width: 100%;
@@ -66,17 +70,17 @@
       margin-left: auto;
       font-size: 1.6em;
       svg {
-        vertical-align: -0.125em;
+        vertical-align: 0.125rem;
+        // margin-bottom: 5px;
       }
-      // padding-left: 0;
     }
 
   }
 }
 .search-container {
   padding: 5px;
-  border: 2px solid variables.$off-white;
-  background-color: variables.$nord0;
+  border: 2px solid $off-white;
+  // background-color: #4C586A;
   border-radius: 50px;
   width: 100%;
   justify-content: center;
@@ -94,7 +98,7 @@
     cursor: pointer;
     font-size: 20px;
     svg {
-      fill: variables.$text;
+      fill: $text;
       height: 24px;
       width: 24px;
       vertical-align: -0.125em;
@@ -109,7 +113,7 @@
     background: transparent;
     padding-left: 10px;
     width: 100%;
-    color: variables.$text;
+    color: $text;
     // background-color: rgba(255, 255, 255, 0.0);
     // justify-content: center;
     &:focus {
@@ -135,7 +139,7 @@
 
   &-item {
     min-width: 0;
-    border-bottom: 1px solid variables.$off-white;
+    border-bottom: 1px solid $off-white;
     margin-top: 1rem;
     // padding-bottom: 5px;
     // margin: auto;

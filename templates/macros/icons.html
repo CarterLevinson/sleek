@@ -1,26 +1,4 @@
 
-<!-- font-awsesome tags icon -->
-{% macro render_tags_icon() %}
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-    <path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8
-             472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3
-             33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0
-             229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25
-             25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0
-             246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
-  </svg>
-{% endmacro %}
-
-<!-- font-awesome tag icon -->
-{% macro render_tag_icon() %}
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-    <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5
-             0L418.7 317.3c25-25 25-65.5
-             0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112
-             32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
-  </svg>
-{% endmacro %}
-
 <!-- font-awesome magnifying glass -->
 {% macro render_magnifying_glass() %}
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -29,7 +7,47 @@
              40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144
              144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
   </svg>
-{% endmacro %}
+{% endmacro render_magnifying_glass %}
+
+
+{% macro render_tag_icon() %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round"
+       class="feather feather-tag">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59
+             8.59a2 2 0 0 1 0 2.82z"/>
+    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+  </svg>
+{% endmacro  render_tag_icon%}
+
+{% macro render_rss_icon() %}
+  <a href="{{ get_url(path=config.feed_filename) }}"
+    title="{{  config.feed_filename }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="feather feather-rss">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+  </a>
+{% endmacro render_rss_icon %}
+
+{% macro render_hash_icon() %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round"
+       class="feather feather-hash">
+    <line x1="4" y1="9" x2="20" y2="9"></line>
+    <line x1="4" y1="15" x2="20" y2="15"></line>
+    <line x1="10" y1="3" x2="8" y2="21"></line>
+    <line x1="16" y1="3" x2="14" y2="21"></line>
+  </svg>
+{% endmacro render_hash_icon %}
+
+<!-- style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" -->
 
 <!-- borrowed from the Hermit Zola Theme MIT License -->
 <!-- https://github.com/VersBinarii/hermit_zola -->

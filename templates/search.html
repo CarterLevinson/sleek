@@ -1,11 +1,14 @@
 {% import "macros/icons.html" as icons %}
 {% extends "base.html" %}
 
-{% block content %}
+{% block page_body %}
   <div class="content">
     <div class="search-page-bar">
       <form class="search-container">
-        <input id="main-search" type="search" autocomplete="off" placeholder="Search ..."/>
+        <input id="main-search"
+               type="search"
+               autocomplete="off"
+               placeholder="Search ..."/>
         <button id="main-button" type="submit">
           {{ icons::render_magnifying_glass() }}
         </button>
@@ -16,10 +19,10 @@
       </ul>
     </div>
   </div>
-{% endblock content %}
+{% endblock page_body %}
 
 {% block script %}
+  {{ super() }}
   <script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
-  <script src="{{ get_url(path="main.js") }}"></script>
   <script src="{{ get_url(path="search.js") }}"></script>
 {% endblock script %}

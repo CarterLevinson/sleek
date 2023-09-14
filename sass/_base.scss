@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-@use "variables";
 @use "animations";
+@use "variables" as *;
 
 * {
   margin: 0;
@@ -13,11 +13,19 @@ html {
   line-height: 1.6;
   height: 100%;
   letter-spacing: 0.06em;
-  background: variables.$background;
+  background: $background;
 }
 
 body {
   height: 100%;
+}
+
+h1 {
+  font-weight: $black;
+}
+
+menu {
+  font-size: 1.2em;
 }
 
 /* style regular text */
@@ -26,15 +34,18 @@ button,
 input,
 select,
 textarea {
-  color: variables.$text;
-  font-family: variables.$font, sans-serif
+  color: $text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font, sans-serif;
+  // text-rendering: optimizeLegibility;
 }
 
 /* handle buttons */
 button {
   font-weight: 500;
-  font-size: 16px;
-  color: variables.$off-white;
+  font-size: 1.6em;
+  color: $text;
   text-decoration: none;
 
   padding: 9x 25px;
@@ -54,7 +65,9 @@ button:hover {
 pre,
 code,
 pre tt {
-  font-family: variables.$code-font, sans-serif
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $code-font, monospace;
 }
 
 pre {
@@ -68,18 +81,18 @@ pre {
   word-wrap: break-word;
   color: #eee;
   border-radius: 4px;
-  // -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 
   code {
     padding: 0;
     margin: 0;
-    background: variables.$midnightblue;
+    background: $theme1;
   }
 }
 
 code {
   color: #eee;
-  background: variables.$highlight-grey;
+  background: $highlight-grey;
   border-radius: 3px;
   padding: 0 3px;
   margin: 0 4px;
@@ -104,7 +117,7 @@ blockquote {
 }
 
 a {
-  color: variables.$text;
+  color: $text;
   text-decoration: none;
   border: none;
   transition-property: color;
@@ -113,7 +126,7 @@ a {
   @include animations.underline-from-center;
 
   &:hover {
-    color: variables.$nord8;
+    color: $nord8;
   }
 
   &:focus {
@@ -123,12 +136,11 @@ a {
 
 hr {
   opacity: 0.5;
-  // border-width: 0 0 5px 0;
-  // border-style: dashed;
+  border-width: 0 0 2px 0;
   background: transparent;
   width: 100%;
   margin: 1.8em auto;
-  color: variables.$off-white;
+  color: off-white;
 }
 
 table {

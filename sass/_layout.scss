@@ -2,7 +2,7 @@
 
 
 @use "flexbox";
-@use "variables";
+@use "variables" as *;
 
 /* page: vertical-flex container */
 .page {
@@ -28,8 +28,8 @@
   }
   /* page body: horizontal-flex container */
   .page-body {
-    border-top: variables.$off-white solid 1px;
-    border-bottom: variables.$off-white solid 1px;
+    border-top: $off-white solid 1px;
+    border-bottom: $off-white solid 1px;
     justify-content: center;
     // align-content: start;
     // align-content: center;
@@ -41,6 +41,18 @@
     // background-color: variables.$banner;
 
     max-height: 50px;
+    text-align: center;
+
+    .copyright {
+      font-size: 1.0em;
+      font-weight: $bold;
+    }
+
+    svg {
+      height: 1em;
+      width: 1em;
+      // margin-left: -0.125em;
+    }
 
     p {
       font-size: 0.8em;
@@ -55,16 +67,6 @@
     .taxonomies-container {
       .taxonomies {
         font-size: 0.8em;
-        a {
-          margin: 0px 0px 0px 5px;
-        }
-        .count {
-          position: relative;
-          top: -4px;
-          right: -2px;
-          color: variables.$text;
-          font-size: 12px;
-        }
       }
     }
 
@@ -104,30 +106,26 @@
   margin-right: auto;
   // flex sized image?
   .logo {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px
   }
+}
+
+.nav-link {
+  vertical-align: 0.25rem;
 }
 
 .nav-links {
   list-style: none;
 }
 
-.nav-links li {
+.nav-links .nav-link {
   display: inline-block;
   padding: 0px 20px;
   a {
     transition: all 0.3 ease 0s;
     &:hover {
-      color: variables.$nord8;
+      color: $nord8;
     }
   }
-  svg {
-    fill: variables.$text;
-    height: 1.0em;
-    vertical-align: -0.125em;
-    // height: 1em;
-    // width: 1em;
-  }
 }
-

@@ -1,16 +1,15 @@
 {% import "macros/posts.html" as posts %}
+
 {% extends "base.html" %}
 
-{% block content %}
-  {% filter indent() %}
-    <div class="content">
-      <article class="post">
-        {{ posts::title(page=page, meta=False) }}
-        <main class="about">
-          {{ page.content | safe }}
-        </main>
-        <hr/>
-      </article>
-    </div>
-  {% endfilter %}
-{% endblock content %}
+{% block page_body %}
+  <div class="content">
+    <article class="post">
+      {{ posts::title(page=page, meta=False) }}
+      <main class="about">
+        {{ page.content | safe }}
+      </main>
+      <hr/>
+    </article>
+  </div>
+{% endblock page_body %}

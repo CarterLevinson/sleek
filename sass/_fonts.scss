@@ -1,28 +1,10 @@
 @charset "UTF-8";
+@use "variables" as *;
+
 //
 // Fonts
 //
-
-$thin: 100;
-$hairline: 100;
-$extra-light: 200;
-$light: 300;
-$regular: 400;
-$normal: 400;
-$medium: 500;
-$semi-bold: 600;
-$bold: 700;
-$extra-bold: 800;
-$black: 900;
-
-$font: "Fira Sans";
-$code-font: "Fira Code";
-$math-font: "Fira Math";
-
-// $fa-font-path: "fonts/font-awesome";
-
 @font-face {
-  // font-family: "Fira Sans";
   font-family: $font;
   font-style: normal;
   font-weight: $regular;
@@ -167,7 +149,6 @@ $math-font: "Fira Math";
 }
 
 @font-face {
-  // font-family: "Fira Code";
   font-family: $code-font;
   font-style: normal;
   font-weight: $regular;

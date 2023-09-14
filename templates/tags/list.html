@@ -1,22 +1,28 @@
 {% import "macros/posts.html" as posts %}
+{% import "macros/icons.html" as icons %}
+
 {% extends "base.html" %}
 
-{% block content %}
+{% block page_body %}
   <div class="content">
     <div class="taxonomies-container">
       <div class="taxonomies-title">
         <a href="{{ current_url }}"><h1>Tags</h1></a>
       </div>
       <div class="taxonomies-items">
-        <ul>
           {% for tag in terms %}
             <li>
-              <a href="{{ tag.permalink }}">{{ tag.name }}</a>
-              <span class="count">{{ tag.pages | length }}</span>
+              <span class="hash">
+                {{ icons::render_hash_icon() }}
+              </span>
+              <span class="tag">
+                <a href="{{ tag.permalink }}">{{ tag.name }}</a>
+                <span class="count">{{ tag.pages | length }}</span>
+              </span>
             </li>
           {% endfor %}
         </ul>
       </div>
     </div>
   </div>
-{% endblock content %}
+{% endblock page_body %}

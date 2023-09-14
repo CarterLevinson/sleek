@@ -1,4 +1,5 @@
 {% import "macros/utils.html" as utils %}
+{% import "macros/icons.html" as icons %}
 
 {% macro render_mathjax() %}
 {% endmacro render_mathjax %}
@@ -14,4 +15,7 @@
 {% macro make_footer() %}
   {{ utils::make_footer_copyright() }}
   {{ utils::make_footer_taxonomies() }}
+  {% if config.generate_feed %}
+    {{ icons::render_rss_icon() }}
+  {% endif %}
 {% endmacro make_footer %}

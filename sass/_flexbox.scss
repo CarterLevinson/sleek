@@ -1,8 +1,9 @@
 @mixin flexbox() {
-  display: -webkit-box;
   display: -moz-box;
+  display: -moz-box-flex;
   display: -ms-flexbox;
-  display: -webkit-flex;
+  display: -webkit-box;
+  display: -webkit-box-flex;
   display: flex;
 }
 
