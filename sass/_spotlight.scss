@@ -57,19 +57,14 @@
 // 404
 //
 
-p.img-404 {
-  margin: 0;
-
-  svg {
-    width: 180px;
-    max-width: 100%;
-    height: auto;
-  }
-}
-
 .banner-404 {
   margin-left: 2em;
+  // display: flex column;
+  // justify-content: center;
 
+  img {
+    object-fit: scale-down;
+  }
   h1 {
     text-align: center;
     font-size: 3em;
