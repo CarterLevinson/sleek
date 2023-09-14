@@ -1,7 +1,5 @@
-@charset "UTF-8";
-
-@use "flexbox";
-@use "variables" as *;
+@use "../abstracts/flexbox" as fb;
+@use "../abstracts/variables" as *;
 
 @mixin background-clip() {
   -webkit-background-clip: padding-box;
@@ -18,7 +16,7 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  @include flexbox.flexbox();
+  @include fb.flexbox();
 }
 
 .search-page-bar {
@@ -40,7 +38,7 @@
     overflow: hidden;
     // background-color: rgba(255, 255, 255, 0.0);
     border: none;
-    @include flexbox.flexbox();
+    @include fb.flexbox();
     #nav-search {
       // align-self: center;
       position: absolute;
@@ -54,7 +52,7 @@
       // line-height: 5px;
       background: transparent;
       // margin-top: 5px;
-      @include flexbox.flex(1 0 auto);
+      @include fb.flex(1 0 auto);
 
     }
     &:focus-within {
@@ -84,7 +82,7 @@
   border-radius: 50px;
   width: 100%;
   justify-content: center;
-  @include flexbox.flexbox();
+  @include fb.flexbox();
   @include background-clip();
 
   button {
@@ -126,7 +124,7 @@
   // margin: auto;
   align-self: flex-start;
   flex-flow: row wrap;
-  @include flexbox.flexbox();
+  @include fb.flexbox();
   // justify-content: start;
   // display: flex;
   // padding: 10px 0px 10px 0px;
@@ -134,7 +132,7 @@
     margin: auto;
     width: 100%;
     list-style: none;
-    @include flexbox.flex(1 0 auto);
+    @include fb.flex(1 0 auto);
   }
 
   &-item {

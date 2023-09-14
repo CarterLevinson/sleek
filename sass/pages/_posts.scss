@@ -1,0 +1,27 @@
+@use "../abstracts/flexbox" as fb;
+// @use "abstracts/variables";
+
+.posts {
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  // margin: 0 auto 0 auto;
+  // margin-top: 5%;
+  // margin-bottom: 5%;
+  @include fb.flexbox();
+}
+
+.post-title {
+  margin: 0;
+}
+
+.post-summary {
+  padding-bottom: 15px;
+}
+
+.post-meta {
+  padding-bottom: 15px;
+}
+
+.post {
+  @include fb.flex(1 0 auto);
+}

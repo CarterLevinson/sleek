@@ -1,15 +1,12 @@
-@charset "UTF-8";
-
-
-@use "flexbox";
-@use "variables" as *;
+@use "../abstracts/flexbox" as fb;
+@use "../abstracts/variables" as *;
 
 /* page: vertical-flex container */
 .page {
   min-height: 100%;
   flex-flow: column wrap;
-  @include flexbox.flexbox();
-  @include flexbox.flex(1 1 auto);
+  @include fb.flexbox();
+  @include fb.flex(1 1 auto);
 }
 
 .page {
@@ -20,8 +17,8 @@
     align-items: center;
     line-height: normal;
     z-index: 1;
-    @include flexbox.flexbox();
-    @include flexbox.flex(0 0 auto);
+    @include fb.flexbox();
+    @include fb.flex(0 0 auto);
 
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
@@ -33,8 +30,8 @@
     justify-content: center;
     // align-content: start;
     // align-content: center;
-    @include flexbox.flexbox();
-    @include flexbox.flex(1 1 auto);
+    @include fb.flexbox();
+    @include fb.flex(1 1 auto);
   }
   .page-footer {
     // color: variables.$navy-blue;
@@ -78,8 +75,8 @@
     justify-content: center;
     align-items: center;
     padding: 15px 0%;
-    @include flexbox.flexbox();
-    @include flexbox.flex(0 0 auto);
+    @include fb.flexbox();
+    @include fb.flex(0 0 auto);
   }
 }
 
@@ -88,13 +85,14 @@
   margin-top: 15px;
   max-height: 90%;
   max-width: 67%;
-  @include flexbox.flexbox();
-  @include flexbox.flex(1 1 auto);
+  @include fb.flexbox();
+  @include fb.flex(1 1 auto);
 }
 // navigation
 
 .next {
   float: right;
+  margin-bottom: 1.8rem;
   a {
     vertical-align: -0.125em;
   }
@@ -102,6 +100,7 @@
 
 .prev {
   float: left;
+  margin-bottom: 1.8rem;
   a {
     vertical-align: -0.125em;
   }

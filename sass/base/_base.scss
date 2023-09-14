@@ -1,7 +1,5 @@
-@charset "UTF-8";
-
-@use "animations";
-@use "variables" as *;
+@use "../abstracts/animations";
+@use "../abstracts/variables" as *;
 
 * {
   margin: 0;

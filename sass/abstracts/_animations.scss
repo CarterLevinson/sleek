@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-@use "variables" as *;
+// @use "variables" as *;
 
 @mixin underline-from-center() {
   display: inline-block;
@@ -20,7 +18,7 @@
     left: 51%;
     right: 51%;
     background: #eee;
-    background: $light-grey;
+    // background: $light-grey;
     transition-duration: 0.2s;
     transition-property: right, left;
     transition-timing-function: ease-out;

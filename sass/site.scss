@@ -1,12 +1,16 @@
 @charset "utf-8";
 
-@use "normalize";
-@use "accessibility";
+@use "base/normalize";
+@use "base/base";
+@use "base/fonts";
 
-@use "base";
-@use "layout";
-@use "posts";
-@use "search";
-@use "fonts";
-@use "taxonomy";
-@use "spotlight";
+@use "layouts/layout";
+@use "layouts/spotlight";
+
+@use "components/accessibility";
+// @use "components/icons";
+
+@use "pages/error";
+@use "pages/posts";
+@use "pages/search";
+@use "pages/taxonomy";

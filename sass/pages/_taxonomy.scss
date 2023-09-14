@@ -1,7 +1,5 @@
-@charset "UTF-8";
-
-@use "flexbox";
-@use "variables" as *;
+@use "../abstracts/flexbox" as fb;
+@use "../abstracts/variables" as *;
 
 @mixin aTag {
   a {
@@ -23,7 +21,7 @@
 .taxonomies-container{
   flex-flow: column wrap;
   width: 100%;
-  @include flexbox.flexbox();
+  @include fb.flexbox();
 }
 
 .taxonomies {

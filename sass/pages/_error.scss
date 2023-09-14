@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as *;
+
+//
+// 404
+//
+
+.banner-404 {
+  margin-left: 2em;
+  // display: flex column;
+  // justify-content: center;
+
+  img {
+    object-fit: scale-down;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 0.5rem 0;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.6em;
+  }
+
+  .btn-404 {
+    font-size: 0.8em;
+
+    a {
+      display: inline-block;
+      border: 2px solid $text;
+      border-radius: 5px;
+      padding: 5px;
+      transition-property: color, border-color;
+      word-break: break-all;
+
+      &:first-child {
+        margin-right: 1em;
+      }
+
+      &:hover {
+        border-color: #fff;
+      }
+
+      svg {
+        margin-right: 0.5em;
+      }
+    }
+  }
+}
