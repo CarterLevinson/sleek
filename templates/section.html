@@ -1,4 +1,5 @@
 {% import "macros/posts.html" as posts %}
+{% import "macros/icons.html" as icons %}
 
 {% extends "base.html" %}
 
@@ -27,10 +28,16 @@
       {% endfor %}
       <nav class="pagination">
         {% if paginator.previous %}
-          <a class="prev" href="{{ paginator.previous }}">‹ Previous</a>
+          <div class="prev">
+            {{ icons::render_chevrons_left() }}
+            <a href="{{ paginator.previous }}">Previous</a>
+          </div>
         {% endif %}
         {% if paginator.next %}
-          <a class="next" href="{{ paginator.next }}">Next ›</a>
+          <div class="next">
+            <a href="{{ paginator.next }}">Next</a>
+            {{ icons::render_chevrons_right() }}
+          </div>
         {% endif %}
       </nav>
     </div>

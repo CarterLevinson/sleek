@@ -40,7 +40,7 @@
     // color: variables.$navy-blue;
     // background-color: variables.$banner;
 
-    max-height: 50px;
+    max-height: 75px;
     text-align: center;
 
     .copyright {
@@ -95,10 +95,16 @@
 
 .next {
   float: right;
+  a {
+    vertical-align: -0.125em;
+  }
 }
 
 .prev {
   float: left;
+  a {
+    vertical-align: -0.125em;
+  }
 }
 
 .logo-link {

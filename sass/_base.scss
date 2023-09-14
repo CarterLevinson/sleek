@@ -26,6 +26,11 @@ h1 {
 
 menu {
   font-size: 1.2em;
+  font-weight: $medium;
+}
+
+footer {
+  font-weight: $extra-light;
 }
 
 /* style regular text */
@@ -34,10 +39,10 @@ button,
 input,
 select,
 textarea {
-  color: $text;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   font-family: $font, sans-serif;
+  color: $text;
   // text-rendering: optimizeLegibility;
 }
 

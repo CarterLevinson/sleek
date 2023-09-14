@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @use "flexbox";
-@use "variables";
+@use "variables" as *;
 
 //
 // spotlight
@@ -15,7 +15,7 @@
 
   margin: auto;
   max-width: 93%;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 
   @include flexbox.flexbox();
 
@@ -39,8 +39,9 @@
 .spotlight-quote {
   text-align: center;
   line-height: normal;
-  font-size: 0.7em;
+  font-size: 1.2rem;
   font-style: italic;
+  font-weight: $semi-bold;
 }
 
 .social-icons {
@@ -86,7 +87,7 @@ p.img-404 {
 
     a {
       display: inline-block;
-      border: 2px solid variables.$text;
+      border: 2px solid $text;
       border-radius: 5px;
       padding: 5px;
       transition-property: color, border-color;

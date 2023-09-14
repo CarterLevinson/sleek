@@ -1,4 +1,6 @@
 {% import "macros/posts.html" as posts %}
+{% import "macros/icons.html" as icons %}
+
 {% extends "base.html" %}
 
 {% block page_body %}
@@ -50,10 +52,20 @@
           {% if page.lower or page.higher %}
             <div class="post-nav">
               {% if page.lower %}
-                <a class="prev" href="{{ page.lower.permalink }}">‹ {{ page.lower.title }}</a>
+                <div class="prev">
+                  {{ icons::render_chevrons_left() }}
+                  <a href="{{ page.lower.permalink }}">
+                    {{ page.lower.title }}
+                  </a>
+                </div>
               {% endif %}
               {% if page.higher %}
-                <a class="next" href="{{ page.higher.permalink }}">{{ page.higher.title }} ›</a>
+                <div class="next">
+                  <a href="{{ page.higher.permalink }}">
+                    {{ page.higher.title }}
+                  </a>
+                  {{ icons::render_chevrons_right() }}
+                </div>
               {% endif %}
             </div>
           {% endif %}

@@ -31,12 +31,6 @@
   text-align: center;
   // justify-self: start;
   // align-self: start;
-  svg {
-    height: 1em;
-
-    // fill: $text;
-    vertical-align: -0.125em;
-  }
 
   &-title {
     // margin: auto;
@@ -49,19 +43,26 @@
     color: $text;
   }
 
+  &-list {
+    list-style: none;
+    > li {
+      display: inline-block;
+      margin-right: 0.25em;
+    }
+  }
   &-items {
     // margin: 10px 0;
     // vertical-align: center;
 
     // padding-left: 1.0em;
-    svg {
-      vertical-align: -0.125em;
-      // width: 1.4em;
-      // height: 1.4em;
-    }
     li {
       list-style-type: "none";
       font-size: 1.4em;
+      svg {
+        vertical-align: -0.125em;
+        height: 0.8em;
+        width: 0.8em;
+      }
       list-style: none;
     }
 
@@ -87,15 +88,6 @@
       font-size: 0.8em;
       margin-left: -0.33em;
     }
-  }
-}
-
-.taxonomies-list  {
-  // padding: 0;
-  list-style: none;
-  & > li {
-    display: inline-block;
-    margin-right: 0.25em;
   }
 }
 

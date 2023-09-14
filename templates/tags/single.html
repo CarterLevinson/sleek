@@ -1,14 +1,16 @@
+{% import "macros/icons.html" as icons %}
+
 {% extends "base.html" %}
 
 {% block rss %}
   {% if config.generate_feed and config.feed_filename == "atom.xml" %}
-    {% set atom_path = "tags/" ~ term.name ~  "/atom.xml" %}
+    {% set_global atom_path = "tags/" ~ term.name ~  "/atom.xml" %}
     <link rel="alternate"
           type="application/atom+xml"
           href="{{ get_url(path=atom_path) }}"/>
   {% endif %}
   {% if config.generate_feed and config.feed_filename == "rss.xml" %}
-    {% set rss_path = "tags/" ~ term.name ~ "/rss.xml" %}
+    {% set_global rss_path = "tags/" ~ term.name ~ "/rss.xml" %}
     <link rel="alternate"
           type="application/rss+xml"
           href="{{ get_url(path=rss_path) }}"/>
@@ -18,7 +20,23 @@
 {% block page_body %}
   <div class="content">
     <div class="taxonomy">
-      <h2>{{ term.name }}</h2>
+      <div class="taxonomies-title">
+        <a href="{{ current_url }}">
+          <h2>{{ term.name }}</h2>
+        </a>
+        {% if atom_path is defined %}
+          &nbsp;
+          <a href="{{ get_url(path=atom_path) }}">
+          {{ icons::render_rss_icon() }}
+        </a>
+        {% endif %}
+        {% if rss_path is defined %}
+          &nbsp;
+          <a href="{{ get_url(path=rss_path) }}">
+          {{ icons::render_rss_icons() }}
+        </a>
+        {% endif %}
+      </div>
       {% for page in term.pages %}
         <div class="taxonomy-item">
           <span class="taxonomy-item-time">
