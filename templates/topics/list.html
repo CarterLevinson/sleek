@@ -19,17 +19,15 @@
             <a href="{{ topic.permalink }}">
               {{ topic.name }}
             </a>
-            </h1>
-            <p class="taxonomies-item-description">
-              {{ json[topic.name] }}
-            </p>
+          </h1>
+          <p class="taxonomies-item-description">
+            {{ json[topic.name] }}
+          </p>
         </div>
-        {% endfor %}
-      </div>
+      {% endfor %}
       <hr/>
       <div class="taxonomies-total">
         {{ terms | length }} categories in total
       </div>
     </div>
-  </div>
 {% endblock page_body %}
