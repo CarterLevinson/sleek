@@ -1,3 +1,4 @@
+{% import "macros/macros.html" as macros %}
 {% import "macros/icons.html" as icons %}
 
 {% extends "base.html" %}
@@ -22,9 +23,7 @@
       </p>
       <div class="social-icons">
         {{ icons::render_social_icons() }}
-        {% if config.generate_feed %}
-          {{ icons::render_rss_icon() }}
-        {% endif %}
+        {{ macros::rss_feed() }}
       </div>
     </div>
   </div>

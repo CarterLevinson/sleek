@@ -1,52 +1,60 @@
-name              = "Sleek"
-description       = "A minimalistic theme a for personal website or blog"
-license           = "MIT"
-homepage          = "https://github.com/CarterLevo/Sleek"
+name                  = "Sleek"
+description           = "A minimalistic theme a for personal website or blog"
+license               = "MIT"
+homepage              = "https://github.com/CarterLevo/Sleek"
 
 # todo: test on other versions
-min_version       = "0.17.0"
+min_version           = "0.17.0"
 
 # Cloudflare pages URL
-demo              = "https://sleek-4lj.pages.dev"
+demo                  = "https://sleek-4lj.pages.dev"
 
 [author]
-name              = "Carter S. Levinson"
-homepage          = "carterlevinson.net"
+name                  = "Carter S. Levinson"
+homepage              = "carterlevinson.net"
 
 [extra]
 # The author of the website
-sleek_author       = "John Q. Example"
+sleek_author          = "John Q. Example"
 # Alternate text for the logo image
-sleek_abbr         = "JQE"
+sleek_abbr            = "JQE"
 # displayed below title of website on homepage
-sleek_quote        = "You get what you pay for!"
+sleek_quote           = "You get what you pay for!"
 # website copyright statement
-sleek_copyright    = "All rights reserved"
+sleek_copyright       = "All rights reserved"
 # todo: implement
-sleek_mathjax      = false
-# whether to include selected tags at bottom of page
-sleek_footer_tags  = true
+sleek_mathjax         = false
 # list of tags to display in the footer
-sleek_tags         = [
+sleek_footer_tags     = [
   "blog",
   "lorem",
   "post"
 ]
+
+sleek_footer_topics   = []
+
+sleek_topics_metadata = "topics/topics.json"
+
+# sleek_search        = true
+sleek_topics          = [
+]
+
 # path to the logo svg
-sleek_logo         = "images/Q-nord6.svg"
+sleek_logo            = "images/Q-nord6.svg"
 
 # menu items for the navbar
-sleek_menu         = [
-  { name           = "Home",       link = "/"},
-  { name           = "Blog",       link = "/blog" },
-  { name           = "Tags",       link = "/tags" },
-  # { name         = "Categories", link ="/categories" },
-  { name           = "About",      link  = "/about"}
+sleek_menu            = [
+  { name              = "Home",       link = "/"},
+  { name              = "Blog",       link = "/blog" },
+  { name              = "Tags",       link = "/tags" },
+  { name              = "Topics",     link = "/topics" },
+  { name              = "About",      link = "/about"}
 ]
 
 # website and pages linked on the homepage
-sleek_pages        = [
-  { name           = "twitter",    link = "https://twitter.com/johnqe" },
-  { name           = "github",     link = "https://github.com/johnqe" },
-  { name           = "email",      link = "mailto:john@example.com" }
+sleek_pages           = [
+  { name              = "twitter",    link = "https://twitter.com" },
+  { name              = "github",     link = "https://github.com" },
+  { name              = "linkedin",   link = "https:/linkedin.com" },
+  { name              = "email",      link = "mailto:john@example.com" }
 ]

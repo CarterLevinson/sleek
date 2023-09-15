@@ -1,4 +1,3 @@
-{% import "macros/posts.html" as posts %}
 {% import "macros/icons.html" as icons %}
 
 {% extends "base.html" %}
@@ -17,12 +16,12 @@
         {% for tag in terms %}
           <li class="taxonomies-item">
             <a href="{{ tag.permalink }}">
-              {#<span class="hash">
-                  {{ icons::render_hash_icon() }}
-              </span> #}
               <span class="hash">
-                #
+                {{ icons::render_hash_icon() }}
               </span>
+              <!-- <span class="hash"> -->
+              <!--   # -->
+              <!-- </span> -->
               <span class="tag">
                 {{ tag.name }}
               </span>
@@ -34,9 +33,9 @@
         {% endfor %}
       </ul>
       <hr/>
-      <footer class="taxonomies-total">
+      <div class="taxonomies-total">
         {{ terms | length }} tags in total
-      </footer>
+      </div>
     </div>
   </div>
 {% endblock page_body %}

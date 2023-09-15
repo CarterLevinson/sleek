@@ -1,21 +1,62 @@
-{% import "macros/utils.html" as utils %}
 {% import "macros/icons.html" as icons %}
 
-{% macro render_mathjax() %}
-{% endmacro render_mathjax %}
-
-{% macro make_header() %}
-  {% set logo = config.extra.sleek_logo %}
-  {% set abbr = config.extra.sleek_abbr %}
-  {{ utils::make_header_logo(logo=logo, abbr=abbr) }}
-  {% set menu = config.extra.sleek_menu %}
-  {{ utils::make_header_menu(menu=menu) }}
-{% endmacro header %}
-
-{% macro make_footer() %}
-  {{ utils::make_footer_copyright() }}
-  {{ utils::make_footer_taxonomies() }}
-  {% if config.generate_feed %}
-    {{ icons::render_rss_icon() }}
+{% macro footer_taxonomies() %}
+  {% if config.extra.sleek_footer_tags | length != 0 %}
+    <div class="taxonomies-footer">
+      <ul class="taxonomies-footer-items">
+        |
+        {% for tag in config.extra.sleek_footer_tags %}
+          <li class="taxonomies-footer-item">
+            {% set term = get_taxonomy_term(kind="tags", term=tag) %}
+            {{ icons::render_tag_icon() }}
+            <a href="{{ term.permalink }}">{{ term.name }}</a>
+          </li>
+          |
+        {% endfor %}
+      </ul>
+    </div>
   {% endif %}
-{% endmacro make_footer %}
+  {% if config.extra.sleek_footer_topics | length != 0 %}
+    <div class="taxonomies-footer">
+      <ul class="taxonomies-footer-items">
+        |
+        {% for topic in config.extra.sleek_footer_topics %}
+          <li class="taxonomies-footer-item">
+            {% set term = get_taxonomy_term(kind="topics", term=topic) %}
+            <!-- icon?? -->
+            < href="{{ term.permalink }}">{{ term.name }}</a>
+          </li>
+          |
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endmacro footer_taxonomies %}
+
+{% macro rss_feed() %}
+  {% if config.generate_feed %}
+    <a href="{{ config.feed_filename }}">
+      {{ icons::render_rss_icon() }}
+    </a>
+  {% endif %}
+{% endmacro rss_feed %}
+
+{% macro copyright() %}
+  {% if config.extra.sleek_copyright %}
+    <p>
+      <span class ="copyright">&copy;</span>
+      {{ now() | date(format="%Y") }}
+      <a href="{{ config.base_url }}">{{ config.extra.sleek_author }}</a>.
+      {{ config.extra.sleek_copyright }}.
+    </p>
+  {% else %}
+    <p>
+      <span class="copyright">&copy;</span>
+      {{ now() | date(format="%Y") }}
+      <a href="{{ config.base_url }}">Sleek theme</a>.
+      Powered by Zola.
+    </p>
+  {% endif %}
+{% endmacro copyright %}
+
+{# vim: set ft=htmldjango #}

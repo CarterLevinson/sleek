@@ -1,0 +1,35 @@
+{% import "macros/icons.html" as icons %}
+
+{% extends "base.html" %}
+
+{% block page_body %}
+  <div class="content">
+    <div class="taxonomies-container">
+      <div class="taxonomies-header">
+        <h1 class="taxonomies-title">
+          <a href="{{ current_url }}">
+            Categories
+          </a>
+        </h1>
+      </div>
+      {% set json = load_data(path=config.extra.sleek_topics_metadata) %}
+      {% for topic in terms %}
+        <div class="taxonomies-item">
+          <h1 class="taxonomies-item-title">
+            <a href="{{ topic.permalink }}">
+              {{ topic.name }}
+            </a>
+            </h1>
+            <p class="taxonomies-item-description">
+              {{ json[topic.name] }}
+            </p>
+        </div>
+        {% endfor %}
+      </div>
+      <hr/>
+      <div class="taxonomies-total">
+        {{ terms | length }} categories in total
+      </div>
+    </div>
+  </div>
+{% endblock page_body %}

@@ -98,7 +98,13 @@
 
 .taxonomy {
   margin: 2em 0;
-
+  &-title {
+    svg {
+      height: 1.0em;
+      width: 1.0em;
+      // vertical-align: -0.25em;
+    }
+  }
   &-item {
     padding: 3px 20px;
     border-left: 1px solid #cacaca;

@@ -1,5 +1,7 @@
 {% import "macros/macros.html" as macros %}
+{% import "macros/menu.html" as menu %}
 
+{# template #}
 <!DOCTYPE html>
 <html lang="{{ config.default_language }}">
   <head>
@@ -43,7 +45,6 @@
               href="{{ get_url(path="site.css") }}"/>
       {% endblock css %}
       {% if config.extra.sleek_mathjax %}
-        {{ macros::render_mathjax() }}
       {% endif %}
       {% block rss %}
         {% if config.generate_feed and config.feed_filename == "atom.xml" %}
@@ -77,7 +78,11 @@
       <div class="page">
         <header class="page-header">
           {% block page_header %}
-            {{ macros::make_header() }}
+            {% set logo = config.extra.sleek_logo %}
+            {% set abbr = config.extra.sleek_abbr %}
+            {{ menu::make_logo(logo=logo, abbr=abbr) }}
+            {% set menu = config.extra.sleek_menu %}
+            {{ menu::make_navbar(menu=menu) }}
           {% endblock page_header %}
         </header>
         <div class="page-body">
@@ -88,7 +93,9 @@
         </div>
         <footer class="page-footer">
           {% block page_footer %}
-            {{ macros::make_footer() }}
+            {{ macros::copyright() }}
+            {{ macros::footer_taxonomies() }}
+            {{ macros::rss_feed() }}
           {% endblock page_footer %}
         </footer>
       </div>

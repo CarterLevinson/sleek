@@ -1,0 +1,38 @@
+{% import "macros/icons.html" as icons %}
+
+{% macro make_logo(logo="", abbr="") %}
+  <a class="logo-link" href="{{ config.base_url }}">
+    {% if logo | length != 0 %}
+      <img class="logo" src="{{ get_url(path=logo) }}" alt="{{ abbr }}"/>
+    {% elif abbr | length != 0 %}
+      <span class="logo">{{ abbr }}</span>
+    {% else %}
+      <span class="logo">{{ config.base_url }}</span>
+    {% endif %}
+  </a>
+{% endmacro make_logo %}
+
+{% macro make_navbar(menu) %}
+  <nav>
+    <menu class="nav-links">
+      {% for target in menu %}
+        <li class="nav-link">
+          <a href="{{ config.base_url ~ target.link }}">
+            {{ target.name }}
+          </a>
+        </li>
+      {% endfor %}
+      <li class="nav-search">
+        <form class="search-container">
+          <input id="nav-search"
+                 autocomplete="off"
+                 placeholder="Search..."/>
+          <button id="nav-button">
+            {{ icons::render_magnifying_glass() }}
+          </button>
+        </form>
+      </li>
+    </menu>
+  </nav>
+{% endmacro make_menu %}
+{# vim: set ft=htmldjango #}
