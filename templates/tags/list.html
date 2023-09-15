@@ -5,23 +5,21 @@
 {% block page_body %}
   <div class="content">
     <div class="taxonomies-container">
-      <div class="taxonomies-header">
+      {#<div class="taxonomies-header">
         <h1 class="taxonomies-title">
           <a href="{{ current_url }}">
             Tags
           </a>
         </h1>
       </div>
+      #}
       <ul class="taxonomies-items">
         {% for tag in terms %}
           <li class="taxonomies-item">
             <a href="{{ tag.permalink }}">
               <span class="hash">
-                {{ icons::render_hash_icon() }}
+                {{ icons::render_slanted_hash_icon() }}
               </span>
-              <!-- <span class="hash"> -->
-              <!--   # -->
-              <!-- </span> -->
               <span class="tag">
                 {{ tag.name }}
               </span>
@@ -29,6 +27,11 @@
             <span class="count">
               {{ tag.pages | length }}
             </span>
+            <span>
+            <button class="expand">
+              <img src="{{ get_url(path="images/list-arrow-nord6.svg") }}"/>
+            </button>
+            </span
           </li>
         {% endfor %}
       </ul>

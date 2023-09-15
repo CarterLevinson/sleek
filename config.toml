@@ -59,7 +59,7 @@ sleek_footer_tags     = [
 
 sleek_footer_topics   = []
 
-sleek_topics_metadata = "topics/topics.json"
+sleek_topics_metadata = "topics/descriptions.json"
 
 # sleek_search        = true
 sleek_topics          = [
