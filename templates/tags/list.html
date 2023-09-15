@@ -6,23 +6,37 @@
 {% block page_body %}
   <div class="content">
     <div class="taxonomies-container">
-      <div class="taxonomies-title">
-        <a href="{{ current_url }}"><h1>Tags</h1></a>
+      <div class="taxonomies-header">
+        <h1 class="taxonomies-title">
+          <a href="{{ current_url }}">
+            Tags
+          </a>
+        </h1>
       </div>
-      <div class="taxonomies-items">
+      <ul class="taxonomies-items">
         {% for tag in terms %}
-          <li>
-            <span class="hash">
-              {{ icons::render_hash_icon() }}
-            </span>
-            <span class="tag">
-              <a href="{{ tag.permalink }}">{{ tag.name }}</a>
-              <span class="count">{{ tag.pages | length }}</span>
+          <li class="taxonomies-item">
+            <a href="{{ tag.permalink }}">
+              {#<span class="hash">
+                  {{ icons::render_hash_icon() }}
+              </span> #}
+              <span class="hash">
+                #
+              </span>
+              <span class="tag">
+                {{ tag.name }}
+              </span>
+            </a>
+            <span class="count">
+              {{ tag.pages | length }}
             </span>
           </li>
         {% endfor %}
       </ul>
+      <hr/>
+      <footer class="taxonomies-total">
+        {{ terms | length }} tags in total
+      </footer>
     </div>
-  </div>
   </div>
 {% endblock page_body %}

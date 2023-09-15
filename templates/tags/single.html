@@ -41,6 +41,18 @@
           <span class="taxonomy-item-title">
             <a href="{{ page.permalink }}">{{ page.title }}</a>
           </span>
+          <div class="taxonomy-item-text">
+            {% if page.summary %}
+              <div class="taxonomy-item-summary">
+                {{ page.summary | safe }}
+              </div>
+              <div class="taxonomy-item-read-more">
+                <a href="{{ page.permalink }}">
+                  Read more...
+                </a>
+              </div>
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     </div>
