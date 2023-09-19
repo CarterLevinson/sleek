@@ -4,20 +4,17 @@
 
 {% block page_body %}
   <div class="content">
-    <div class="search-page-bar">
-      <form class="search-container">
-        <input id="main-search"
-               type="search"
-               autocomplete="off"
-               placeholder="Search ..."/>
-        <button id="main-button" type="submit">
-          {{ icons::render_magnifying_glass() }}
-        </button>
-      </form>
-    </div>
+    <form class="search">
+      <input id="search-input"
+             type="search"
+             autocomplete="off"
+             placeholder="Search ..."/>
+      <button id="search-button" type="submit">
+        {{ icons::render_magnifying_glass() }}
+      </button>
+    </form>
     <div class="search-results">
-      <ul class="search-results-items">
-      </ul>
+      <ul class="search-results-items"></ul>
     </div>
   </div>
 {% endblock page_body %}

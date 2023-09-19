@@ -1,5 +1,4 @@
-@use "../abstracts/animations";
-@use "../abstracts/variables" as *;
+@use "../abstracts/all" as *;
 
 * {
   margin: 0;
@@ -54,23 +53,20 @@ textarea {
 
 /* handle buttons */
 button {
-  font-weight: 500;
+  font-weight: $medium;
   font-size: 1.6em;
   color: $text;
   text-decoration: none;
 
   padding: 9x 25px;
-  background-color: rgba(0, 136, 169,1);
+  // background-color: rgba(0, 136, 169,1);
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  @include animations.underline-from-center;
-  transition: all 0.3 ease 0s;
+  // @include animations.underline-from-center;
+  // transition: all 0.3 ease 0s;
 }
 
-button:hover {
-  background-color: rgba(0, 136, 169,0.8);
-}
 
 /* style monospace text */
 pre,
@@ -156,13 +152,11 @@ blockquote {
 }
 
 a {
+  @include underline-from-center();
+  transition: color 0.4s ease-out;
   color: $text;
   text-decoration: none;
   border: none;
-  transition-property: color;
-  transition-duration: 0.4s;
-  transition-timing-function: ease-out;
-  @include animations.underline-from-center;
 
   &:hover {
     color: $nord8;

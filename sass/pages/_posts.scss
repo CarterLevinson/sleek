@@ -1,5 +1,4 @@
-@use "../abstracts/flexbox" as fb;
-// @use "abstracts/variables";
+@use "../abstracts/all" as *;
 
 .posts {
   flex-flow: column wrap;
@@ -7,7 +6,7 @@
   // margin: 0 auto 0 auto;
   // margin-top: 5%;
   // margin-bottom: 5%;
-  @include fb.flexbox();
+  @include flexbox();
 }
 
 .post-title {
@@ -23,5 +22,5 @@
 }
 
 .post {
-  @include fb.flex(1 0 auto);
+  @include flex(1 0 auto);
 }

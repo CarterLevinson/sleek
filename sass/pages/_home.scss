@@ -1,0 +1,39 @@
+@use "../abstracts/all" as *;
+
+#spotlight {
+  .home-center {
+    flex-flow: column wrap;
+    justify-content: center;
+    @include flex(1 1 auto);
+  }
+
+  .home-title {
+    margin: auto;
+    text-align: center;
+  }
+
+  .home-quote {
+    text-align: center;
+    line-height: normal;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: $semi-bold;
+  }
+
+  .home-social-icons {
+    font-size: 1.4em;
+    text-align: center;
+    opacity: 0.8;
+    a {
+      margin: 0 0.2em;
+    }
+  }
+
+  .home-search {
+    margin-bottom: 15px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    @include flexbox();
+  }
+}

@@ -1,41 +1,38 @@
-@use "../abstracts/flexbox" as fb;
-@use "../abstracts/variables" as *;
 
+@use "../abstracts/all" as *;
 /* page: vertical-flex container */
 .page {
   min-height: 100%;
   flex-flow: column wrap;
-  @include fb.flexbox();
-  @include fb.flex(1 1 auto);
+  @include flexbox();
+  @include flex(1 1 auto);
 }
 
 .page {
-  .page-header {
+  &-header {
+    @include flexbox();
+    @include flex(0 0 auto);
     max-height: 75px;
     padding: 15px 0%;
     justify-content: flex-end;
     align-items: center;
     line-height: normal;
     z-index: 1;
-    @include fb.flexbox();
-    @include fb.flex(0 0 auto);
-
-    // color: variables.$navy-blue;
-    // background-color: variables.$banner;
   }
   /* page body: horizontal-flex container */
-  .page-body {
+  &-body {
+    @include flexbox();
+    @include flex(1 1 auto);
     border-top: $off-white solid 1px;
     border-bottom: $off-white solid 1px;
     justify-content: center;
     // align-content: start;
     // align-content: center;
-    @include fb.flexbox();
-    @include fb.flex(1 1 auto);
   }
-  .page-footer {
-    // color: variables.$navy-blue;
-    // background-color: variables.$banner;
+
+  &-footer {
+    @include flexbox();
+    @include flex(0 0 auto);
 
     max-height: 75px;
     text-align: center;
@@ -67,70 +64,21 @@
       }
     }
 
-
-
     // align-items: center;
     // text-align: center;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     padding: 15px 0%;
-    @include fb.flexbox();
-    @include fb.flex(0 0 auto);
   }
 }
 
 .content {
+  @include flexbox();
+  @include flex(1 1 auto);
+
   flex-flow: column wrap;
   margin-top: 15px;
   max-height: 90%;
   max-width: 67%;
-  @include fb.flexbox();
-  @include fb.flex(1 1 auto);
-}
-// navigation
-
-.next {
-  float: right;
-  margin-bottom: 1.8rem;
-  a {
-    vertical-align: -0.125em;
-  }
-}
-
-.prev {
-  float: left;
-  margin-bottom: 1.8rem;
-  a {
-    vertical-align: -0.125em;
-  }
-}
-
-.logo-link {
-  cursor: pointer;
-  margin-right: auto;
-  // flex sized image?
-  .logo {
-    height: 50px;
-    width: 50px
-  }
-}
-
-.nav-link {
-  vertical-align: 0.25rem;
-}
-
-.nav-links {
-  list-style: none;
-}
-
-.nav-links .nav-link {
-  display: inline-block;
-  padding: 0px 20px;
-  a {
-    transition: all 0.3 ease 0s;
-    &:hover {
-      color: $nord8;
-    }
-  }
 }

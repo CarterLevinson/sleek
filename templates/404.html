@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block page_body %}
-  <div id="spotlight" class="error-404">
+  <div id="spotlight">
     <img class="img-404"
          alt="Error 404"
          src="{{ get_url(path="images/404-error-nord6.svg") }}"/>
@@ -12,7 +12,7 @@
       <p>
         The requested page was not found or does not exist on this website.
       </p>
-      <nav class="btn-container">
+      <nav class="btn-nav">
         <div id="home-btn" class="btn-404">
           <a href="{{ config.base_url }}">
             {{  icons::render_home_icon() }}

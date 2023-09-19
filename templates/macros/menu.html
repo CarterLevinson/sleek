@@ -1,33 +1,34 @@
 {% import "macros/icons.html" as icons %}
 
 {% macro make_logo(logo="", abbr="") %}
-  <a class="logo-link" href="{{ config.base_url }}">
+  <a class="logo" href="{{ config.base_url }}">
     {% if logo | length != 0 %}
-      <img class="logo" src="{{ get_url(path=logo) }}" alt="{{ abbr }}"/>
+      <img class="logo-content" src="{{ get_url(path=logo) }}" alt="{{ abbr }}"/>
     {% elif abbr | length != 0 %}
-      <span class="logo">{{ abbr }}</span>
+      <span class="logo-content">{{ abbr }}</span>
     {% else %}
-      <span class="logo">{{ config.base_url }}</span>
+      <span class="logo-content">{{ config.base_url }}</span>
     {% endif %}
   </a>
 {% endmacro make_logo %}
 
 {% macro make_navbar(menu) %}
-  <nav>
-    <menu class="nav-links">
+  <nav class="navbar-menu">
+    <menu class="navbar-menu-items">
       {% for target in menu %}
-        <li class="nav-link">
+        <li class="navbar-menu-item">
           <a href="{{ config.base_url ~ target.link }}">
             {{ target.name }}
           </a>
         </li>
       {% endfor %}
-      <li class="nav-search">
-        <form class="search-container">
-          <input id="nav-search"
+      <li class="navbar-menu-item">
+        <form class="navbar-search">
+          <input id="navbar-search-input"
+                 type="search"
                  autocomplete="off"
                  placeholder="Search..."/>
-          <button id="nav-button">
+          <button id="navbar-search-button" type="sumbit">
             {{ icons::render_magnifying_glass() }}
           </button>
         </form>
@@ -35,4 +36,3 @@
     </menu>
   </nav>
 {% endmacro make_menu %}
-{# vim: set ft=htmldjango #}

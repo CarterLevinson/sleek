@@ -1,23 +1,4 @@
-@use "../abstracts/flexbox" as fb;
-@use "../abstracts/variables" as *;
-
-@mixin background-clip() {
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-}
-
-//
-// Search
-//
-
-.spotlight-search {
-  margin-bottom: 15px;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  @include fb.flexbox();
-}
+@use "../abstracts/all" as *;
 
 .search-page-bar {
   justify-content: start;
@@ -25,114 +6,21 @@
   max-height: 5%;
 }
 
-
-.nav-search {
-  display: inline-block;
-  .search-container {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    transition: width 300ms ease-in-out;
-    // align-items: baseline;
-    // margin-top: 10px;
-    overflow: hidden;
-    // background-color: rgba(255, 255, 255, 0.0);
-    border: none;
-    @include fb.flexbox();
-    #nav-search {
-      // align-self: center;
-      position: absolute;
-      padding-left: 10px;
-      margin: auto;
-      height:100%;
-      width: 100%;
-      opacity: 0;
-      top: 0;
-      bottom: 0;
-      // line-height: 5px;
-      background: transparent;
-      // margin-top: 5px;
-      @include fb.flex(1 0 auto);
-
-    }
-    &:focus-within {
-      width: 300px;
-      border: 2px solid $off-white;
-      // background-color: rgba($nord0, 1.0);
-      #nav-search {
-        opacity: 1;
-        width: 100%;
-      }
-    }
-    button {
-      margin-left: auto;
-      font-size: 1.6em;
-      svg {
-        vertical-align: 0.125rem;
-        // margin-bottom: 5px;
-      }
-    }
-
-  }
-}
-.search-container {
-  padding: 5px;
-  border: 2px solid $off-white;
-  // background-color: #4C586A;
-  border-radius: 50px;
-  width: 100%;
-  justify-content: center;
-  @include fb.flexbox();
-  @include background-clip();
-
-  button {
-    display: inline-block;
-    width: 40px;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    svg {
-      fill: $text;
-      height: 24px;
-      width: 24px;
-      vertical-align: -0.125em;
-      margin-right: 10px;
-    }
-  }
-
-  #main-search,
-  #spotlight-search  {
-    border: 2px solid transparent;
-    border-radius: inherit;
-    background: transparent;
-    padding-left: 10px;
-    width: 100%;
-    color: $text;
-    // background-color: rgba(255, 255, 255, 0.0);
-    // justify-content: center;
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
 .search-results {
-  // margin: auto;
-  align-self: flex-start;
+  @include flexbox();
+
   flex-flow: row wrap;
-  @include fb.flexbox();
+  align-self: flex-start;
+  // margin: auto;
   // justify-content: start;
   // display: flex;
   // padding: 10px 0px 10px 0px;
   &-items {
+    @include flex(1 0 auto);
+
     margin: auto;
     width: 100%;
     list-style: none;
-    @include fb.flex(1 0 auto);
   }
 
   &-item {
@@ -150,3 +38,4 @@
     }
   }
 }
+

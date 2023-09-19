@@ -8,61 +8,34 @@ function searchOnEnterKey(event, query) {
   }
 }
 
-function initNavSearch() {
-  var $navSearch = document.getElementById("nav-search");
-  if ($navSearch !== null) {
-    $navSearch.addEventListener("keydown", function(event) {
-      searchOnEnterKey(event, $navSearch.value.trim());
-    });
-
-    var $navButton = document.getElementById("nav-button");
-    $navButton.addEventListener("click", function(event) {
-      event.preventDefault();
-      if(document.querySelector(".nav-search .search-container")
-        .matches(":focus-within")) {
-          if ($navSearch.value.length !== 0) {
-            goToSearchPage($navSearch.value.trim());
-          }
-      }
-    });
-  }
-}
-
-function initMainSearch() {
-  var $mainSearch = document.getElementById("main-search");
-  if ($mainSearch !== null) {
-
-    $mainSearch.addEventListener("keydown", function(event) {
-      searchOnEnterKey(event, $mainSearch.value.trim());
-    });
-
-    var $mainButton = document.getElementById("main-button");
-    $mainButton.addEventListener("click", function(event) {
-      event.preventDefault();
-      goToSearchPage($mainSearch.value.trim());
-    });
-  }
-}
-
-function initSpotlightSearch() {
-  var $spotlightSearch = document.getElementById("spotlight-search");
-  if ($spotlightSearch !== null) {
-    $spotlightSearch.addEventListener("keydown", function(event) {
-      searchOnEnterKey(event, $spotlightSearch.value.trim());
-    });
-
-    var $spotlightButton = document.getElementById("spotlight-button");
-    $spotlightButton.addEventListener("click", function(event) {
-      event.preventDefault();
-      goToSearchPage($spotlightSearch.value.trim());
-    });
-  }
+function searchOnClick(event, query) {
+  event.preventDefault();
+  goToSearchPage(query);
 }
 
 function init() {
-  initNavSearch();
-  initMainSearch();
-  initSpotlightSearch()
+  var $navInput = document.getElementById("navbar-search-input");
+  if ($navInput !== null) {
+    $navInput.addEventListener("keydown", function(event) {
+      searchOnEnterKey(event, $navInput.value.trim());
+    });
+
+    var $navButton = document.getElementById("navbar-search-button");
+    $navButton.addEventListener("click", function(event) {
+      searchOnClick(event, $navInput.value.trim());
+    });
+  }
+
+  var $searchInput = document.getElementById("search-input");
+  if ($searchInput !== null) {
+    $searchInput.addEventListener("keydown", function(event) {
+      searchOnEnterKey(event, $searchInput.value.trim());
+    });
+    var $searchButton = document.getElementById("search-button");
+    $searchButton.addEventListener("click", function(event) {
+      searchOnClick(event, $searchInput.value.trim());
+    });
+  }
 }
 
 if (document.readyState === "complete") {

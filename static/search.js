@@ -198,15 +198,15 @@ function parseQueryString() {
 }
 
 function init() {
-  var $mainSearch = document.getElementById("main-search");
+  var $searchInput = document.getElementById("search-input");
   var query = parseQueryString();
   if (query !== null) {
-     $mainSearch.value = query;
+     $searchInput.value = query;
      elasticSearch(query);
   }
 
-  $mainSearch.addEventListener("keyup", debounce(async function() {
-    elasticSearchAuto($mainSearch.value.trim());
+  $searchInput.addEventListener("keyup", debounce(async function() {
+    elasticSearchAuto($searchInput.value.trim());
   }, 150));
 
 }

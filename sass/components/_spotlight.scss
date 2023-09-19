@@ -1,0 +1,22 @@
+// @use "../abstracts/flexbox" as fb;
+@use "../abstracts/all" as *;
+
+//
+// spotlight
+//
+#spotlight {
+  // &.error-404 {
+  //   line-height: normal;
+  // }
+  flex-flow: column wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  max-width: 93%;
+  font-size: 1.5em;
+
+  @include flexbox();
+}
+

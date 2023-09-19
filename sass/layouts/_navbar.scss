@@ -1,0 +1,111 @@
+@use "../abstracts/all" as *;
+
+@mixin expand() {
+  width: 300px;
+  padding: 0 6px;
+}
+
+.logo {
+  // float: left;
+  margin-right: auto;
+  cursor: pointer;
+
+  &-content {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.navbar-menu {
+  &-items {
+    list-style: none;
+  }
+  &-item {
+    display: inline-block;
+    padding: 0px 20px;
+    margin-top: 5px;
+  }
+}
+
+.navbar-search {
+  @include flexbox();
+  border: 2px solid $off-white;
+  // display: inline-flex;
+  // position: absolute;
+  // position: relative;
+  border-radius: 50px;
+  // min-width: 5%;
+  width: auto;
+  height: 1.6em;
+  // border: 1px solid $off-white;
+
+  // position: absolute;
+  // width: 50px;
+  // height: 50px;
+  // transition: width 300ms ease-in-out;
+  // justify-items: baseline;
+  // align-items: baseline;
+  // margin-top: 10px;
+  overflow: hidden;
+  // background-color: rgba(255, 255, 255, 0.0);
+  // border: none;
+
+  input {
+    outline: none;
+    width: 0;
+    background: transparent;
+    color: $text;
+    @include flex(1 0 auto);
+    // overflow: hidden;
+    transition: width .4s cubic-bezier(0.18, 0.89, 0.32, 1.33);
+    // position: relative;
+    border-radius: inherit;
+    border: none;
+    padding-left: 15px;
+    // margin: auto;
+    // height:100%;
+    // width: 100%;
+    // opacity: 0;
+    // top: 0;
+    // bottom: 0;
+    // // line-height: 5px;
+    // background: transparent;
+    // margin-top: 5px;
+  }
+
+  svg {
+    fill: $text;
+    // height: 24px;
+    // width: 24px
+    height: 1.0em;
+    width: 1.0em;
+    // height: 0.8rem;
+    // width: 0.8rem;
+    // vertical-align: 0.125em;
+    // margin-bottom: 8px;
+    // padding-right: 5px;
+    padding-right: 15px;
+    padding-bottom: 8px;
+    // padding: .25em;
+  }
+
+  button {
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    margin-left: auto;
+    font-size: 1.8em;
+  }
+}
+
+#navbar-search-input {
+  &:focus,
+  &:not(:placeholder-shown) {
+    @include expand();
+  }
+}
+
+.navbar-search:hover > #navbar-search-input {
+  @include expand();
+}

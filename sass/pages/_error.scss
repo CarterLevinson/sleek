@@ -1,55 +1,27 @@
-@use "../abstracts/flexbox" as fb;
-@use "../abstracts/variables" as *;
 
+@use "../abstracts/all" as *;
 //
 // 404
 //
 
-.img-404 {
-  object-fit: scale-down;
-}
-
-.banner-404 {
-  margin-left: 2em;
-  // display: flex column;
-  // justify-content: center;
-
-  h1 {
-    text-align: center;
-    font-size: 3em;
-    margin: 0.5rem 0;
+#spotlight.error-404 {
+  .img-404 {
+    object-fit: scale-down;
   }
 
-  p {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0.6em;
-  }
-
-  // #home-btn {
-  //   float: left;
-  // }
-
-  svg {
-    height: 1em;
-    width: 1em;
-    padding-top: 0.125em;
-  }
-
-  #search-btn {
-    fill: $text;
-    padding-bottom: 0.1em;
-    // margin-bottom: 0.1em;
-  }
-
-  .btn-container {
-    flex-flow: column-wrap;
+  .btn-nav {
+    flex-flow: column wrap;
     justify-content: center;
-    @include fb.flexbox();
+    @include flexbox();
+    #search-btn {
+      fill: $text;
+      padding-bottom: 0.1em;
+      // margin-bottom: 0.1em;
+    }
   }
+
   .btn-404 {
     // font-size: 0.8em;
-
     a {
       display: inline-block;
       border: 2px solid $text;
@@ -65,10 +37,32 @@
       &:hover {
         border-color: #fff;
       }
-
-      // svg {
-        // margin-right: 0.5em;
-      // }
     }
+  }
+
+  .banner-404 {
+    margin-left: 2em;
+    // display: flex column;
+    // justify-content: center;
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin: 0.5rem 0;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0.6em;
+    }
+
+
+    svg {
+      height: 1em;
+      width: 1em;
+      padding-top: 0.125em;
+    }
+
   }
 }
