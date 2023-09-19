@@ -22,3 +22,13 @@
   -webkit-order: $val;
   order: $val;
 }
+
+@mixin background-clip() {
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+@mixin font() {
+
+}

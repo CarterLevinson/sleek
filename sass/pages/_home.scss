@@ -1,18 +1,33 @@
 @use "../abstracts/all" as *;
 
-#spotlight {
-  .home-center {
+#home {
+  @include keyframes(fade) {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @include animate(fade, 1s, ease-out, 1);
+}
+
+.home {
+  &-center {
+    @include flex(1 1 auto);
     flex-flow: column wrap;
     justify-content: center;
-    @include flex(1 1 auto);
   }
 
-  .home-title {
+  &-title {
     margin: auto;
     text-align: center;
   }
 
-  .home-quote {
+  &-quote {
     text-align: center;
     line-height: normal;
     font-size: 1.2rem;
@@ -20,7 +35,7 @@
     font-weight: $semi-bold;
   }
 
-  .home-social-icons {
+  &-social-icons {
     font-size: 1.4em;
     text-align: center;
     opacity: 0.8;
@@ -29,11 +44,11 @@
     }
   }
 
-  .home-search {
+  &-search-container {
+    @include flexbox();
     margin-bottom: 15px;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    @include flexbox();
   }
 }

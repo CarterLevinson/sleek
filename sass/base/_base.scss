@@ -11,6 +11,7 @@ html {
   height: 100%;
   letter-spacing: 0.06em;
   background: $background;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -64,7 +65,10 @@ button {
   border-radius: 50px;
   cursor: pointer;
   // @include animations.underline-from-center;
-  // transition: all 0.3 ease 0s;
+  transition: all 0.3 ease 0s;
+  &:hover {
+    color: $nord8;
+  }
 }
 
 
@@ -96,6 +100,10 @@ pre {
     background-color: $nord0;
     // background: $theme1;
   }
+}
+
+p > a {
+  vertical-align: bottom;
 }
 
 pre {

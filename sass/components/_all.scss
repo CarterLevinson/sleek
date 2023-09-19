@@ -1,7 +1,4 @@
-// @forward "pagination";
-// @forward "searchbox";
-// @forward "taxonomy";
-// @forward "spotlight";
+@use "posts";
 @use "pagination";
 @use "searchbox";
 @use "taxonomy";

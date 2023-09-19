@@ -71,6 +71,9 @@
           {% endif %}
         </title>
       {% endblock title %}
+      {% block js %}
+        <script src="{{ get_url(path="main.js") }}" async defer></script>
+      {% endblock js %}
     {% endblock head %}
   </head>
   <body>
@@ -99,9 +102,6 @@
           {% endblock page_footer %}
         </footer>
       </div>
-      {% block script %}
-        <script src="{{ get_url(path="main.js") }}"></script>
-      {% endblock script %}
     {% endblock body %}
   </body>
 </html>

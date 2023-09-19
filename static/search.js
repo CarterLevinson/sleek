@@ -188,27 +188,37 @@ async function elasticSearchAuto(term) {
   elasticSearch(term);
 }
 
-function parseQueryString() {
+function processQueryString() {
   var params = new URLSearchParams(window.location.search);
   if (params.has("query")){
-    return params.get("query");
+    var query = params.get("query");
+    elasticSearch(query);
+    return query;
   } else {
-    return null;
+    return "";
   }
 }
 
 function init() {
   var $searchInput = document.getElementById("search-input");
-  var query = parseQueryString();
-  if (query !== null) {
-     $searchInput.value = query;
-     elasticSearch(query);
+  if ($searchInput !== null) {
+    $searchInput.addEventListener("keyup", debounce(async function() {
+      elasticSearchAuto($searchInput.value.trim());
+    }, 150));
+
+    $searchInput.addEventListener("keydown", async function(event) {
+      if (event.key === "Enter" || event.keyCode === 13) {
+        elasticSearch($searchInput.value.trim());
+      }
+    });
+
+    var $searchButton = document.getElementById("search-button");
+    $searchButton.addEventListener("click", async function() {
+      elasticSearch($searchInput.value.trim());
+    });
+
+    $searchInput.value = processQueryString();
   }
-
-  $searchInput.addEventListener("keyup", debounce(async function() {
-    elasticSearchAuto($searchInput.value.trim());
-  }, 150));
-
 }
 
 if (document.readyState === "complete") {

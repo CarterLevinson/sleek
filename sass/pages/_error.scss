@@ -1,15 +1,10 @@
-
 @use "../abstracts/all" as *;
+
 //
 // 404
 //
-
-#spotlight.error-404 {
-  .img-404 {
-    object-fit: scale-down;
-  }
-
-  .btn-nav {
+#error-404 {
+  nav {
     flex-flow: column wrap;
     justify-content: center;
     @include flexbox();
@@ -19,20 +14,23 @@
       // margin-bottom: 0.1em;
     }
   }
+}
 
-  .btn-404 {
+.error-404 {
+  &-img {
+    object-fit: scale-down;
+  }
+
+  &-button {
     // font-size: 0.8em;
     a {
       display: inline-block;
-      border: 2px solid $text;
-      border-radius: 5px;
-      padding: 0.25rem;
+      border-radius: 50%;
+      text-align: center;
+      padding: 0.5em;
       transition-property: color, border-color;
       word-break: break-all;
 
-      &:first-child {
-        margin-right: 1em;
-      }
 
       &:hover {
         border-color: #fff;
@@ -40,7 +38,7 @@
     }
   }
 
-  .banner-404 {
+  &-banner {
     margin-left: 2em;
     // display: flex column;
     // justify-content: center;

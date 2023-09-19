@@ -1,31 +1,25 @@
 {% import "macros/icons.html" as icons %}
+{% import "macros/error.html" as error %}
 
 {% extends "base.html" %}
 
 {% block page_body %}
-  <div id="spotlight">
-    <img class="img-404"
-         alt="Error 404"
-         src="{{ get_url(path="images/404-error-nord6.svg") }}"/>
-    <div class="banner-404">
+  <div id="error-404" class="spotlight">
+    {{ error::render_error_image() }}
+    <div class="error-404-banner">
       <h1>Page Not Found</h1>
       <p>
-        The requested page was not found or does not exist on this website.
+        The requested page was not found or does not exist on this website. You
+        can try searching for the content
+        <a href="{{ config.base_url ~ "/search" }}">here</a>,
+        or return
+        <a href="{{ config.base_url }}">home</a>.
       </p>
-      <nav class="btn-nav">
-        <div id="home-btn" class="btn-404">
-          <a href="{{ config.base_url }}">
-            {{  icons::render_home_icon() }}
-          </a>
-        </div>
-        {% block buttons %}
-        {% endblock buttons %}
-        <div id="search-btn" class="btn-404">
-          <a href="{{ get_url(path="search") }}">
-            {{ icons::render_magnifying_glass() }}
-          </a>
-        </div>
-      </nav>
+    </div>
+    <div class="error-404-button">
+      <a href="{{ config.base_url }}">
+        {{ icons::render_home_icon() }}
+      </a>
     </div>
   </div>
 {% endblock page_body %}

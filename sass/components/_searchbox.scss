@@ -1,10 +1,5 @@
 @use "../abstracts/all" as *;
 
-@mixin background-clip() {
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-}
 
 //
 // Search
@@ -22,7 +17,7 @@
   justify-content: center;
 
   svg {
-    fill: $text;
+    // fill: $text;
     height: 24px;
     width: 24px;
     vertical-align: -0.125em;

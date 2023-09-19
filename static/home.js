@@ -14,15 +14,14 @@ function searchOnClick(event, query) {
 }
 
 function init() {
-  var $navInput = document.getElementById("navbar-search-input");
-  if ($navInput !== null) {
-    $navInput.addEventListener("keydown", function(event) {
-      searchOnEnterKey(event, $navInput.value.trim());
+  var $searchInput = document.getElementById("search-input");
+  if ($searchInput !== null) {
+    $searchInput.addEventListener("keydown", function(event) {
+      searchOnEnterKey(event, $searchInput.value.trim());
     });
-
-    var $navButton = document.getElementById("navbar-search-button");
-    $navButton.addEventListener("click", function(event) {
-      searchOnClick(event, $navInput.value.trim());
+    var $searchButton = document.getElementById("search-button");
+    $searchButton.addEventListener("click", function(event) {
+      searchOnClick(event, $searchInput.value.trim());
     });
   }
 }

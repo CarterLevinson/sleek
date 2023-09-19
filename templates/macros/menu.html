@@ -13,7 +13,7 @@
 {% endmacro make_logo %}
 
 {% macro make_navbar(menu) %}
-  <nav class="navbar-menu">
+  <nav>
     <menu class="navbar-menu-items">
       {% for target in menu %}
         <li class="navbar-menu-item">
@@ -23,15 +23,17 @@
         </li>
       {% endfor %}
       <li class="navbar-menu-item">
-        <form class="navbar-search">
-          <input id="navbar-search-input"
-                 type="search"
-                 autocomplete="off"
-                 placeholder="Search..."/>
-          <button id="navbar-search-button" type="sumbit">
-            {{ icons::render_magnifying_glass() }}
-          </button>
-        </form>
+        <search>
+          <form class="navbar-search">
+            <input id="navbar-search-input"
+                   type="search"
+                   autocomplete="off"
+                   placeholder="Search..."/>
+            <button id="navbar-search-button" type="sumbit">
+              {{ icons::render_magnifying_glass() }}
+            </button>
+          </form>
+        </search>
       </li>
     </menu>
   </nav>
