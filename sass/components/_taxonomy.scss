@@ -18,10 +18,6 @@
   margin-left: -0.25em;
 }
 
-.expand {
-  vertical-align: 0.125rem;
-  background-color: rgba(255, 255, 255,0.0);
-}
 //
 // taxonomies
 //
@@ -31,6 +27,13 @@
   @include flexbox();
 }
 
+.taxonomies-tag {
+  &-item {
+    font-size: 0.8em;
+    margin-left: 1.0em;
+    list-style-type: lower-greek;
+  }
+}
 
 .taxonomies {
   // margin: 2em 0 3em;
@@ -64,32 +67,18 @@
       width: 2.0em;
     }
     a {
-      // svg {
-      //   // vertical-align: -0.125rem;
-      //   height: 1.0em;
-      //   width: 1.0em;
-      // }
-      // margin: 5px 10px;
       word-wrap: break-word;
       position: relative;
-
-      &:hover {
-        color: $nord6;
-      }
-
     }
-      // url("images/list-arrow-nord6.svg");
-    // list-style: none;
   }
-
 
   &-items {
     padding-left: 1.5em;
-    list-style-image:
-      url("images/list-tag-nord6.svg");
+      list-style: "- ";
+    ul {
+      list-style: none;
+    }
   }
-
-
 
 }
 
