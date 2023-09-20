@@ -4,6 +4,14 @@
 
 {% extends "base.html" %}
 
+{% block js %}
+  {{ super() }}
+<<<<<<< HEAD
+  <script src="{{ get_url(path="home.js") }}" async></script>
+=======
+  <script src="{{ get_url(path="home.js") }}"></script>
+>>>>>>> dev
+{% endblock js %}
 
 {% block page_body %}
   <hgroup id="home" class="spotlight">
@@ -30,7 +38,3 @@
     </div>
   </hgroup>
 {% endblock page_body %}
-
-{% block scripts %}
-  <script src="{{ get_url(path="home.js") }}"></script>
-{% endblock scripts %}

@@ -72,6 +72,11 @@
         </title>
       {% endblock title %}
       {% block js %}
+<<<<<<< HEAD
+        <script src="{{ get_url(path="main.js") }}" async></script>
+=======
+        <script src="{{ get_url(path="main.js") }}"></script>
+>>>>>>> dev
       {% endblock js %}
     {% endblock head %}
   </head>
@@ -102,8 +107,5 @@
         </footer>
       </div>
     {% endblock body %}
-    {% block scripts %}
-      <script src="{{ get_url(path="main.js") }}"></script>
-    {% endblock scripts %}
   </body>
 </html>
