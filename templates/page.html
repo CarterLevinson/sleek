@@ -7,7 +7,7 @@
   <div class="content">
     <div class="posts">
       {% if page.toc %}
-        <div class="post-toc">
+        <aside class="post-toc">
           <h2 class="post-toc-title">Contents</h2>
           <div class="post-toc-content-always-active">
             <nav class="table-of-contents">
@@ -29,7 +29,7 @@
               </ul>
             </nav>
           </div>
-        </div>
+        </aside>
       {% endif %}
       <article class="post">
         {{ posts::title(page=page) }}

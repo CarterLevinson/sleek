@@ -24,7 +24,7 @@ default_language      = "en"
 
 # Default taxonomy lists and settings
 taxonomies            = [
-  { name              = "tags", feed = true },
+  { name              = "tags", feed = true, paginate_by = 10 },
   { name              = "topics", feed = true },
   { name              = "keywords", feed = false }
 ]
@@ -41,35 +41,28 @@ highlight_theme       = "nord"
 
 [extra]
 # The author of the website
-sleek_author          = "John Q. Example"
-# Alternate text for the logo image
-sleek_abbr            = "JQE"
-# displayed below title of website on homepage
-sleek_quote           = "You get what you pay for!"
+author          = "John Q. Example"
 # website copyright statement
-sleek_copyright       = "All rights reserved"
+copyright       = "All rights reserved"
+
 # todo: implement
-sleek_mathjax         = false
+render_mathjax    = false
+# static json containing large topic descriptions
+topics_metadata = "topics/descriptions.json"
+# todo: implement showing topics in footer as well as tags
+footer_topics   = [
+  "blog",
+  "lorem",
+  "post",
+]
 # list of tags to display in the footer
-sleek_footer_tags     = [
+footer_tags     = [
   "blog",
   "lorem",
   "post"
 ]
-
-sleek_footer_topics   = []
-
-sleek_topics_metadata = "topics/descriptions.json"
-
-# sleek_search        = true
-sleek_topics          = [
-]
-
-# path to the logo svg
-sleek_logo            = "images/QQ-nord6.svg"
-
-# menu items for the navbar
-sleek_menu            = [
+# menu links for the navbar menu
+menu_links           = [
   { name              = "Home",       link = "/"},
   { name              = "Blog",       link = "/blog" },
   { name              = "Tags",       link = "/tags" },
@@ -77,6 +70,13 @@ sleek_menu            = [
   { name              = "About",      link = "/about"}
 ]
 
+
+# path to the logo svg
+sleek_logo            = "images/QQ-nord6.svg"
+# Alternate text for the logo image
+sleek_abbr            = "JQE"
+# displayed below title of website on homepage
+sleek_quote           = "You get what you pay for!"
 # website and pages linked on the homepage
 sleek_pages           = [
   { name              = "twitter",    link = "https://twitter.com" },
@@ -84,3 +84,5 @@ sleek_pages           = [
   { name              = "linkedin",   link = "https:/linkedin.com" },
   { name              = "email",      link = "mailto:john@example.com" }
 ]
+
+

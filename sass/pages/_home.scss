@@ -1,6 +1,6 @@
 @use "../abstracts/all" as *;
 
-#home {
+#home-page {
   @include keyframes(fade) {
     0% {
       opacity: 0;
@@ -15,7 +15,7 @@
   @include animate(fade, 1s, ease-out, 1);
 }
 
-.home {
+.spotlight {
   &-center {
     @include flex(1 1 auto);
     flex-flow: column wrap;
@@ -33,6 +33,7 @@
     font-size: 1.2rem;
     font-style: italic;
     font-weight: $semi-bold;
+    margin-top: 1.0em;
   }
 
   &-social-icons {
@@ -45,6 +46,3 @@
   }
 }
 
-#home search {
-  margin-bottom: 15px;
-}

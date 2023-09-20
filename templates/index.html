@@ -6,8 +6,10 @@
 
 
 {% block page_body %}
-  <hgroup id="home" class="spotlight">
-    <h1 class="home-title">{{ config.title }}</h1>
+  <main class="spotlight" id="home-page">
+    <h1 class="spotlight-title">
+      {{ config.title }}
+    </h1>
     <search>
       <form class="search">
         <input id="search-input"
@@ -19,18 +21,14 @@
         </button>
       </form>
     </search>
-    <div class="home-center">
-      <p class="home-quote">
+    <div class="spotlight-center">
+      <p class="spotlight-quote">
         {{ config.extra.sleek_quote }}
-      </p>
-      <div class="home-social-icons">
+      <p>
+      <div class="spotlight-social-icons">
         {{ social::render_social_icons() }}
         {{ macros::rss_feed() }}
       </div>
     </div>
-  </hgroup>
+  </main>
 {% endblock page_body %}
-
-{% block scripts %}
-  <script src="{{ get_url(path="home.js") }}"></script>
-{% endblock scripts %}

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use "base/all" as *;
-@use "components/all" as *;
-@use "layouts/all" as *;
-@use "pages/all" as *;
+@use "base/all" as base;
+@use "components/all" as comps;
+@use "layouts/all" as layouts;
+@use "pages/all" as pages;

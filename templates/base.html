@@ -11,9 +11,9 @@
             content="width=device-width, initial-scale=1.0"/>
       <meta name="apple-mobile-web-app-capable"
             content="yes"/>
-      {% if config.extra.sleek_author %}
+      {% if config.extra.author %}
         <meta name="author"
-              content="{{ config.extra.sleek_author }}"/>
+              content="{{ config.extra.author }}"/>
       {% endif %}
       {% if page.description %}
         <meta name="description"
@@ -26,7 +26,8 @@
               content="{{ config.description }}"/>
       {% endif %}
       <link rel="manifest"
-            href="{{ get_url(path="icons/site.webmanifest") }}"/>
+            href="{{ get_url(path="site.webmanifest") }}"/>
+      {# favicons #}
       <link rel="shortcut icon"
             href="{{ get_url(path="icons/favicon.ico") }}"/>
       <link rel="icon"
@@ -58,6 +59,15 @@
                 href="{{ get_url(path="rss.xml") }}"/>
         {% endif %}
       {% endblock rss %}
+      {% block canonical %}
+      {% if page.extra.canonical %}
+        <link rel="canonical" href="{{ page.extra.canonical }}"/>
+      {% elif section.extra.canonical %}
+        <link rel="canonical" href="{{ section.extra.canonical }}"/>
+      {% else %}
+        <link rel="canonical" href="{{ current_url }}"/>
+      {% endif %}
+      {% endblock canonical %}
       {% block title %}
         <title>
           {% if page.title %}
@@ -83,7 +93,7 @@
             {% set logo = config.extra.sleek_logo %}
             {% set abbr = config.extra.sleek_abbr %}
             {{ menu::make_logo(logo=logo, abbr=abbr) }}
-            {% set menu = config.extra.sleek_menu %}
+            {% set menu = config.extra.menu_links %}
             {{ menu::make_navbar(menu=menu) }}
           {% endblock page_header %}
         </header>

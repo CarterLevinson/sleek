@@ -1,0 +1,11 @@
+
+.taxonomies-footer {
+  width: 100%;
+  font-size: 0.8em;
+  &-items {
+    list-style: none;
+    &> li {
+      display: inline-block;
+    }
+  }
+}

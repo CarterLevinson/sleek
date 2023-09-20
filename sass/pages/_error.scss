@@ -3,7 +3,7 @@
 //
 // 404
 //
-#error-404 {
+#error-page {
   nav {
     flex-flow: column wrap;
     justify-content: center;
@@ -16,12 +16,11 @@
   }
 }
 
-.error-404 {
-  &-img {
-    object-fit: scale-down;
+.spotlight {
+  &-404-img {
+    object-fit: scaledown;
   }
-
-  &-button {
+  &-404-button {
     // font-size: 0.8em;
     a {
       display: inline-block;
@@ -36,9 +35,9 @@
         border-color: #fff;
       }
     }
-  }
 
-  &-banner {
+  }
+  &-404-banner {
     margin-left: 2em;
     // display: flex column;
     // justify-content: center;
@@ -63,4 +62,5 @@
     }
 
   }
+
 }

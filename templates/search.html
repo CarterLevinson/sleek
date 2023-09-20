@@ -8,23 +8,26 @@
 
 {% block page_body %}
   <div class="content">
-    <search>
-      <form class="search">
-        <input id="search-input"
-               type="search"
-               autocomplete="off"
-               placeholder="Search ..."/>
-        <button id="search-button" type="submit">
-          {{ icons::render_magnifying_glass() }}
-        </button>
-      </form>
-    </search>
-    <div class="search-results">
-      <ul class="search-results-items"></ul>
-    </div>
+    <main id="search-page">
+      <search>
+        <form class="search">
+          <input id="search-input"
+                 type="search"
+                 autocomplete="off"
+                 placeholder="Search ..."/>
+          <button id="search-button" type="submit">
+            {{ icons::render_magnifying_glass() }}
+          </button>
+        </form>
+      </search>
+      <div class="search-results">
+        <ul class="search-results-items"></ul>
+      </div>
+    </main>
   </div>
 {% endblock page_body %}
 
 {% block scripts %}
+  {{ super() }}
   <script src="{{ get_url(path="search.js") }}"></script>
 {% endblock scripts %}

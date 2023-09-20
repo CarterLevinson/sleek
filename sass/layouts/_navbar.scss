@@ -28,7 +28,7 @@
 .navbar-search {
   @include flexbox();
   border: 2px solid $off-white;
-  border-radius: 50px;
+  border-radius: 10px;
   width: auto;
   height: 1.6em;
   overflow: hidden;

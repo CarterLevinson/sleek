@@ -12,7 +12,7 @@
   &-header {
     @include flexbox();
     @include flex(0 0 auto);
-    max-height: 75px;
+    max-height: 150px;
     padding: 15px 0%;
     justify-content: flex-end;
     align-items: center;
@@ -33,8 +33,10 @@
   &-footer {
     @include flexbox();
     @include flex(0 0 auto);
+    align-items: center;
 
-    max-height: 75px;
+    // max-height: 75px;
+    max-height: 150px;
     text-align: center;
 
     .copyright {
