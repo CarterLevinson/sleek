@@ -1,0 +1,81 @@
+//
+// taxonomies
+//
+
+// .taxonomies-container {
+//   @include flexbox();
+//   @include flex-flow(( column wrap ));
+// }
+//
+// .taxonomies-tag {
+//   &-items {
+//     list-style-type: "- ";
+//   }
+//   &-item {
+//     font-size: 0.8rem;
+//     margin-left: 1.0em;
+//
+//   }
+// }
+
+// .taxonomies {
+//   // margin: 2em 0 3em;
+//   text-align: center;
+//   // justify-self: start;
+//   // align-self: start;
+//
+//   &-total {
+//     text-align: center;
+//   }
+//
+//   &-title {
+//     // margin-bottom: 5px;
+//     // margin-left: 0px;
+//     display: inline-block;
+//     // font-size: 2.0em;
+//     // font-size: 18px;
+//   }
+//
+//   &-item {
+//     padding-left: 10px;
+//
+//     &-title {
+//       font-size: 2.0em;
+//     }
+//     // details {
+//     //   display: inline-block;
+//     // }
+//     // font-size: 2.0em;
+//     // &::before{
+//     //   display: inline-block;
+//     // }
+//     &::marker {
+//       margin-right: 1ch;
+//     }
+//     // &::before {
+//     //   // content:"\27F6";
+//     //   margin-right: 10px;
+//     // }
+//
+//     // &::marker {
+//     //   // font-size: 2.0em;
+//     //   height: 3.0em;
+//     //   width: 2.0em;
+//     // }
+//     a {
+//       font-size: 1.8em;
+//       word-wrap: break-word;
+//       position: relative;
+//     }
+//   }
+//
+//   &-items {
+//     // display:inline-block;
+//     // padding-left: 1.5em;
+//     list-style: "\27F6";
+//     // list-style: "- ";
+//   }
+//
+// }
+//
+

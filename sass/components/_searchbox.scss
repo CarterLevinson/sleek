@@ -8,13 +8,14 @@
 .search {
   @include flexbox();
   @include background-clip();
+  @include justify-content(center);
 
   padding: 5px;
   border: 2px solid $off-white;
   // background-color: #4C586A;
-  border-radius: 50px;
+  border-radius: 20px;
   width: 100%;
-  justify-content: center;
+  // justify-content: center;
 
   svg {
     // fill: $text;

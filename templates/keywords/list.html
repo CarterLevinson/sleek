@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block meta %}
+  {{ super() }}
+  <meta name="robots" content="noindex, follow"/>
+{% endblock meta %}
+
 {% block page_body %}
   <div class="content"></div>
 {% endblock page_body %}

@@ -5,46 +5,21 @@
 
 {% block page_body %}
   <div class="content">
-    <div class="posts">
-      {% if page.toc %}
-        <aside class="post-toc">
-          <h2 class="post-toc-title">Contents</h2>
-          <div class="post-toc-content-always-active">
-            <nav class="table-of-contents">
-              <ul class="nav-links">
-                {% for h1 in page.toc %}
-                  <li>
-                    <a href="{{ h1.permalink | safe }}" class="toc-link">{{ h1.title }}</a>
-                    {% if h1.children %}
-                      <ul class="nav-links">
-                        {% for h2 in h1.children %}
-                          <li>
-                            <a href="{{ h2.permalink | safe }}" class="toc-link">{{ h2.title }}</a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </nav>
-          </div>
-        </aside>
-      {% endif %}
+    <main class="posts">
       <article class="post">
+        {{ posts::toc(page=page) }}
         {{ posts::title(page=page) }}
-        <!-- <hr/> -->
         <div class="post-content">
-          <main>
-            {{ page.content | safe }}
-          </main>
+          {{ page.content | safe }}
         </div>
-        <div class="post-footer">
+        <footer class="post-footer">
           {% if page.taxonomies.tags %}
             <br/>
             <div class="post-tags">
               {% for tag in page.taxonomies.tags %}
-                <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>&nbsp;
+                <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">
+                  #{{ tag }}
+                </a>&nbsp;
               {% endfor %}
             </div>
           {% endif %}
@@ -69,8 +44,8 @@
               {% endif %}
             </nav>
           {% endif %}
-        </div>
+        </footer>
       </article>
-    </div>
+    </main>
   </div>
 {% endblock page_body %}

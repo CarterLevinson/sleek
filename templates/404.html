@@ -2,9 +2,12 @@
 {% import "macros/error.html" as error %}
 
 {% extends "base.html" %}
+{% block meta %}
+  {{ super() }}
+  <meta name="robots" content="noindex, nofollow"/>
+{% endblock meta %}
 
 {% block canonical %}
-  <meta name="robots" content="noindex, nofollow">
 {% endblock canonical %}
 
 {% block page_body %}
@@ -12,7 +15,7 @@
     <div class="spotlight-404-img">
       {{ error::render_error_image() }}
     </div>
-    <hgroup class="spotlight-404-banner">
+    <div class="spotlight-404-banner">
       <h1>Page Not Found</h1>
       <p>
         The requested page was not found or does not exist on this website. You
@@ -21,7 +24,7 @@
         or return
         <a href="{{ config.base_url }}">home</a>.
       </p>
-    </hgroup>
+    </div>
     <div class="spotlight-404-button">
       <a href="{{ config.base_url }}">
         {{ icons::render_home_icon() }}

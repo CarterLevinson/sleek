@@ -1,46 +1,49 @@
 {% import "macros/macros.html" as macros %}
-{% import "macros/menu.html" as menu %}
+{% import "macros/icons.html" as icons %}
 
 {# template #}
 <!DOCTYPE html>
 <html lang="{{ config.default_language }}">
   <head>
     {% block head %}
+      {% block meta %}
       <meta charset="UTF-8"/>
       <meta name="viewport"
             content="width=device-width, initial-scale=1.0"/>
       <meta name="apple-mobile-web-app-capable"
             content="yes"/>
-      {% if config.extra.author %}
-        <meta name="author"
-              content="{{ config.extra.author }}"/>
-      {% endif %}
-      {% if page.description %}
-        <meta name="description"
-              content="{{ page.description }}"/>
-      {% elif section.description %}
-        <meta name="description"
-              content="{{ section.description }}"/>
-      {% elif config.description %}
-        <meta name="description"
-              content="{{ config.description }}"/>
-      {% endif %}
-      <link rel="manifest"
-            href="{{ get_url(path="site.webmanifest") }}"/>
-      {# favicons #}
-      <link rel="shortcut icon"
-            href="{{ get_url(path="icons/favicon.ico") }}"/>
-      <link rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="{{ get_url(path="icons/favicon-16x16.png") }}"/>
-      <link rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="{{ get_url(path="icons/favicon-32x32.png") }}"/>
-      <link rel="apple-touch-icon"
-            sizes="180x180"
-            href="{{ get_url(path="icons/apple-touch-icon.png") }}"/>
+        {% if config.extra.author %}
+          <meta name="author"
+                content="{{ config.extra.author }}"/>
+        {% endif %}
+        {% if page.description %}
+          <meta name="description"
+                content="{{ page.description }}"/>
+        {% elif section.description %}
+          <meta name="description"
+                content="{{ section.description }}"/>
+        {% elif config.description %}
+          <meta name="description"
+                content="{{ config.description }}"/>
+        {% endif %}
+      {% endblock meta %}
+      {% block favicon %}
+        <link rel="manifest"
+              href="{{ get_url(path="site.webmanifest") }}"/>
+        <link rel="shortcut icon"
+              href="{{ get_url(path="icons/favicon.ico") }}"/>
+        <link rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="{{ get_url(path="icons/favicon-16x16.png") }}"/>
+        <link rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="{{ get_url(path="icons/favicon-32x32.png") }}"/>
+        <link rel="apple-touch-icon"
+              sizes="180x180"
+              href="{{ get_url(path="icons/apple-touch-icon.png") }}"/>
+      {% endblock favicon %}
       {% block css %}
         <link rel="stylesheet"
               href="{{ get_url(path="site.css") }}"/>
@@ -60,13 +63,13 @@
         {% endif %}
       {% endblock rss %}
       {% block canonical %}
-      {% if page.extra.canonical %}
-        <link rel="canonical" href="{{ page.extra.canonical }}"/>
-      {% elif section.extra.canonical %}
-        <link rel="canonical" href="{{ section.extra.canonical }}"/>
-      {% else %}
-        <link rel="canonical" href="{{ current_url }}"/>
-      {% endif %}
+        {% if page.extra.canonical %}
+          <link rel="canonical" href="{{ page.extra.canonical }}"/>
+        {% elif section.extra.canonical %}
+          <link rel="canonical" href="{{ section.extra.canonical }}"/>
+        {% else %}
+          <link rel="canonical" href="{{ current_url }}"/>
+        {% endif %}
       {% endblock canonical %}
       {% block title %}
         <title>
@@ -90,23 +93,86 @@
       <div class="page">
         <header class="page-header">
           {% block page_header %}
-            {% set logo = config.extra.sleek_logo %}
-            {% set abbr = config.extra.sleek_abbr %}
-            {{ menu::make_logo(logo=logo, abbr=abbr) }}
-            {% set menu = config.extra.menu_links %}
-            {{ menu::make_navbar(menu=menu) }}
+            {% block logo %}
+              {% set logo = config.extra.sleek_logo %}
+              {% set abbr = config.extra.sleek_abbr %}
+              {% if logo is defined and abbr is defined %}
+                <a class="logo" href="{{ config.base_url }}">
+                  <img class="logo-content"
+                       src="{{ get_url(path=logo) }}"
+                       alt="{{ abbr }}"/>
+                </a>
+              {% endif %}
+            {% endblock logo %}
+            {% block menu %}
+              <nav>
+                {% set menu = config.extra.menu_links %}
+                <menu class="navbar-menu-items">
+                  {% for target in menu %}
+                    <li class="navbar-menu-item">
+                      <a href="{{ config.base_url ~ target.link }}">
+                        {{ target.name }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  <li class="navbar-menu-item">
+                    <search>
+                      <form class="navbar-search">
+                        <input id="navbar-search-input"
+                               type="search"
+                               autocomplete="off"
+                               placeholder="Search..."/>
+                        <button id="navbar-search-button" type="submit">
+                          {{ icons::render_magnifying_glass() }}
+                        </button>
+                      </form>
+                    </search>
+                  </li>
+                </menu>
+              </nav>
+            {% endblock menu %}
           {% endblock page_header %}
         </header>
         <div class="page-body">
           {% block page_body %}
-            <div class="content">
-            </div>
+            <div class="content"></div>
           {% endblock page_body %}
         </div>
         <footer class="page-footer">
           {% block page_footer %}
-            {{ macros::copyright() }}
-            {{ macros::footer_taxonomies() }}
+            {% if config.extra.copyright and config.extra.author %}
+              <div class="copyright">
+                <span class="copyright-symbol">
+                  &copy;
+                </span>
+                <span class="copyright-date">
+                  {{ now() | date(format="%Y") }}
+                </span>
+                <a href="{{ config.base_url }}">
+                  {{ config.extra.author }}
+                </a>.
+                <span class="copyright-text">
+                  {{ config.extra.copyright }}.
+                <span>
+              </div>
+            {% else %}
+              <div class="copyright">
+                <span class="copyright-symbol">
+                  &copy;
+                </span>
+                <span class="copyright-date">
+                  {{ now() | date(format="%Y") }}
+                <span>
+                <a href="{{ config.base_url }}">
+                  Sleek
+                </a>.
+                <span class="copyright-text">
+                  Powered by Zola.
+                </span>
+              </div>
+            {% endif %}
+            {{ macros::footer_tags() }}
+            {{ macros::footer_topics() }}
             {{ macros::rss_feed() }}
           {% endblock page_footer %}
         </footer>

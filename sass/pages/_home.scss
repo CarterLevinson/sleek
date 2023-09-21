@@ -17,9 +17,9 @@
 
 .spotlight {
   &-center {
-    @include flex(1 1 auto);
-    flex-flow: column wrap;
-    justify-content: center;
+    @include flex($fs:1);
+    @include justify-content(center);
+    @include flex-flow(( column wrap ));
   }
 
   &-title {
@@ -30,18 +30,19 @@
   &-quote {
     text-align: center;
     line-height: normal;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-style: italic;
     font-weight: $semi-bold;
-    margin-top: 1.0em;
+
+    margin: 0.5em;
   }
 
   &-social-icons {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     text-align: center;
     opacity: 0.8;
     a {
-      margin: 0 0.2em;
+      margin: 0.33em;
     }
   }
 }

@@ -9,17 +9,14 @@
 #search-page form {
   border-radius: 10px;
 }
+
 .search-results {
   @include flexbox();
+  @include flex-flow(( row wrap ));
+  @include align-self(flex-start);
 
-  flex-flow: row wrap;
-  align-self: flex-start;
-  // margin: auto;
-  // justify-content: start;
-  // display: flex;
-  // padding: 10px 0px 10px 0px;
   &-items {
-    @include flex(1 0 auto);
+    @include flex();
 
     margin: auto;
     width: 100%;
@@ -30,14 +27,10 @@
     min-width: 0;
     border: 2px solid $off-white;
     border-radius: 10px;
-    margin: 1rem 0 1rem 0;
+    margin: 1em 0;
     // margin-top: 1rem;
 
-    padding: 5px 5px 5px 5px;
-    // padding-bottom: 5px;
-    // margin: auto;
-    // min-height: 0;
-    // justify-self: start;
+    padding: 5px;
     a {
       font-size: 1.2rem;
       display: inline-block;

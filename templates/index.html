@@ -17,18 +17,18 @@
                autocomplete="off"
                placeholder="Search..."/>
         <button id="search-button" type="submit">
-            {{ icons::render_magnifying_glass() }}
+          {{ icons::render_magnifying_glass() }}
         </button>
       </form>
     </search>
     <div class="spotlight-center">
       <p class="spotlight-quote">
         {{ config.extra.sleek_quote }}
-      <p>
-      <div class="spotlight-social-icons">
+      </p>
+      <menu class="spotlight-social-icons">
         {{ social::render_social_icons() }}
         {{ macros::rss_feed() }}
-      </div>
+      </menu>
     </div>
   </main>
 {% endblock page_body %}

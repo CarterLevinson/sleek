@@ -1,3 +1,3 @@
-@use "normalize";
-@use "base";
-@use "fonts";
+@forward "reset";
+@forward "base";
+@forward "fonts";

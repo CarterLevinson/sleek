@@ -1,34 +1,33 @@
-@mixin flexbox() {
-  display: -moz-box;
-  display: -moz-box-flex;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-box-flex;
-  display: flex;
-}
-
-@mixin flex($values) {
-  -webkit-box-flex: $values;
-  -moz-box-flex:  $values;
-  -webkit-flex:  $values;
-  -ms-flex:  $values;
-  flex:  $values;
-}
-
-@mixin order($val) {
-  -webkit-box-ordinal-group: $val;
-  -moz-box-ordinal-group: $val;
-  -ms-flex-order: $val;
-  -webkit-order: $val;
-  order: $val;
-}
-
 @mixin background-clip() {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
 
-@mixin font() {
+@mixin margin($top:null, $right:null, $bottom:null, $left:null) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
 
+@mixin padding($top:null, $right:null, $bottom:null, $left:null) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  paddin-left: $left;
+}
+
+@mixin font($family, $size, $style:normal, $weight:normal,$stretch:normal) {
+  font-family: $family;
+  font-size: $size;
+  font-stretch: $stretch;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }

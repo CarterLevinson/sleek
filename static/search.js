@@ -213,7 +213,8 @@ function init() {
     });
 
     var $searchButton = document.getElementById("search-button");
-    $searchButton.addEventListener("click", async function() {
+    $searchButton.addEventListener("click", async function(event) {
+      event.preventDefault()
       elasticSearch($searchInput.value.trim());
     });
 

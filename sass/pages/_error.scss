@@ -5,9 +5,9 @@
 //
 #error-page {
   nav {
+    @include flexbox();
     flex-flow: column wrap;
     justify-content: center;
-    @include flexbox();
     #search-btn {
       fill: $text;
       padding-bottom: 0.1em;
@@ -29,7 +29,6 @@
       padding: 0.5em;
       transition-property: color, border-color;
       word-break: break-all;
-
 
       &:hover {
         border-color: #fff;

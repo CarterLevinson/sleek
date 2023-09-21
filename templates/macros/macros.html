@@ -1,6 +1,6 @@
 {% import "macros/icons.html" as icons %}
 
-{% macro footer_taxonomies() %}
+{% macro footer_tags() %}
   {% if config.extra.footer_tags | length != 0 %}
     <div class="taxonomies-footer">
       <ul class="taxonomies-footer-items">
@@ -16,6 +16,9 @@
       </ul>
     </div>
   {% endif %}
+{% endmacro footer_tags %}
+
+{% macro footer_topics() %}
   {% if config.extra.footer_topics | length != 0 %}
     <div class="taxonomies-footer">
       <ul class="taxonomies-footer-items">
@@ -31,7 +34,7 @@
       </ul>
     </div>
   {% endif %}
-{% endmacro footer_taxonomies %}
+{% endmacro footer_topics %}
 
 {% macro rss_feed() %}
   {% if config.generate_feed %}

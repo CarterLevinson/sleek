@@ -1,5 +1,5 @@
-@use "error";
-@use "home";
-@use "search";
-@use "tags";
-@use "topics";
+@forward "error";
+@forward "home";
+@forward "search";
+@forward "tags";
+@forward "topics";

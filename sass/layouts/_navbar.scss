@@ -6,8 +6,13 @@
 }
 
 .logo {
-  margin-right: auto;
-  cursor: pointer;
+  @include margin($right:auto);
+
+  img,
+  svg {
+    cursor: pointer;
+
+  }
 
   &-content {
     height: 50px;
@@ -54,10 +59,9 @@
   }
 
   svg {
+    @include padding($bottom:0.5em, $right:0.5em);
     height: 1.0em;
     width: 1.0em;
-    padding-right: 15px;
-    padding-bottom: 8px;
   }
 
   button {

@@ -1,10 +1,16 @@
+@use "../abstracts/all" as *;
+
+.copyright {
+  font-size: 1.0em;
+  font-weight: $bold;
+}
 
 .taxonomies-footer {
   width: 100%;
   font-size: 0.8em;
   &-items {
     list-style: none;
-    &> li {
+    > li {
       display: inline-block;
     }
   }

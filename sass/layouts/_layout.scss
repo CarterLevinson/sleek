@@ -2,46 +2,52 @@
 
 /* page: vertical-flex container */
 .page {
-  min-height: 100%;
-  flex-flow: column wrap;
+  // Full screen height
+  min-height: 100vh;
+  min-width: 100vw;
+  // min-height: 100%;
+  // flex-flow: column wrap;
   @include flexbox();
-  @include flex(1 1 auto);
+  @include flex( $fs:1);
+  @include flex-flow(( column wrap ));
 }
 
 .page {
+
   &-header {
     @include flexbox();
-    @include flex(0 0 auto);
-    max-height: 150px;
-    padding: 15px 0%;
-    justify-content: flex-end;
-    align-items: center;
-    line-height: normal;
+    @include flex($fg:0);
+    @include align-items(center);
+    @include flex-flow(( row wrap ));
+    height: auto;
+    max-height: 15%;
+    padding: 15px 0;
     z-index: 1;
   }
   /* page body: horizontal-flex container */
   &-body {
     @include flexbox();
-    @include flex(1 1 auto);
+    @include flex($fs:1);
+    @include justify-content(center);
+    @include flex-flow(( row wrap ));
     border-top: $off-white solid 1px;
     border-bottom: $off-white solid 1px;
-    justify-content: center;
-    // align-content: start;
-    // align-content: center;
   }
 
   &-footer {
     @include flexbox();
-    @include flex(0 0 auto);
-    align-items: center;
-
-    // max-height: 75px;
-    max-height: 150px;
+    @include flex($fg:0);
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-flow(( row wrap ));
+    height: auto;
+    max-height: 15%;
+    padding: 15px 0;
     text-align: center;
+    font-size: 0.8rem;
 
-    .copyright {
-      font-size: 1.0em;
-      font-weight: $bold;
+    div {
+      font-weight: $light;
     }
 
     svg {
@@ -51,35 +57,22 @@
     }
 
     p {
-      font-size: 0.8em;
+      font-size: 0.8rem;
+      font-weight: $light;
     }
 
     a {
       vertical-align: bottom;
       transform: none;
     }
-
-    .taxonomies-container {
-      .taxonomies {
-        font-size: 0.8em;
-      }
-    }
-
-    // align-items: center;
-    // text-align: center;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0%;
   }
 }
 
 .content {
   @include flexbox();
-  @include flex(1 1 auto);
-
-  flex-flow: column wrap;
-  margin-top: 15px;
-  max-height: 90%;
-  max-width: 67%;
+  @include flex($fs:1);
+  @include flex-flow(( column wrap ));
+  @include justify-content(flex-start);
+  @include align-items(center);
+  @include margin($top:15px);
 }
