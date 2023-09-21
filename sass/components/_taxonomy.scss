@@ -1,6 +1,7 @@
 @use "../abstracts/all" as *;
 
 
+
 .count {
   position: relative;
   top: -8px;
@@ -12,6 +13,7 @@
 
 .taxonomy {
   margin: 2em 0;
+  max-width: 67%;
   &-title {
     svg {
       height: 1.0em;

@@ -4,17 +4,17 @@
 
 {% block page_body %}
   <div class="content">
-    <div class="taxonomies-container">
-      <header class="taxonomies-header">
+    <div class="tags-container">
+      <header class="tags-header">
         <h1 class="taxonomies-title">
           <a href="{{ current_url }}">
             Tags
           </a>
         </h1>
       </header>
-      <ul class="taxonomies-items">
+      <ul class="taxonomies-tags">
         {% for tag in terms %}
-          <li class="taxonomies-item">
+          <li class="taxonomies-tag">
             <details class="taxonomies-tag">
               <summary>
                 <a href="{{ tag.permalink }}">
@@ -41,7 +41,7 @@
         {% endfor %}
       </ul>
       <hr/>
-      <div class="taxonomies-total">
+      <div class="tags-total">
         {{ terms | length }} tags in total
       </div>
     </div>

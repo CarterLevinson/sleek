@@ -1,3 +1,28 @@
+@use "../abstracts/all" as *;
+
+.tags {
+  &-header {
+    text-align: center;
+    padding: 0.33em 0;
+  }
+  &-total {
+    font-weight: $light;
+    text-align: center;
+  }
+}
+
+
+.taxonomies {
+  &-tags {
+    list-style: none;
+    display: table-cell;
+  }
+  &-tag {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.33em;
+  }
+}
 //
 // taxonomies
 //
