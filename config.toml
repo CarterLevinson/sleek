@@ -50,11 +50,11 @@ render_mathjax    = false
 # static json containing large topic descriptions
 topics_metadata = "topics/descriptions.json"
 # todo: implement showing topics in footer as well as tags
-# footer_topics   = [
-#   "blog",
-#   "lorem",
-#   "post",
-# ]
+footer_topics   = [
+  "blog",
+  "lorem",
+  "post",
+]
 # list of tags to display in the footer
 footer_tags     = [
   "blog",
