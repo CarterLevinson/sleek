@@ -123,7 +123,7 @@ function makeTeaser(body, terms) {
 
 function formatSearchResultItem(item, terms) {
   return '<div>'
-  + `<a href="${item.ref}">${item.doc.title}</a>`
+  + `<a href="${item.ref}"><h3>${item.doc.title}</h3></a>`
   + `<div>${makeTeaser(item.doc.body, terms)}</div>`
   + '</div>';
 }
