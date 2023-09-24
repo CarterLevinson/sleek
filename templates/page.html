@@ -3,6 +3,12 @@
 
 {% extends "base.html" %}
 
+{% block js %}
+  {% if page.extra.mathjax %}
+    <script async src="{{ get_url(path="math.js") }}"></script>
+  {% endif %}
+{% endblock js %}
+
 {% block page_body %}
   <div class="content">
     <main class="posts">
@@ -25,7 +31,7 @@
           {% endif %}
           <hr/>
           {% if page.lower or page.higher %}
-            <nav class="post-nav">
+            <nav class="pagination">
               {% if page.lower %}
                 <div class="prev">
                   {{ icons::render_chevrons_left() }}
