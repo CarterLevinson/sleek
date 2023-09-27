@@ -3,25 +3,13 @@
 //
 // 404
 //
-#error-page {
-  nav {
-    @include flexbox();
-    flex-flow: column wrap;
-    justify-content: center;
-    #search-btn {
-      fill: $text;
-      padding-bottom: 0.1em;
-      // margin-bottom: 0.1em;
-    }
-  }
-}
 
-.spotlight {
-  &-404-img {
-    object-fit: scaledown;
+.error {
+  &-404-img svg {
+    width: 50vw;
+    height: auto;
   }
   &-404-button {
-    // font-size: 0.8em;
     a {
       display: inline-block;
       border-radius: 50%;
@@ -38,28 +26,18 @@
   }
   &-404-banner {
     margin-left: 2em;
-    // display: flex column;
-    // justify-content: center;
 
     h1 {
       text-align: center;
-      font-size: 3em;
-      margin: 0.5rem 0;
+      // font-size: 3em;
+      margin: 0.25em 0;
     }
 
     p {
       text-align: center;
       margin-top: 0;
       margin-bottom: 0.6em;
+      max-width: 60vw;
     }
-
-
-    svg {
-      height: 1em;
-      width: 1em;
-      padding-top: 0.125em;
-    }
-
   }
-
 }

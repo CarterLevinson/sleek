@@ -7,14 +7,15 @@
   {% if page.extra.mathjax %}
     <script async src="{{ get_url(path="math.js") }}"></script>
   {% endif %}
+  {{ super() }}
 {% endblock js %}
 
 {% block page_body %}
   <div class="content">
     <div class="posts">
       <article class="post">
-        {{ posts::toc(page=page) }}
         {{ posts::title(page=page) }}
+        {{ posts::toc(page=page) }}
         <div class="post-content">
           {{ page.content | safe }}
         </div>

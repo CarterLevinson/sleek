@@ -58,6 +58,19 @@ a {
   }
 }
 
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+pre table td {
+  padding: 0;
+}
+// The line number cells
+pre table td:nth-of-type(1) {
+  text-align: center;
+  user-select: none;
+}
 
 table {
   border-collapse: collapse;

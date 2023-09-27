@@ -1,16 +1,6 @@
 @use "../abstracts/all" as *;
 
-body {
-  @include font-smoothing();
-  background: $background;
-  color: $text;
-  font-size: $font-size-base;
-  font-weight: $normal;
-  font-family: $font;
-  text-rendering: optimizeLegibility;
-}
-
-%header-base {
+%heading {
   @include word-wrap();
   font-family: $font;
   font-weight: $extra-bold;
@@ -21,33 +11,43 @@ body {
   margin: .66em 0 0;
 }
 
+body {
+  @include font-smoothing();
+  background: $background;
+  color: $text;
+  font-size: $font-size-base;
+  font-weight: $normal;
+  font-family: $font;
+  text-rendering: optimizeLegibility;
+}
+
 h1 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h1;
 }
 
 h2 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h2;
 }
 
 h3 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h3;
 }
 
 h4 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h4;
 }
 
 h5 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h5;
 }
 
 h6 {
-  @extend %header-base;
+  @extend %heading;
   font-size: $font-size-h6;
 }
 
@@ -133,28 +133,17 @@ pre {
   padding: 1em;
   overflow: auto;
 }
+
 // The line numbers already provide some kind of left/right padding
 pre[data-linenos] {
   padding: 1em 0;
 }
-pre table td {
-  padding: 0;
-}
-// The line number cells
-pre table td:nth-of-type(1) {
-  text-align: center;
-  user-select: none;
-}
+
 pre mark {
   // If you want your highlights to take the full width.
   display: block;
   // The default background colour of a mark is bright yellow
   background-color: rgba(254, 252, 232, 0.9);
-}
-
-pre table {
-  width: 100%;
-  border-collapse: collapse;
 }
 
 code {

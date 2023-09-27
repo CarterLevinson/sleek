@@ -15,7 +15,7 @@
       {% set json = load_data(path=config.extra.topics_metadata) %}
       {% for topic in terms %}
         <div class="taxonomies-topic">
-          <h1 class="taxonomies-topic-title">
+          <h1 id="{{ topic.name }}" class="taxonomies-topic-title">
             <a href="{{ topic.permalink }}">
               {{ topic.name }}
             </a>
@@ -26,12 +26,6 @@
         </div>
       {% endfor %}
       <br/>
-      {#
-      <hr/>
-      <div class="taxonomies-total">
-        {{ terms | length }} categories in total
-      </div>
-      #}
     </div>
   </div>
 {% endblock page_body %}

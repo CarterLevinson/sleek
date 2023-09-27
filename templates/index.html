@@ -4,28 +4,27 @@
 
 {% extends "base.html" %}
 
-
 {% block page_body %}
-  <div class="spotlight" id="home-page">
-    <h1 class="spotlight-title">
+  <div class="spotlight">
+    <h1 class="home-title">
       {{ config.title }}
     </h1>
-    <search>
-      <form class="search">
-        <input id="search-input"
-               type="search"
-               autocomplete="off"
-               placeholder="Search..."/>
-        <button id="search-button" type="submit">
-          {{ icons::render_magnifying_glass() }}
-        </button>
-      </form>
-    </search>
-    <div class="spotlight-center">
-      <p class="spotlight-quote">
+    <div class="home-center">
+      <search>
+        <form class="search">
+          <input id="search-input"
+                 type="search"
+                 autocomplete="off"
+                 placeholder="Search..."/>
+          <button id="search-button" type="submit">
+            {{ icons::render_magnifying_glass() }}
+          </button>
+        </form>
+      </search>
+      <h2 class="home-subtitle">
         {{ config.extra.sleek_quote }}
-      </p>
-      <menu class="spotlight-social-icons">
+      </h2>
+      <menu class="home-social-icons">
         {{ social::render_social_icons() }}
         {{ macros::rss_feed() }}
       </menu>
