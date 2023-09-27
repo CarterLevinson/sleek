@@ -4,8 +4,8 @@
   @include flexbox();
   @include justify-content(flex-start);
   @include flex-flow(( row wrap ));
-  min-width: 67ch;
-  max-width: 120ch;
+  // min-width: 67ch;
+  max-width: 80em;
 }
 
 .post {

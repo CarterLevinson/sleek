@@ -3,12 +3,14 @@
 {% extends "base.html" %}
 
 {% block js %}
-  <script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+  <script defer src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+  <script defer src="{{ get_url(path="search.js") }}"></script>
+  {{ super() }}
 {% endblock js %}
 
 {% block page_body %}
   <div class="content">
-    <main id="search-page">
+    <div id="search-page">
       <search>
         <form class="search">
           <input id="search-input"
@@ -23,11 +25,9 @@
       <div class="search-results">
         <ul class="search-results-items"></ul>
       </div>
-    </main>
+    </div>
   </div>
 {% endblock page_body %}
 
 {% block scripts %}
-  {{ super() }}
-  <script src="{{ get_url(path="search.js") }}"></script>
 {% endblock scripts %}

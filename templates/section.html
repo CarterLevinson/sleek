@@ -5,7 +5,7 @@
 
 {% block page_body %}
   <div class="content">
-    <main class="posts">
+    <div class="posts">
       {% for page in paginator.pages %}
         <article class="post">
           {{ posts::title(page=page) }}
@@ -46,6 +46,6 @@
           </div>
         {% endif %}
       </nav>
-    </main>
+    </div>
   </div>
 {% endblock page_body %}

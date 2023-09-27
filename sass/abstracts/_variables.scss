@@ -29,8 +29,17 @@ $banner: $nord8;
 $banner-text: $navy-blue;
 
 //
-// Fonts
+// Font Stacks
 //
+
+$font: "Fira Sans";
+$code-font: "Fira Code";
+// $math-font: "Fira Math";
+
+//
+// Font Weights
+//
+
 $thin: 100;
 $hairline: 100;
 $extra-light: 200;
@@ -43,6 +52,18 @@ $bold: 700;
 $extra-bold: 800;
 $black: 900;
 
-$font: "Fira Sans";
-$code-font: "Fira Code";
-$math-font: "Fira Math"
+
+// Font Sizes
+// $harmonic-scalar: 1.325;
+$harmonic-scalar: 1.16;
+$font-size-base: 1.618rem;
+$line-height: $harmonic-scalar;
+//$line-height: $font-size-base;
+$letter-spacing: 0.05em;
+
+$font-size-h6: $font-size-base / $harmonic-scalar;
+$font-size-h5: $font-size-base;
+$font-size-h4: $font-size-h5 * $harmonic-scalar;
+$font-size-h3: $font-size-h4 * $harmonic-scalar;
+$font-size-h2: $font-size-h3 * $harmonic-scalar;
+$font-size-h1: $font-size-h2 * $harmonic-scalar;

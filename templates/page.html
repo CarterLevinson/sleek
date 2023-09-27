@@ -11,7 +11,7 @@
 
 {% block page_body %}
   <div class="content">
-    <main class="posts">
+    <div class="posts">
       <article class="post">
         {{ posts::toc(page=page) }}
         {{ posts::title(page=page) }}
@@ -52,6 +52,6 @@
           {% endif %}
         </footer>
       </article>
-    </main>
+    </div>
   </div>
 {% endblock page_body %}

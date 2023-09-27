@@ -6,7 +6,7 @@
 
 
 {% block page_body %}
-  <main class="spotlight" id="home-page">
+  <div class="spotlight" id="home-page">
     <h1 class="spotlight-title">
       {{ config.title }}
     </h1>
@@ -30,5 +30,5 @@
         {{ macros::rss_feed() }}
       </menu>
     </div>
-  </main>
+  </div>
 {% endblock page_body %}

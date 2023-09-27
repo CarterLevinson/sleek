@@ -7,10 +7,10 @@
   <head>
     {% block head %}
       {% block meta %}
-      <meta charset="UTF-8"/>
-      <meta name="viewport"
-            content="width=device-width, initial-scale=1.0"/>
-      <meta name="apple-mobile-web-app-capable"
+        <meta charset="UTF-8"/>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable"
             content="yes"/>
         {% if config.extra.author %}
           <meta name="author"
@@ -85,101 +85,104 @@
         </title>
       {% endblock title %}
       {% block js %}
+        <script async src="{{ get_url(path="main.js") }}"></script>
       {% endblock js %}
     {% endblock head %}
   </head>
   <body>
     {% block body %}
-      <div class="page">
-        <header class="page-header">
-          {% block page_header %}
-            {% block logo %}
-              {% set logo = config.extra.sleek_logo %}
-              {% set abbr = config.extra.sleek_abbr %}
-              {% if logo is defined and abbr is defined %}
-                <a class="logo" href="{{ config.base_url }}">
-                  <img class="logo-content"
-                       src="{{ get_url(path=logo) }}"
-                       alt="{{ abbr }}"/>
-                </a>
-              {% endif %}
-            {% endblock logo %}
-            {% block menu %}
-              <nav>
-                {% set menu = config.extra.menu_links %}
-                <menu class="navbar-menu-items">
-                  {% for target in menu %}
-                    <li class="navbar-menu-item">
-                      <a href="{{ config.base_url ~ target.link }}">
-                        {{ target.name }}
-                      </a>
-                    </li>
-                  {% endfor %}
-                  <li class="navbar-menu-item">
-                    <search>
-                      <form class="navbar-search">
-                        <input id="navbar-search-input"
-                               type="search"
-                               autocomplete="off"
-                               placeholder="Search..."/>
-                        <button id="navbar-search-button" type="submit">
-                          {{ icons::render_magnifying_glass() }}
-                        </button>
-                      </form>
-                    </search>
-                  </li>
-                </menu>
-              </nav>
-            {% endblock menu %}
-          {% endblock page_header %}
-        </header>
-        <div class="page-body">
-          {% block page_body %}
-            <div class="content"></div>
-          {% endblock page_body %}
-        </div>
-        <footer class="page-footer">
-          {% block page_footer %}
-            {% if config.extra.copyright and config.extra.author %}
-              <div class="copyright">
-                <span class="copyright-symbol">
-                  &copy;
-                </span>
-                <span class="copyright-date">
-                  {{ now() | date(format="%Y") }}
-                </span>
-                <a href="{{ config.base_url }}">
-                  {{ config.extra.author }}
-                </a>.
-                <span class="copyright-text">
-                  {{ config.extra.copyright }}.
-                <span>
-              </div>
-            {% else %}
-              <div class="copyright">
-                <span class="copyright-symbol">
-                  &copy;
-                </span>
-                <span class="copyright-date">
-                  {{ now() | date(format="%Y") }}
-                <span>
-                <a href="{{ config.base_url }}">
-                  Sleek
-                </a>.
-                <span class="copyright-text">
-                  Powered by Zola.
-                </span>
-              </div>
+      <header>
+        {% block page_header %}
+          {% block logo %}
+            {% if config.extra.sleek_logo and config.extra.sleek_abbr %}
+              <a class="logo" href="{{ config.base_url }}">
+                <img class="logo-content"
+                     src="{{ get_url(path=config.extra.sleek_logo) }}"
+                     alt="{{ config.extra.sleek_abbr }}"/>
+              </a>
             {% endif %}
-            {{ macros::footer_tags() }}
-            {{ macros::footer_topics() }}
-            {{ macros::rss_feed() }}
-          {% endblock page_footer %}
-        </footer>
-      </div>
+          {% endblock logo %}
+          {% block menu %}
+            <nav>
+              <menu class="navbar-menu-items">
+                {% for target in config.extra.menu_links %}
+                  {% if target.name %}
+                    <li class="navbar-menu-item">
+                      {% if target.url %}
+                        <a href="{{ target.url }}">
+                          {{ target.name }}
+                        </a>
+                      {% endif %}
+                      {% if target.link %}
+                        <a href="{{ config.base_url ~ target.link }}">
+                          {{ target.name }}
+                        </a>
+                      {% endif %}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                <li class="navbar-menu-item">
+                  <search>
+                    <form class="navbar-search">
+                      <input id="navbar-search-input"
+                             type="search"
+                             autocomplete="off"
+                             placeholder="Search..."/>
+                      <button id="navbar-search-button" type="submit">
+                        {{ icons::render_magnifying_glass() }}
+                      </button>
+                    </form>
+                  </search>
+                </li>
+              </menu>
+            </nav>
+          {% endblock menu %}
+        {% endblock page_header %}
+      </header>
+      <main>
+        {% block page_body %}
+          <div class="content">
+          </div>
+        {% endblock page_body %}
+      </main>
+      <footer>
+        {% block page_footer %}
+          {% if config.extra.copyright and config.extra.author %}
+            <div class="copyright">
+              <span class="copyright-symbol">
+                &copy;
+              </span>
+              <span class="copyright-date">
+                {{ now() | date(format="%Y") }}
+              </span>
+              <a href="{{ config.base_url }}">
+                {{ config.extra.author }}
+              </a>.
+              <span class="copyright-text">
+                {{ config.extra.copyright }}.
+              <span>
+            </div>
+          {% else %}
+            <div class="copyright">
+              <span class="copyright-symbol">
+                &copy;
+              </span>
+              <span class="copyright-date">
+                {{ now() | date(format="%Y") }}
+              <span>
+              <a href="{{ config.base_url }}">
+                Sleek
+              </a>.
+              <span class="copyright-text">
+                Powered by Zola.
+              </span>
+            </div>
+          {% endif %}
+          {{ macros::footer_tags() }}
+          {{ macros::footer_topics() }}
+          {{ macros::rss_feed() }}
+        {% endblock page_footer %}
+      </footer>
     {% endblock body %}
-    {% block scripts %}
-      <script src="{{ get_url(path="main.js") }}"></script>
-    {% endblock scripts %}
   </body>
 </html>

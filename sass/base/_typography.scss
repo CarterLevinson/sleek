@@ -1,0 +1,168 @@
+@use "../abstracts/all" as *;
+
+body {
+  @include font-smoothing();
+  background: $background;
+  color: $text;
+  font-size: $font-size-base;
+  font-weight: $normal;
+  font-family: $font;
+  text-rendering: optimizeLegibility;
+}
+
+%header-base {
+  @include word-wrap();
+  font-family: $font;
+  font-weight: $extra-bold;
+
+  line-height: $harmonic-scalar;
+  letter-spacing: 0.05em;
+
+  margin: .66em 0 0;
+}
+
+h1 {
+  @extend %header-base;
+  font-size: $font-size-h1;
+}
+
+h2 {
+  @extend %header-base;
+  font-size: $font-size-h2;
+}
+
+h3 {
+  @extend %header-base;
+  font-size: $font-size-h3;
+}
+
+h4 {
+  @extend %header-base;
+  font-size: $font-size-h4;
+}
+
+h5 {
+  @extend %header-base;
+  font-size: $font-size-h5;
+}
+
+h6 {
+  @extend %header-base;
+  font-size: $font-size-h6;
+}
+
+p {
+  margin-bottom: 1em * $harmonic-scalar;
+}
+
+b, strong {
+  font-weight: $bold;
+}
+
+i, em {
+  font-style: italic;
+}
+
+ul, ol {
+  padding-left: 1em * ($harmonic-scalar * 2);
+  ul, ol {
+    padding-bottom: 0;
+    padding-top: 1em * ($harmonic-scalar / 2);
+  }
+}
+
+blockquote {
+  border-left: 1px solid $off-white;
+  padding-left: 1em * $harmonic-scalar;
+  margin-left: 1em * $harmonic-scalar;
+  margin-bottom: 1em * ($harmonic-scalar / 2 );
+  font-style: italic;
+  cite {
+    font-weight: bold;
+    font-style: normal;
+
+    &::before {
+      content: "—— ";
+    }
+  }
+}
+
+hr {
+  opacity: 0.5;
+  border-width: 0 0 2px 0;
+  background: transparent;
+  width: 100%;
+  margin: 1.8em auto;
+  color: $off-white;
+}
+
+pre,
+code,
+pre tt {
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  font-family: $code-font, monospace;
+}
+
+pre {
+  max-height: 40em;
+  padding: 0.7em 1.1em;
+  overflow: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #eee;
+  border-radius: 4px;
+  -webkit-overflow-scrolling: touch;
+
+  code {
+    padding: 0;
+    margin: 0;
+    background-color: $nord0;
+    // background: $theme1;
+  }
+}
+
+p > a {
+  vertical-align: bottom;
+}
+
+pre {
+  padding: 1em;
+  overflow: auto;
+}
+// The line numbers already provide some kind of left/right padding
+pre[data-linenos] {
+  padding: 1em 0;
+}
+pre table td {
+  padding: 0;
+}
+// The line number cells
+pre table td:nth-of-type(1) {
+  text-align: center;
+  user-select: none;
+}
+pre mark {
+  // If you want your highlights to take the full width.
+  display: block;
+  // The default background colour of a mark is bright yellow
+  background-color: rgba(254, 252, 232, 0.9);
+}
+
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+code {
+  color: #eee;
+  background: $highlight-grey;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 0 4px;
+  word-break: break-all;
+  letter-spacing: normal;
+}

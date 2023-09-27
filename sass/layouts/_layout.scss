@@ -1,20 +1,22 @@
 @use "../abstracts/all" as *;
 
 /* page: vertical-flex container */
-.page {
+// .page {
+body {
   // Full screen height
   min-height: 100vh;
   min-width: 100vw;
   // min-height: 100%;
   // flex-flow: column wrap;
   @include flexbox();
-  @include flex( $fs:1);
+  @include flex($fs:1);
   @include flex-flow(( column wrap ));
 }
 
-.page {
-
-  &-header {
+// .page {
+body {
+  // &-header {
+  > header {
     @include flexbox();
     @include flex($fg:0);
     @include align-items(center);
@@ -25,7 +27,8 @@
     z-index: 1;
   }
   /* page body: horizontal-flex container */
-  &-body {
+  // &-body {
+  > main {
     @include flexbox();
     @include flex($fs:1);
     @include justify-content(center);
@@ -34,7 +37,8 @@
     border-bottom: $off-white solid 1px;
   }
 
-  &-footer {
+  // &-footer {
+  > footer {
     @include flexbox();
     @include flex($fg:0);
     @include justify-content(center);
@@ -45,6 +49,9 @@
     padding: 15px 0;
     text-align: center;
     font-size: 0.8rem;
+    > * {
+      font-weight: $light;
+    }
 
     div {
       font-weight: $light;

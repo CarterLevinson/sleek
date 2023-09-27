@@ -24,9 +24,8 @@ default_language      = "en"
 
 # Default taxonomy lists and settings
 taxonomies            = [
-  { name              = "topics", feed = true },
   { name              = "tags", feed = true, paginate_by = 10 },
-  # { name              = "keywords", feed = false }
+  { name              = "topics", feed = true, paginate_by = 10 },
 ]
 
 [search]

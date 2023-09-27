@@ -2,6 +2,7 @@
 {% import "macros/error.html" as error %}
 
 {% extends "base.html" %}
+
 {% block meta %}
   {{ super() }}
   <meta name="robots" content="noindex, nofollow"/>
@@ -11,7 +12,7 @@
 {% endblock canonical %}
 
 {% block page_body %}
-  <main class="spotlight" id="error-page" >
+  <div class="spotlight" id="error-page" >
     <div class="spotlight-404-img">
       {{ error::render_error_image() }}
     </div>
@@ -21,8 +22,7 @@
         The requested page was not found or does not exist on this website. You
         can try searching for the content
         <a href="{{ config.base_url ~ "/search" }}">here</a>,
-        or return
-        <a href="{{ config.base_url }}">home</a>.
+        or return home using the button below.
       </p>
     </div>
     <div class="spotlight-404-button">
@@ -30,5 +30,5 @@
         {{ icons::render_home_icon() }}
       </a>
     </div>
-  </main>
+  </div>
 {% endblock page_body %}
