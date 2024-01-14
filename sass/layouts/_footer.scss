@@ -5,10 +5,20 @@
   // font-weight: $bold;
 }
 
+.footer-content {
+  @include flexbox();
+  @include flex-flow(row wrap);
+  @include justify-content(center);
+}
+
 .taxonomies-footer {
   width: 100%;
   font-size: 0.8em;
+  // display: flex;
+  // margin: auto;
+  // align-items: center;
   &-items {
+    // justify-content: center;
     list-style: none;
     > li {
       display: inline-block;
