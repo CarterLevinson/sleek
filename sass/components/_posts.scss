@@ -1,14 +1,15 @@
 @use "../abstracts/all" as *;
 
+// .post {
+//   @include flex($fg:1, $fs:0);
+// }
+
 .posts {
   @include flexbox();
   @include justify-content(flex-start);
   @include flex-flow(( row wrap ));
   // min-width: 67ch;
   max-width: 80em;
-}
-
-.post {
 }
 
 .post-title {
@@ -24,6 +25,22 @@
   padding-bottom: 15px;
 }
 
-// .post {
-//   @include flex($fg:1, $fs:0);
-// }
+.pagination {
+  width: 100%;
+}
+
+.next {
+  float: right;
+  margin-bottom: 1.8em;
+  a {
+    vertical-align: -0.125em;
+  }
+}
+
+.prev {
+  float: left;
+  margin-bottom: 1.8em;
+  a {
+    vertical-align: -0.125em;
+  }
+}
