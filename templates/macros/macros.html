@@ -4,14 +4,13 @@
   {% if config.extra.footer_tags | length != 0 %}
     <div class="taxonomies-footer">
       <ul class="taxonomies-footer-items">
-        |
         {% for tag in config.extra.footer_tags %}
           <li class="taxonomies-footer-item">
             {% set term = get_taxonomy_term(kind="tags", term=tag) %}
             {{ icons::render_tag_icon() }}
             <a href="{{ term.permalink }}">{{ term.name }}</a>
+            &nbsp;
           </li>
-          |
         {% endfor %}
       </ul>
     </div>
@@ -43,23 +42,5 @@
     </a>
   {% endif %}
 {% endmacro rss_feed %}
-
-{% macro copyright() %}
-  {% if config.extra.copyright %}
-    <p>
-      <span class="copyright">&copy;</span>
-      {{ now() | date(format="%Y") }}
-      <a href="{{ config.base_url }}">{{ config.extra.author }}</a>.
-      {{ config.extra.copyright }}.
-    </p>
-  {% else %}
-    <p>
-      <span class="copyright">&copy;</span>
-      {{ now() | date(format="%Y") }}
-      <a href="{{ config.base_url }}">Sleek theme</a>.
-      Powered by Zola.
-    </p>
-  {% endif %}
-{% endmacro copyright %}
 
 {# vim: set ft=htmldjango #}

@@ -85,7 +85,7 @@
         </title>
       {% endblock title %}
       {% block js %}
-        <script async src="{{ get_url(path="main.js") }}"></script>
+        <script defer src="{{ get_url(path="main.js") }}"></script>
       {% endblock js %}
     {% endblock head %}
   </head>
@@ -147,6 +147,7 @@
       </main>
       <footer>
         {% block page_footer %}
+          <div class="footer-content">
           {% if config.extra.copyright and config.extra.author %}
             <div class="copyright">
               <span class="copyright-symbol">
@@ -160,7 +161,7 @@
               </a>.
               <span class="copyright-text">
                 {{ config.extra.copyright }}.
-              <span>
+              </span>
             </div>
           {% else %}
             <div class="copyright">
@@ -179,8 +180,9 @@
             </div>
           {% endif %}
           {{ macros::footer_tags() }}
-          {{ macros::footer_topics() }}
+          {# macros::footer_topics() #}
           {{ macros::rss_feed() }}
+          </div>
         {% endblock page_footer %}
       </footer>
     {% endblock body %}

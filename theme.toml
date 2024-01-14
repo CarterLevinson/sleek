@@ -1,60 +1,68 @@
-name                  = "Sleek"
-description           = "A minimalistic theme a for personal website or blog"
-license               = "MIT"
-homepage              = "https://github.com/CarterLevo/Sleek"
+# theme name: note the capitalization
+name            = "Sleek"
 
-# todo: test on other versions
-min_version           = "0.17.0"
+# Theme description and tagline summary
+description     = "A minimalistic theme a for personal website or blog"
 
-# Cloudflare pages URL
-demo                  = "https://sleek-4lj.pages.dev"
+# Theme license: see LICENSE file for details
+license         = "MIT"
+
+# Project Github repository
+homepage        = "https://github.com/CarterLevinson/sleek"
+
+# Sleek supports Zola Versions >= 0.17.0
+min_version     = "0.17.0"
+
+# Cloudflare Pages site URL
+demo            = "https://sleek-4lj.pages.dev"
 
 [author]
-name                  = "Carter S. Levinson"
-homepage              = "carterlevinson.net"
+# My name
+name            = "Carter S. Levinson"
+
+# My blog
+homepage        = "https://carterlevinson.net"
 
 [extra]
 # The author of the website
-sleek_author          = "John Q. Example"
-# Alternate text for the logo image
-sleek_abbr            = "JQE"
-# displayed below title of website on homepage
-sleek_quote           = "You get what you pay for!"
+author          = "John Q. Example"
+
 # website copyright statement
-sleek_copyright       = "All rights reserved"
-# todo: implement
-sleek_mathjax         = false
+copyright       = "All rights reserved"
+
+# static json containing large topic descriptions
+topics_metadata = "topics/descriptions.json"
+
 # list of tags to display in the footer
-sleek_footer_tags     = [
+footer_tags     = [
   "blog",
   "lorem",
-  "post"
+  "post",
+  "first",
 ]
 
-sleek_footer_topics   = []
-
-sleek_topics_metadata = "topics/topics.json"
-
-# sleek_search        = true
-sleek_topics          = [
+# menu links for the navbar menu
+menu_links      = [
+  { name        = "Home",       link = "/"},
+  { name        = "Blog",       link = "/blog" },
+  { name        = "Tags",       link = "/tags" },
+  { name        = "Topics",     link = "/topics" },
+  { name        = "About",      link = "/about"}
 ]
 
-# path to the logo svg
-sleek_logo            = "images/Q-nord6.svg"
+# path to the SVG logo
+sleek_logo      = "images/QQ-nord6.svg"
 
-# menu items for the navbar
-sleek_menu            = [
-  { name              = "Home",       link = "/"},
-  { name              = "Blog",       link = "/blog" },
-  { name              = "Tags",       link = "/tags" },
-  { name              = "Topics",     link = "/topics" },
-  { name              = "About",      link = "/about"}
-]
+# Alternate text for the logo image
+sleek_abbr      = "JQE"
+
+# displayed below title of website on homepage
+sleek_quote     = "You get what you pay for!"
 
 # website and pages linked on the homepage
-sleek_pages           = [
-  { name              = "twitter",    link = "https://twitter.com" },
-  { name              = "github",     link = "https://github.com" },
-  { name              = "linkedin",   link = "https:/linkedin.com" },
-  { name              = "email",      link = "mailto:john@example.com" }
+sleek_pages     = [
+  { name        = "twitter",    link = "https://twitter.com" },
+  { name        = "github",     link = "https://github.com" },
+  { name        = "linkedin",   link = "https:/linkedin.com" },
+  { name        = "email",      link = "mailto:john@example.com" }
 ]

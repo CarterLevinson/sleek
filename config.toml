@@ -1,87 +1,87 @@
 # The URL the site will be built for
-base_url              = "https://sleek-4lj.pages.dev"
+base_url           = "https://sleek-4lj.pages.dev"
+
 # The title of the website
-title                 = "John Q. Example's Blog"
+title              = "John Q. Example's Blog"
+
 # The description of the website
-description           = "Sample website to demonstrate Sleek theme"
+description        = "Sample website to demonstrate Sleek theme"
 
 # Compile all SASS files in the sass directory
-compile_sass          = true
+compile_sass       = true
 
 # Build a search index in the project root
-build_search_index    = true
+build_search_index = true
 
 # Compress generated HTML
-minify_html           = true
+minify_html        = true
 
 # Generate feeds for posts and/or taxonomies
-generate_feed         = true
+generate_feed      = true
 
 # The feed file name to use for syndication
-feed_filename         = "atom.xml"
+feed_filename      = "atom.xml"
+
 # Default language for html and search functions
-default_language      = "en"
+default_language   = "en"
 
 # Default taxonomy lists and settings
-taxonomies            = [
-  { name              = "tags", feed = true, paginate_by = 10 },
-  { name              = "topics", feed = true, paginate_by = 10 },
+taxonomies         = [
+  { name           = "tags", feed = true, paginate_by = 10 },
+  { name           = "topics", feed = true, paginate_by = 10 },
 ]
 
 [search]
 # Use JSON over JS for the search index file
-index_format          = "elasticlunr_json"
+index_format       = "elasticlunr_json"
 
 [markdown]
 # Perform syntax highlighting on code snippets
-highlight_code        = true
+highlight_code     = true
+
 # Use the following theme for highlights
-highlight_theme       = "nord"
+highlight_theme    = "nord"
 
 [extra]
 # The author of the website
-author          = "John Q. Example"
-# website copyright statement
-copyright       = "All rights reserved"
+author             = "John Q. Example"
 
-# todo: implement
-render_mathjax    = false
+# website copyright statement
+copyright          = "All rights reserved"
+
 # static json containing large topic descriptions
-topics_metadata = "topics/descriptions.json"
-# todo: implement showing topics in footer as well as tags
-footer_topics   = [
+topics_metadata    = "topics/descriptions.json"
+
+# list of tags to display in the footer
+footer_tags        = [
   "blog",
   "lorem",
   "post",
-]
-# list of tags to display in the footer
-footer_tags     = [
-  "blog",
-  "lorem",
-  "post"
-]
-# menu links for the navbar menu
-menu_links           = [
-  { name              = "Home",       link = "/"},
-  { name              = "Blog",       link = "/blog" },
-  { name              = "Tags",       link = "/tags" },
-  { name              = "Topics",     link = "/topics" },
-  { name              = "About",      link = "/about"}
+  "first",
 ]
 
+# menu links for the navbar menu
+menu_links         = [
+  { name           = "Home",       link = "/"},
+  { name           = "Blog",       link = "/blog" },
+  { name           = "Tags",       link = "/tags" },
+  { name           = "Topics",     link = "/topics" },
+  { name           = "About",      link = "/about"}
+]
 
 # path to the logo svg
-sleek_logo            = "images/QQ-nord6.svg"
+sleek_logo         = "images/QQ-nord6.svg"
+
 # Alternate text for the logo image
-sleek_abbr            = "JQE"
+sleek_abbr         = "JQE"
+
 # displayed below title of website on homepage
-sleek_quote           = "You get what you pay for!"
+sleek_quote        = "You get what you pay for!"
+
 # website and pages linked on the homepage
-sleek_pages           = [
-  { name              = "twitter",    link = "https://twitter.com" },
-  { name              = "github",     link = "https://github.com" },
-  { name              = "linkedin",   link = "https:/linkedin.com" },
-  { name              = "email",      link = "mailto:john@example.com" }
+sleek_pages        = [
+  { name           = "twitter",    link = "https://twitter.com" },
+  { name           = "github",     link = "https://github.com" },
+  { name           = "linkedin",   link = "https:/linkedin.com" },
+  { name           = "email",      link = "mailto:john@example.com" }
 ]
-
-
