@@ -41,7 +41,7 @@ footer_tags     = [
   "first",
 ]
 
-# menu links for the navbar menu
+# links for the navbar menu
 menu_links      = [
   { name        = "Home",       link = "/"},
   { name        = "Blog",       link = "/blog" },
@@ -50,7 +50,7 @@ menu_links      = [
   { name        = "About",      link = "/about"}
 ]
 
-# path to the SVG logo
+# path to the logo svg
 sleek_logo      = "images/QQ-nord6.svg"
 
 # Alternate text for the logo image
@@ -59,7 +59,7 @@ sleek_abbr      = "JQE"
 # displayed below title of website on homepage
 sleek_quote     = "You get what you pay for!"
 
-# website and pages linked on the homepage
+# external pages linked on the homepage
 sleek_pages     = [
   { name        = "twitter",    link = "https://twitter.com" },
   { name        = "github",     link = "https://github.com" },

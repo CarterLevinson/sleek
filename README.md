@@ -31,7 +31,8 @@ Here are the workarounds:
 1) Downgrade the build image used for deploying your site from `v2` back to `v1`
 
 2) Set the `ZOLA_VERSION` environment variable to whatever version you are
-   using to develop your site locally.
+   using to develop your site locally, keep in mind that Sleek only supports
+   Zola versions >= 0.17.0
 
 
 ## Features
@@ -58,7 +59,66 @@ In addition to the many features supported by Zola, Sleek boasts:
 
 ## Configuration
 
-Configuration of the theme's options is done in a TOML file.
+Zola theme configuration is done in a [TOML](https://toml.io/en/) file. You are
+free to override the default Sleek configurations, however, it is not
+recommended to change the following options:
+
+* `compile_sass = true`
+* `build_search_index = true`
+* `search.index_format = "elasticlunr_json"`
+
+Additionally, removing the default taxonomies will cause the site to break.
+Adding new ones, however, should work fine. If you have difficulty here please
+make a bug report in the manner discussed below.
+
+Theme configuration is done in the `[extra]` section. Listed below are the Sleek
+theme configuration options as well as their default values.
+
+Website metadata:
+
+```toml
+# The author of the website
+author             = "John Q. Example"
+
+# website copyright statement
+copyright          = "All rights reserved"
+
+# static json containing topic descriptions
+topics_metadata    = "topics/descriptions.json"
+```
+Homepage links:
+
+```toml
+# links for the navbar menu
+menu_links         = [
+  { name           = "Home",       link = "/"},
+  { name           = "Blog",       link = "/blog" },
+  { name           = "Tags",       link = "/tags" },
+  { name           = "Topics",     link = "/topics" },
+  { name           = "About",      link = "/about"}
+]
+
+# external pages linked on the homepage
+sleek_pages        = [
+  { name           = "twitter",    link = "https://twitter.com" },
+  { name           = "github",     link = "https://github.com" },
+  { name           = "linkedin",   link = "https:/linkedin.com" },
+  { name           = "email",      link = "mailto:john@example.com" }
+]
+```
+
+Website styling:
+
+```toml
+# path to the logo svg
+sleek_logo         = "images/QQ-nord6.svg"
+
+# Alternate text for the logo image
+sleek_abbr         = "JQE"
+
+# displayed below title of website on homepage
+sleek_quote        = "You get what you pay for!"
+```
 
 ## Bugs
 

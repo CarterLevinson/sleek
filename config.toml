@@ -60,10 +60,7 @@ footer_tags        = [
   "first",
 ]
 
-# static json containing large topic descriptions
-topics_metadata    = "topics/descriptions.json"
-
-# menu links for the navbar menu
+# links for the navbar menu
 menu_links         = [
   { name           = "Home",       link = "/"},
   { name           = "Blog",       link = "/blog" },
@@ -81,7 +78,7 @@ sleek_abbr         = "JQE"
 # displayed below title of website on homepage
 sleek_quote        = "You get what you pay for!"
 
-# website and pages linked on the homepage
+# external pages linked on the homepage
 sleek_pages        = [
   { name           = "twitter",    link = "https://twitter.com" },
   { name           = "github",     link = "https://github.com" },
